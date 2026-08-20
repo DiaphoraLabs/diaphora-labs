@@ -1,14 +1,21 @@
-// Applies scripts/schema.sql to whatever DATABASE_URL points at. Idempotent:
-// every statement is create-if-not-exists, so running it twice is a no-op.
+// Applies scripts/schema.sql to DATABASE_URL. Runs as part of `npm run build`,
+// which is where Vercel hands the process a credential that cannot be read back
+// out through the CLI or API. Idempotent: every statement is
+// create-if-not-exists, so running it on every deploy is a no-op.
 //
 //   node --env-file=.env.local scripts/init-db.mjs
 import { readFile } from 'node:fs/promises';
 import { neon } from '@neondatabase/serverless';
 
 const url = process.env.DATABASE_URL;
+
+// A build without a database is legitimate: local builds, and previews created
+// before the integration was attached. The register route fails loudly at
+// request time in that case, which is the right place for it to surface —
+// failing the build would take the whole site down over one route.
 if (!url) {
-  console.error('DATABASE_URL is not set. Pass it, or use --env-file=.env.local');
-  process.exit(1);
+  console.warn('init-db: DATABASE_URL not set — skipping migration.');
+  process.exit(0);
 }
 
 const schema = await readFile(new URL('./schema.sql', import.meta.url), 'utf8');
@@ -23,8 +30,8 @@ const statements = schema
 
 for (const statement of statements) {
   await sql.query(statement);
-  console.log('ok:', statement.split('\n').find((l) => !l.trim().startsWith('--'))?.trim());
+  console.log('init-db ok:', statement.split('\n').find((l) => !l.trim().startsWith('--'))?.trim());
 }
 
 const [{ count }] = await sql`select count(*)::int as count from registrations`;
-console.log(`\nregistrations table ready — ${count} row(s).`);
+console.log(`init-db: registrations table ready — ${count} row(s).`);
