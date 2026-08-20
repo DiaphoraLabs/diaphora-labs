@@ -14,8 +14,8 @@ export default function Delta1() {
     <main>
       <PageHead
         ord="03"
-        title={<>Be<br />assayed</>}
-        standfirst="Assay is the old word for testing metal against a standard. Delta 1 is the assay office, and it does that to companies: application-based, in person, in Niagara Falls, and biased toward founders already operating with an MVP. Science and research companies are assessed on TRL. Unlike Delta 0, this mark cannot be self-struck — that is the whole difference between them."
+        title={<>Make your<br />mark</>}
+        standfirst="Application-based, in person, in Niagara Falls, for founders already running an MVP. Research teams are assessed on TRL. Delta 0 is yours the moment you decide to take it. This one has to be given to you."
         meta={['Application only', 'In person · Niagara Falls', 'MVP stage', 'TRL assessed']}
       />
 
@@ -24,14 +24,13 @@ export default function Delta1() {
         <div className={styles.column}>
           <h2 className={styles.h2}>For founders</h2>
           <p className="measure">
-            Applications are not open yet. The waitlist is the real queue: when the
-            first cohort opens, it opens to this list first, and nothing else about
-            the process is decided in a back room.
+            Applications are not open yet. When the first cohort opens, this list
+            hears before anyone else. It is the only queue there is.
           </p>
           <p className="measure">
-            If you are building on research, you will be assessed on TRL rather than
-            on traction, because the two are not the same thing and pretending they
-            are is how good science gets rejected by accelerators.
+            If you are building on research, we assess TRL. Good science fails an
+            accelerator&rsquo;s traction test all the time, for reasons that have
+            nothing to do with the science.
           </p>
           <Register
             list="delta-1-founder"
@@ -46,14 +45,14 @@ export default function Delta1() {
         <div className={styles.column}>
           <h2 className={styles.h2}>For partners and funders</h2>
           <p className="measure">
-            Delta 1 is currently unfunded. We would rather write that on the page
-            than imply otherwise and have you find out in the second meeting.
+            Delta 1 is unfunded. You would learn that in the second meeting anyway,
+            so here it is in the first.
           </p>
           <p className="measure">
-            What exists is the position: a program at the border, with cross-border
-            legal tooling, a building worth restoring, and an open global funnel
-            feeding a selective in-person cohort. If that is a thing you back,
-            partner or fund, this is the door.
+            What exists is the position: a program sited on the border, cross-border
+            legal tooling built into it, a building worth restoring, and an open
+            global funnel feeding a selective in-person cohort. If that is something
+            you back, start here.
           </p>
           <Register
             list="delta-1-partner"
@@ -61,16 +60,16 @@ export default function Delta1() {
             action="Open a conversation"
             fields={['name', 'org', 'email', 'note']}
             noteLabel="What you have in mind, in a line"
-            done="Recorded. A person will read this, not a pipeline."
+            done="Recorded. A person reads these."
           />
         </div>
       </section>
 
       <section className={`page-pad ${styles.assay}`}>
-        <h2 className={styles.h2}>What the assay tests</h2>
+        <h2 className={styles.h2}>The standard</h2>
         <p className={`measure ${styles.assayLede}`}>
-          Every value on the row applies to Delta 1. These are the marks the program
-          demands, not the ones it grants.
+          Every mark on the row applies to Delta 1 — what the program holds itself
+          to, and what it will hold you to.
         </p>
         <MarkRow size={38} />
       </section>

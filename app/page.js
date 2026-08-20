@@ -25,7 +25,10 @@ export default function Home() {
             An incubator that <em>marks</em>, not one that ranks.
           </h1>
           <p className={`measure ${styles.lede}`}>
-            We are all marked by the beliefs we have. We feel these hallmarks are worth showing and sharing. We believe in solving problems and giving those who run towards pressure the best tools possible.
+            An incubator at the Canada&ndash;US border, in Niagara Falls. Two
+            programs: one open to anyone on earth, one you have to be let into.
+            Fifteen values behind both, and four of them bind us as tightly as
+            they bind you.
           </p>
         </div>
       </section>

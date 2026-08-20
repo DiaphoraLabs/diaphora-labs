@@ -23,19 +23,18 @@ export default function Delta0() {
         <div className={styles.forgeIntro}>
           <h2 className={styles.h2}>Strike it yourself</h2>
           <p className="measure">
-            A clockmaker signs the dial in the open. Choose the values your work
-            actually runs on, and Delta 0 will strike you a mark and hand you the
-            file. Nobody grants this one. That is the point of it.
+            Choose the values your work actually runs on. Delta 0 strikes the mark
+            and hands you the file. Nobody grants this one; you take it.
           </p>
         </div>
         <MarkForge />
       </section>
 
       <section className={`page-pad ${styles.marksSection}`}>
-        <h2 className={styles.h2}>The fourteen</h2>
+        <h2 className={styles.h2}>The fifteen</h2>
         <p className={`measure ${styles.marksLede}`}>
-          Four of them bind every audience we have, partners included: Loyal,
-          Transparency, Curious, Fairness. Those four rest already struck.
+          Four of them bind every audience we have, partners included: Loyalty,
+          Transparency, Curiosity, Fairness. Those four rest already struck.
         </p>
         <MarkRow size={40} />
       </section>
@@ -46,24 +45,31 @@ export default function Delta0() {
             <h3>The wiki</h3>
             <p>
               Everything the program knows, written down where anyone can read it,
-              correct it, and take it away. Delta 0 has no proprietary curriculum,
-              because a curriculum you cannot copy is not a curriculum — it is a
-              lock.
+              correct it, and take it away. There is no proprietary curriculum. A
+              curriculum you cannot copy is a lock.
             </p>
           </div>
           <div className={prose.block}>
             <h3>The tool</h3>
             <p>
-              Incubation, run primarily by agents. The parts of early company
-              building that are advice rather than judgement should be available at
-              three in the morning, in any timezone, without an introduction.
+              Incubation, run primarily by agents. Most of early company building
+              is advice, and advice should be available at three in the morning, in
+              any timezone, without an introduction.
+            </p>
+            <p>
+              <a href="https://github.com/francois-build/delta-0">
+                Read the source &rarr;
+              </a>
             </p>
           </div>
           <div className={prose.block}>
             <h3>The community</h3>
             <p>
-              Open to anyone who wants in. Danketsu is one of the fourteen and it
-              means unity — the kind you build, not the kind you are selected into.
+              Open to anyone who wants in. Danketsu is one of the fifteen, and it
+              means a unity you build rather than one you are selected into.
+            </p>
+            <p>
+              <a href="https://discord.gg/AnWHBBTjB">Join the community &rarr;</a>
             </p>
           </div>
         </div>
@@ -71,9 +77,9 @@ export default function Delta0() {
         <div className={`${prose.pending} ${prose.block}`}>
           <span className={`assay-line ${prose.pendingLabel}`}>Not yet published</span>
           <p className="measure">
-            The Delta 0 repository, wiki and community links are not live yet. When
-            they are, they will be linked from this page rather than described on
-            it.
+            The wiki is still being written and has no home yet. The community and
+            the source are open now, linked above. The source is MIT licensed, so
+            you can check that claim rather than take it.
           </p>
         </div>
       </section>
