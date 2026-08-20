@@ -112,7 +112,7 @@ export default function Delta2() {
             action="Tell me when it is struck"
             fields={['email']}
             tone="current"
-            done="Recorded. You will hear once, when Delta 2 opens, and not before."
+            done="Recorded. You will hear once, when Delta 2 opens."
           />
           <p className={styles.small}>
             One email, at launch. Nothing else is sent to this list.

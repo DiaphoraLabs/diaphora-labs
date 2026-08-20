@@ -175,12 +175,11 @@ export default function Waterfall() {
             Everything on this page is proposed. Nothing described here is built,
             funded, approved or agreed. Diaphora Labs does not control this building:
             there is no lease, no purchase, no agreement and no municipal approval,
-            and the proposal is offered to Niagara Parks and the region in a spirit
-            of partnership rather than presumption. The seventeen ranges are a
-            catalogue in progress. Niagara-Proven is a proposed mark that certifies
-            nothing today. There are no renderings here and no photographs of the
-            station, because we would rather show you nothing than show you something
-            we made up.
+            and the proposal is offered to Niagara Parks and the region, whose land
+            and whose decision this is. The seventeen ranges are a catalogue in
+            progress. Niagara-Proven is a proposed mark that certifies nothing
+            today. There are no renderings here and no photographs of the station.
+            We hold none that are real, and we will not manufacture any.
           </p>
         </div>
 

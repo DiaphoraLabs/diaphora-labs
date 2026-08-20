@@ -22,7 +22,7 @@ const DROP = [
   {
     head: 'The border runs through the water',
     body:
-      'The international boundary does not follow the bank. It runs down the centre of the river and through the falls themselves. A company founded here is not near a border; it is on one. Two legal systems, two currencies and two regulatory regimes are the operating conditions from the first day, which is why answering that question is built into the program rather than bolted on once a company is already large enough for the problem to be expensive.',
+      'The international boundary does not follow the bank. It runs down the centre of the river and through the falls themselves. A company founded here is not near a border; it is on one. Two legal systems, two currencies and two regulatory regimes are the operating conditions from the first day. The program answers that from the first day too, while the answer is still cheap.',
   },
   {
     head: 'Getting across the line is the oldest industry here',
@@ -32,7 +32,7 @@ const DROP = [
   {
     head: 'The current went out from here',
     body:
-      'In the 1890s Niagara became the proving ground for long-distance alternating current, and power generated at the falls reached Buffalo. The argument over whether electricity could travel at all was settled at this spot, and the industrial map of North America was redrawn around the answer. A place that has already hosted one settled argument about the future is not a neutral address to hold the next one.',
+      'In the 1890s Niagara became the proving ground for long-distance alternating current, and power generated at the falls reached Buffalo. The argument over whether electricity could travel at all was settled at this spot, and the industrial map of North America was redrawn around the answer. A place that has already settled one argument about the future carries weight when the next one is held there.',
   },
   {
     head: 'The audience is already here',
@@ -53,10 +53,10 @@ const CASE = [
   {
     key: 'Two markets, one desk',
     body:
-      'A founder here reaches both sides of the largest trading relationship on earth from a single address, and has to be legible to both from the beginning. That is a structural advantage of the site, not a service we invented.',
+      'A founder here reaches both sides of the largest trading relationship on earth from a single address, and has to be legible to both from the beginning. The site supplies that advantage; we did not invent it.',
   },
   {
-    key: 'An anchor, not a vacancy',
+    key: 'A monument put back to work',
     body:
       'The proposal reuses a decommissioned station rather than asking for a new build. A working institution inside it turns a monument that costs money to stand still into one that does something.',
   },
@@ -73,7 +73,7 @@ const CASE = [
   {
     key: 'Open before it is funded',
     body:
-      'Delta 0 is running now, free, self-service and global, with no application and no cohort. The pipeline does not wait on a building, a lease or a budget — which is what makes the case for the building a matter of scale rather than of starting.',
+      'Delta 0 is running now, free, self-service and global, with no application and no cohort. The pipeline does not wait on a building, a lease or a budget. The building is what would let it scale.',
   },
 ];
 

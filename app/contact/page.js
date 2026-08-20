@@ -46,7 +46,7 @@ const ROUTES = [
   {
     who: 'Delta 2',
     what:
-      'Not open, and no date. The register hears once, when the die is cut, and not before.',
+      'Not open, and no date. The register hears once, when the die is cut.',
     href: '/delta-2',
     action: 'Delta 2',
   },
@@ -78,13 +78,13 @@ export default function Contact() {
         <div className={styles.plateAside}>
           <h2 className={styles.h2}>One address, on purpose</h2>
           <p className="measure">
-            A hallmark carries the maker&rsquo;s name once, not once per department. Diaphora
-            Labs is small enough that a routing tree would be a costume, so there is a single
-            address and no contact form standing between you and it.
+            A hallmark carries the maker&rsquo;s name once. Diaphora Labs is small enough
+            that a routing tree would be a costume, so there is a single address and no
+            contact form standing between you and it.
           </p>
           <p className="measure">
             Say which of the four you are — founder, investor, partner, or public sector —
-            and what you want to happen next. That is the whole protocol.
+            and what you want to happen next.
           </p>
         </div>
       </section>
@@ -117,8 +117,7 @@ export default function Contact() {
             Delta 1 has no published dates, cohort size, length, terms or equity, because they
             are not decided. Project: Waterfall has no lease, no purchase and no approval from
             Niagara Parks; it is a proposal being made to them. If you write and ask about any
-            of it, the honest answer will be that it is still open — we would rather say that
-            than invent a number.
+            of it, the honest answer will be that it is still open.
           </p>
         </div>
       </section>

@@ -58,7 +58,7 @@ export default function Home() {
           <p className={styles.doorBody}>
             The one you cannot give yourself. Application-based, in person, in Niagara
             Falls, and biased toward founders already operating with an MVP. Research
-            teams are read on TRL rather than on traction. Delta 0 is where you start;
+            teams are read on TRL. Delta 0 is where you start;
             this is where the work goes in front of other people and has to hold up.
           </p>
           <span className={`assay-line ${styles.doorMeta}`}>
@@ -73,7 +73,7 @@ export default function Home() {
           <strong>Not a founder?</strong> Delta 1 is unfunded and we are looking for
           partners. Project: Waterfall is a live proposal to Niagara Parks for the
           generating station at the base of the falls. Both conversations start with
-          a person rather than a form.
+          a person.
         </p>
         <p className={styles.thirdRouteLinks}>
           <Link href="/delta-1">Partners and funders →</Link>
@@ -106,7 +106,7 @@ export default function Home() {
             <p className="measure">
               Cross-border legal tooling, built for companies that must exist on
               both sides of the line at once. Details are being drafted and will be
-              published here rather than described in advance.
+              published here once they are settled.
             </p>
           </div>
         </div>

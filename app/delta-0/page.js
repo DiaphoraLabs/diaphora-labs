@@ -66,7 +66,7 @@ export default function Delta0() {
             <h3>The community</h3>
             <p>
               Open to anyone who wants in. Danketsu is one of the fifteen, and it
-              means a unity you build rather than one you are selected into.
+              means unity you build for yourselves.
             </p>
             <p>
               <a href="https://discord.gg/AnWHBBTjB">Join the community &rarr;</a>
