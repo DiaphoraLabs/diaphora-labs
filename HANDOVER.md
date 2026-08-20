@@ -12,8 +12,11 @@ npm run build && npm run start   # production check
 ```
 
 Next.js 16 (App Router) + React 19, plain JavaScript, CSS Modules. No test suite.
-Not a git repository yet — **there is no version history, so this working tree is
-the only copy.** Initialising git is the single highest-value next action.
+
+Under git at `github.com/DiaphoraLabs/diaphora-labs` (private), deployed from `main`
+to Vercel (`francois-lerouxs-projects/diaphora-labs`) at **diaphoralabs.com**.
+Registrations write to Neon Postgres; `npm run build` applies `scripts/schema.sql`
+first, which is the only place the credential is readable.
 
 ## What exists
 
@@ -53,18 +56,26 @@ Key source:
 
 ## Outstanding work, highest value first
 
-1. **`git init` and commit.** No history exists.
-2. **Verify the historical and factual claims** before the Niagara Parks
-   presentation. Specifically: four Great Lakes draining through the river; the
-   border running mid-channel; the Underground Railroad crossing; AC power reaching
-   Buffalo in the 1890s; the Ontario Power Company station's build and
-   decommissioning dates; and the figures softened out of the proposal document
-   (2,200-foot tunnel, 90 decibels, thirteen million visitors, seventeen ranges).
-   These are on `/niagara` and `/waterfall` and will be read by government.
-3. **Wire capture to a real provider.** `/api/register` appends to a gitignored
-   `.data/registrations.jsonl`. Swap the route body; the client contract is
-   `{ ok }` / `{ ok: false, error }` and nothing else needs to change.
-4. **Open critique findings** (from `.impeccable/critique/`, scored 20/32). The user
+1. **Propagate the verified Niagara figures to the other pages.** `/niagara` now
+   carries sourced numbers and a citation register (`SOURCES` in
+   `app/niagara/page.js`); the rest of the site still argues the same points
+   without them. Specifically:
+   - `/` — "what the mark certifies" describes the border as the argument with no
+     figure behind it. The C$3.6bn/day trade number belongs there.
+   - `/waterfall` — the audience case repeats the visitor claim loosely. Use the
+     13M / 3M US / 1M overseas / $2bn / 40,000 jobs set, cited.
+   - `/delta-1` — the partner column sells "the position" abstractly. The canal
+     and trade figures are the strongest thing in that pitch.
+   - `/contact` — no figures needed; check only that nothing contradicts.
+   Reuse the `SOURCES` array rather than restating citations per page, and keep
+   the rule that anything uncitable stays off the page.
+2. **Verify the remaining `/waterfall` claims** before the Niagara Parks
+   presentation: the Underground Railroad crossing; AC power reaching Buffalo in the
+   1890s; the Ontario Power Company station's build and decommissioning dates; and
+   the figures softened out of the proposal document (2,200-foot tunnel, 90
+   decibels, seventeen ranges). Government will read these. The Niagara figures and
+   the thirteen-million visitor claim are now sourced and cited; these are not.
+3. **Open critique findings** (from `.impeccable/critique/`, scored 20/32). The user
    scoped the last pass to copy only, so these remain:
    - Mobile first screen carries no CTA above the fold (`/impeccable adapt`).
    - Axis ordinals fail contrast at 2.99:1; axis labels and the mark-row caption at 4.45:1.
@@ -72,9 +83,15 @@ Key source:
    - Both 64px door CTAs are `<span>`, not headings; absent from the heading outline.
    - `aria-live` on the mark row fires fourteen times on a sweep with no context.
    - `layout-transition` warning at `components/Axis.module.css:62`.
-5. **Supporter logos.** Niagara Innovation Hub, Brock University and Velocity render
+4. **Supporter logos.** Niagara Innovation Hub, Brock University and Velocity render
    as wordmarks; `components/SupporterWall.js` takes `{ name }` and wants real marks.
-6. **Delta 0's real links** — repository, wiki, community — once they exist.
+5. **Delta 0's wiki link**, once it exists and has a host. The community (Discord)
+   and the source (GitHub, MIT) are live and linked from `/delta-0`.
+6. **The perimeter.** No Open Graph tags or `metadataBase`, so shared links render
+   as bare URLs; no favicon (`/favicon.ico` 404s); no `robots.txt` or `sitemap.xml`.
+7. **Local dev has no database.** The Neon integration set `DATABASE_URL` for
+   Production and Preview only, so `next dev` fails on form submission. Add a
+   Development variable pointing at a Neon branch.
 
 ## Assets still needed from the client
 

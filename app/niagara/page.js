@@ -15,14 +15,14 @@ export const metadata = {
 // address is the argument rather than a detail of it.
 const DROP = [
   {
-    head: 'A continent drains through one channel',
+    head: 'Everything between the lakes still comes past here',
     body:
-      'The Niagara River carries the outflow of four of the five Great Lakes — Superior, Michigan, Huron, Erie — through a single channel on its way to Lake Ontario and the Atlantic. The land beside that channel is the narrow place between the industrial cores of two countries. Water, shipping, rail, power and freight have all been forced past this spot, and the region has spent two centuries building the infrastructure to handle what comes through.',
+      'Lake Erie sits 99.5 metres above Lake Ontario, and the falls are the step between them. No vessel can climb it. The Welland Canal was cut across the peninsula to get around the drop — 43.4 kilometres, eight locks — and it is still the only marine route between the upper and lower Great Lakes. In the 2024 navigation season it carried 3,098 vessel transits and 26.6 million tonnes of cargo. Grain leaving Thunder Bay and ore bound for Hamilton pass within a half-hour drive of this site, on a channel that exists because of the drop the falls made.',
   },
   {
-    head: 'The border runs through the water',
+    head: 'The meeting point of two powers',
     body:
-      'The international boundary does not follow the bank. It runs down the centre of the river and through the falls themselves. A company founded here is not near a border; it is on one. Two legal systems, two currencies and two regulatory regimes are the operating conditions from the first day. The program answers that from the first day too, while the answer is still cheap.',
+      'The international boundary does not follow the bank. It runs down the centre of the river and through the falls themselves. A company founded here is not near a border; it is on one. Nearly $3.6 billion in goods and services crossed the Canada–US border every day in 2024 — the largest bilateral trading relationship on earth — and three international bridges cross the river within the region. Two legal systems, two currencies and two regulatory regimes are the operating conditions from the first day. The program answers that from the first day too, while the answer is still cheap.',
   },
   {
     head: 'Getting across the line is the oldest industry here',
@@ -37,7 +37,7 @@ const DROP = [
   {
     head: 'The audience is already here',
     body:
-      'Niagara Falls is one of the most visited natural sites on earth, and the people who visit arrive from everywhere. Most new institutions have to buy their way into international attention. An institution at the base of these falls inherits an audience that is already standing there — investors, press, ministers and founders who came for the water and can be shown the work while they are in front of it.',
+      'More than 13 million people visit Niagara each year — over three million from the United States and about a million from overseas — spending more than $2 billion and supporting over 40,000 jobs in the region. Most new institutions have to buy their way into international attention. An institution at the base of these falls inherits an audience that is already standing there: investors, press, ministers and founders who came for the water and can be shown the work while they are in front of it.',
   },
   {
     head: 'And the building was left standing',
@@ -46,9 +46,8 @@ const DROP = [
   },
 ];
 
-// The economic argument, kept to what can be stated without a figure behind
-// it. Anything that needs a number to be true is in the pending block below,
-// not here.
+// The economic argument. Every figure used here is sourced in SOURCES below;
+// anything we cannot cite stays off the page.
 const CASE = [
   {
     key: 'Two markets, one desk',
@@ -63,7 +62,7 @@ const CASE = [
   {
     key: 'A reason to stay',
     body:
-      'Delta 1 exists so that a founder educated in this region has a reason to build in it. Brock University, Niagara Innovation Hub and Velocity have backed the founders and support Diaphora Labs; none of them has committed capital or space, and none is described here as having done so.',
+      'Brock University enrolled 19,075 students in 2025–26, in a region of 477,941 people. Delta 1 exists so that a founder educated here has a reason to build here. Brock, Niagara Innovation Hub and Velocity have backed the founders and support Diaphora Labs; none of them has committed capital or space, and none is described here as having done so.',
   },
   {
     key: 'Attention the region already owns',
@@ -77,13 +76,49 @@ const CASE = [
   },
 ];
 
+// Every figure that appears above, and the primary source it came from. A
+// government or institutional reader should be able to check any claim on this
+// page without writing to ask where it came from.
+const SOURCES = [
+  {
+    fact: 'Welland Canal traffic, 2024',
+    cite: 'St. Lawrence Seaway Management Corporation, Traffic Report 2024, Table W5',
+    href: 'https://greatlakes-seaway.com/wp-content/uploads/2025/04/traffic_report_2024_en.pdf',
+  },
+  {
+    fact: 'Canal length, locks and lift',
+    cite: 'St. Lawrence Seaway Management Corporation, The Welland Canal Section',
+    href: 'https://greatlakes-seaway.com/wp-content/uploads/2019/10/welland.pdf',
+  },
+  {
+    fact: 'Cross-border trade per day, 2024',
+    cite: 'Global Affairs Canada, Canada–United States relations',
+    href: 'https://www.international.gc.ca/country-pays/us-eu/relations.aspx?lang=eng',
+  },
+  {
+    fact: 'Visitors, tourism spending and employment',
+    cite: 'Niagara Economic Development, Tourism',
+    href: 'https://niagaracanada.com/key-sectors/tourism/',
+  },
+  {
+    fact: 'Regional population, 2021',
+    cite: 'Statistics Canada, 2021 Census of Population, Niagara Regional Municipality',
+    href: 'https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm?Lang=E&SearchText=Niagara&DGUIDlist=2021A00033526&GENDERlist=1%2C2%2C3&STATISTIClist=1&HEADERlist=0',
+  },
+  {
+    fact: 'Brock University enrolment, 2025–26',
+    cite: 'Brock University, Institutional Planning, Analysis & Performance',
+    href: 'https://brocku.ca/institutional-analysis/institutional-reporting/headcount-and-course-enrolment-reports/',
+  },
+];
+
 export default function Niagara() {
   return (
     <main>
       <PageHead
         ord="01"
         title="Niagara"
-        standfirst="Every incubator has to explain its address. This one is the whole argument: the narrow place a continent drains through, a border that runs down the middle of the water, the spot where the question of whether power could travel was settled, and a site the world already visits without being asked."
+        standfirst="Every incubator has to explain its address. This one is the whole argument: the only marine route between the upper and lower Great Lakes, a border that runs down the middle of the water, the spot where the question of whether power could travel was settled, and a site the world already visits without being asked."
         meta={['43°04′N 79°04′W', 'Ontario · Canada', 'The line runs mid-river']}
         marks={BINDING}
       />
@@ -115,19 +150,23 @@ export default function Niagara() {
       </section>
 
       <section className={`page-pad ${prose.prose}`}>
-        <div className={`${prose.pending} ${prose.block}`}>
-          <span className={`assay-line ${prose.pendingLabel}`}>
-            Figures this argument needs, and does not yet have
-          </span>
+        <div className={prose.block}>
+          <h2>Where these figures come from</h2>
           <p className="measure">
-            A ministry or an anchor partner will reasonably ask for annual visitor volume,
-            the population and business count within a drive of the site, crossing volumes
-            at the local bridges, regional employment and sector mix, and the station&rsquo;s
-            condition and cost to occupy. We hold none of those figures to a standard we
-            would be willing to defend in a room, so none appears on this page. They will
-            be sourced and cited before they are used, and an estimate will not be
-            substituted in the meantime.
+            Every number on this page is cited below, and every citation is a primary
+            source. Nothing here is an estimate. The station&rsquo;s condition and the
+            cost to occupy it are still unknown, which is why no figure for either
+            appears on this page or on{' '}
+            <Link href="/waterfall">Project: Waterfall</Link>.
           </p>
+          <ul className={styles.sources}>
+            {SOURCES.map((s) => (
+              <li key={s.href} className={styles.source}>
+                <span className={`assay-line ${styles.sourceFact}`}>{s.fact}</span>
+                <a href={s.href}>{s.cite}</a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className={prose.block}>
