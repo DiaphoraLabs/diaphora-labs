@@ -4,6 +4,11 @@
 .prose p { color: var(--bone-dim); margin: 0.6rem 0 0; }
 .block { border-top: 1px solid var(--rule); padding-top: clamp(1.2rem, 3vh, 2rem); }
 .pairs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: clamp(1.3rem, 4vw, 3rem); }
+
+/* For blocks that are steps in one argument rather than parallel items. Columns
+   would present them as equivalent and let the eye pick any of the three first;
+   these have an order, and the last one is the ask. */
+.steps { display: flex; flex-direction: column; gap: clamp(1.1rem, 3vh, 1.8rem); max-width: 70ch; }
 .pending {
   max-width: 62rem;
   border: 1px solid var(--rule-strong);

@@ -91,12 +91,16 @@ export default function Waterfall() {
           is all six under one roof, at the foot of the falls. This is what we are
           proposing, not what is there today.
         </p>
-        <ol className={styles.register}>
+        <ol className={styles.programme}>
           {USES.map((u) => (
-            <li key={u.head} className={styles.row}>
-              <span className={styles.rowWhere}>{u.where}</span>
-              <h3 className={styles.rowHead}>{u.head}</h3>
-              <p className={styles.rowBody}>{u.body}</p>
+            <li key={u.head} className={styles.entry}>
+              <span className={styles.entryWhere}>{u.where}</span>
+              {/* Head and body in one cell: as siblings in the grid the head sat
+                  as close to the level label as to the text it introduces. */}
+              <div>
+                <h3 className={styles.entryHead}>{u.head}</h3>
+                <p className={styles.entryBody}>{u.body}</p>
+              </div>
             </li>
           ))}
         </ol>
@@ -155,7 +159,7 @@ export default function Waterfall() {
       </section>
 
       <section className={`page-pad ${prose.prose}`}>
-        <div className={prose.pairs}>
+        <div className={prose.steps}>
           <div className={prose.block}>
             <h3>Why the building matters</h3>
             <p>

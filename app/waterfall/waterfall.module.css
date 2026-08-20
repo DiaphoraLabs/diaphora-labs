@@ -4,7 +4,8 @@
   gap: clamp(1.6rem, 5vw, 4rem);
   align-items: start;
   padding-top: var(--band);
-  padding-bottom: var(--band-wide);
+  /* Closes tight: the spec and the story that follows are the same subject. */
+  padding-bottom: var(--band);
   /* No border-bottom: the next section carries a border-top, and the two stacked
      to a 2px rule where every other boundary on the page is 1px. */
 }
@@ -74,15 +75,25 @@
 }
 .sectionLede { margin: 0; color: var(--bone-dim); font-size: var(--step-1); line-height: 1.5; }
 
+/* Cadence, not one interval seven times. The uses and the ranges are two halves
+   of one answer to "what does it become", so they close tight; the story and the
+   proving ground each end an argument, so they close wide. */
 .story,
 .uses,
 .proving {
   padding-top: var(--band);
-  padding-bottom: var(--band-wide);
+  padding-bottom: var(--band);
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
   border-top: 1px solid var(--rule);
+}
+
+/* The two boundaries where the argument genuinely changes hands: history hands
+   over to the proposal, and the proposal hands over to what is not settled. */
+.story,
+.proving {
+  padding-bottom: var(--band-wide);
 }
 
 /* --- the story: a dated register down one line --------------------------- */
@@ -131,20 +142,61 @@
 }
 .era p { margin: 0.45rem 0 0; color: var(--bone-dim); }
 
-/* --- registers: ruled rows, never cards ---------------------------------- */
+/* --- two registers, two densities ----------------------------------------
+   Both are ruled rows and neither is a card, but they are not the same kind of
+   document. The uses are a programme: six entries read once, in order, to
+   picture a building. The ranges are a schedule: seventeen entries scanned and
+   compared. Drawn identically they read as one 1,200px-long table. */
+
+/* The programme. Generous, sequential, and the head leads its own body rather
+   than sitting beside it on a shared baseline. */
+.programme {
+  list-style: none;
+  margin: var(--band-tight) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: clamp(0.8rem, 3vw, 2.4rem);
+  padding: clamp(1.4rem, 3.6vh, 2.4rem) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.entryWhere {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  padding-top: 0.3rem;
+}
+
+.entryHead {
+  font-size: var(--step-1);
+  font-stretch: 118%;
+  color: var(--bone);
+}
+
+.entryBody { margin: 0.5rem 0 0; color: var(--bone-dim); max-width: 62ch; }
+
+/* The schedule. Tight, uniform, tabular figures — built to be compared down the
+   column rather than read across the row. */
 .register {
   list-style: none;
-  margin: 1.2rem 0 0;
+  margin: var(--band-tight) 0 0;
   padding: 0;
   border-top: 1px solid var(--rule);
 }
 
 .row {
   display: grid;
-  grid-template-columns: 11rem minmax(0, 15rem) minmax(0, 1fr);
+  grid-template-columns: 11rem minmax(0, 14rem) minmax(0, 1fr);
   gap: clamp(0.6rem, 2.2vw, 2rem);
   align-items: baseline;
-  padding: clamp(0.9rem, 2.4vh, 1.5rem) 0;
+  padding: clamp(0.6rem, 1.6vh, 0.95rem) 0;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -154,11 +206,12 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--bronze);
+  font-feature-settings: 'tnum' 1;
 }
 
 .rowHead {
-  font-size: var(--step-1);
-  font-stretch: 118%;
+  font-size: var(--step-0);
+  font-stretch: 112%;
   color: var(--bone);
 }
 
@@ -170,7 +223,8 @@
   grid-template-columns: auto minmax(0, 1fr);
   gap: clamp(1.1rem, 3vw, 2.2rem);
   align-items: start;
-  margin-top: clamp(1.6rem, 4vh, 2.6rem);
+  /* Tight: the mark belongs to the catalogue above it, not to a new movement. */
+  margin-top: var(--band-tight);
   /* Set on the ground under a bronze rule, not in a filled box. This was a card
      built from the plaque's own gradient, angle and edge token — a second cast
      object on a page that had already refused one for the building spec. */
@@ -191,4 +245,8 @@
   .year { padding-top: 0; }
   .row { grid-template-columns: 1fr; gap: 0.3rem; }
   .proven { grid-template-columns: 1fr; }
+  /* The two registers still have to read as different documents once both are
+     single-column: the programme keeps its air, the schedule keeps its tightness. */
+  .entry { grid-template-columns: 1fr; gap: 0.35rem; padding: clamp(1.1rem, 3vh, 1.7rem) 0; }
+  .entryWhere { padding-top: 0; }
 }
