@@ -1,11 +1,9 @@
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
+import { sql } from '../../../lib/db';
 
-// Capture is local-first on purpose: no provider has been chosen yet, and a
-// form that pretends to submit is worse than one that plainly does not.
-// Swap this body for the provider's API when one is picked; the contract the
-// client depends on is { ok } / { ok:false, error }.
-const STORE = path.join(process.cwd(), '.data', 'registrations.jsonl');
+// Capture writes to Postgres (Neon). The contract the client depends on is
+// unchanged: { ok } on success, { ok:false, error } on anything else. A form
+// that pretends to submit is worse than one that plainly does not, so a write
+// that does not land must reach the visitor as a failure.
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const LISTS = new Set([
   'delta-1-founder',
@@ -18,6 +16,11 @@ const LISTS = new Set([
   'waterfall-capital',
   'waterfall-media',
 ]);
+
+export const runtime = 'nodejs';
+// Every submission must hit the database; a cached route would answer some of
+// them without ever running.
+export const dynamic = 'force-dynamic';
 
 export async function POST(request) {
   let body;
@@ -52,13 +55,21 @@ export async function POST(request) {
     commitments: Array.isArray(body?.commitments)
       ? body.commitments.slice(0, 12).map((c) => String(c).slice(0, 40))
       : [],
-    at: new Date().toISOString(),
   };
 
   try {
-    await fs.mkdir(path.dirname(STORE), { recursive: true });
-    await fs.appendFile(STORE, `${JSON.stringify(record)}\n`, 'utf8');
-  } catch {
+    const db = sql();
+    await db`
+      insert into registrations
+        (email, list, name, org, note, role, city, use_case, commitments)
+      values
+        (${record.email}, ${record.list}, ${record.name}, ${record.org}, ${record.note},
+         ${record.role}, ${record.city}, ${record.use}, ${record.commitments})
+    `;
+  } catch (err) {
+    // The visitor gets one recoverable sentence; the detail goes to the
+    // function log, where it is actually actionable.
+    console.error('register: write failed', err);
     return Response.json(
       { ok: false, error: 'We could not record that. Try again in a moment.' },
       { status: 500 }

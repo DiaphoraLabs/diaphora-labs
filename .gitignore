@@ -40,3 +40,6 @@ src/plugins/impeccable-live.client.ts
 # tooling (local only)
 .claude/
 .impeccable/questions/
+
+# local env
+.env*.local
