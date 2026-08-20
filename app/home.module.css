@@ -1,0 +1,159 @@
+.first {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(1.75rem, 5vw, 5rem);
+  align-items: end;
+  min-height: 0;
+  padding-top: var(--band-wide);
+  padding-bottom: var(--band-tight);
+}
+
+.plaqueCol { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 1.4rem; }
+
+.markCol {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: clamp(1.1rem, 2.6vh, 1.9rem);
+  padding-top: 0.4rem;
+}
+
+.thesis {
+  font-size: var(--step-2);
+  font-stretch: 112%;
+  font-weight: 700;
+  color: var(--bone);
+  max-width: 22ch;
+}
+.thesis em {
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 125%;
+  color: var(--current);
+}
+
+.lede {
+  margin: 0;
+  color: var(--bone-dim);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+/* --- doors --------------------------------------------------------------- */
+.doors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 0;
+}
+
+.door {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.6rem, 4vw, 3.4rem);
+  background: var(--patina-deep);
+  text-decoration: none;
+  transition: background-color 260ms var(--ease-strike);
+}
+.door:hover { background: var(--patina); }
+
+.doorOrd {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+.doorAct {
+  font-family: var(--font-plaque), sans-serif;
+  font-stretch: 125%;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: var(--step-3);
+  line-height: 0.92;
+  color: var(--bone);
+}
+.doorLive .doorAct { color: var(--current); }
+
+.doorBody {
+  margin: 0;
+  color: var(--bone-dim);
+  max-width: 46ch;
+}
+
+.doorMeta { margin-top: auto; padding-top: 1.4rem; }
+
+/* --- beneath ------------------------------------------------------------- */
+.strike {
+  padding-top: var(--band-tight);
+  padding-bottom: var(--band);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* The third route: subordinate to the two doors, but present and findable. */
+.thirdRoute {
+  padding-top: var(--band-tight);
+  padding-bottom: var(--band);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.9rem clamp(1.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.thirdRouteBody { margin: 0; color: var(--bone-dim); }
+.thirdRouteBody strong { color: var(--bone); font-weight: 600; }
+
+.thirdRouteLinks {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.8rem;
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.thirdRouteLinks a { color: var(--bronze-bright); text-decoration-color: var(--bronze-dim); }
+.thirdRouteLinks a:hover { color: var(--current); }
+
+.beneath { padding-block: var(--band-wide); }
+
+.beneathHead {
+  font-size: var(--step-2);
+  color: var(--bone);
+  margin-bottom: clamp(1.6rem, 4vh, 3rem);
+}
+
+.beneathGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: clamp(1.4rem, 4vw, 3.4rem);
+}
+.beneathGrid p { color: var(--bone-dim); margin: 0.55rem 0 0; }
+
+.beneathNote {
+  margin-top: clamp(2rem, 5vh, 3.4rem);
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.beneathNote a { color: var(--current); text-decoration-color: var(--current-dim); }
+
+/* On a phone the tablet has to leave room for the doors: the lettering comes
+   down a step and the struck line tightens, rather than either being dropped. */
+@media (max-width: 560px) {
+  .plaqueCol :global(.plaque) { padding: 1rem 1.1rem; }
+  .plaqueCol :global(.plaque) svg { width: 20px; height: 20px; }
+}
+
+@media (max-width: 900px) {
+  .first { grid-template-columns: 1fr; min-height: 0; }
+  .doors { grid-template-columns: 1fr; }
+}

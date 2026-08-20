@@ -1,0 +1,76 @@
+.plaque {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: clamp(1.1rem, 2.6vw, 2rem) clamp(1.3rem, 3.2vw, 2.6rem);
+  position: relative;
+}
+
+.name {
+  font-family: var(--font-plaque), sans-serif;
+  font-stretch: 125%;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.9rem, 1rem + 3.4vw, 3.4rem);
+  overflow-wrap: normal;
+  hyphens: none;
+}
+.lg .name { font-size: clamp(2.1rem, 0.9rem + 4.4vw, 4.2rem); }
+/* Page headline: the tablet is the title, so it is cast at display scale. */
+.xl .name { font-size: clamp(2.5rem, 1.2rem + 5.2vw, 5.2rem); line-height: 0.88; }
+.xl { padding: clamp(1.4rem, 3.2vw, 2.6rem) clamp(1.5rem, 3.6vw, 3rem); }
+
+/* The struck line on the tablet: the marks this page is asked to hold. They
+   sit between the lettering and the assay lines, which is where a hallmark
+   sits on real metal — under the maker's name, above the date. */
+.marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.7rem;
+  min-width: 0;
+}
+
+.lines {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.8rem;
+}
+
+.bolt {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 26%, #f0cf9a 0%, var(--bronze-bright) 24%, var(--bronze) 58%, var(--bronze-dim) 88%);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.55),
+    0 1px 2px rgba(0, 0, 0, 0.8),
+    0 -1px 0 rgba(0, 0, 0, 0.35) inset,
+    0 1px 0 rgba(255, 236, 200, 0.4) inset;
+}
+/* the driver slot, sunk across the head */
+.bolt::after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-50%) rotate(28deg);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 0 rgba(255, 236, 200, 0.22);
+}
+.bolt[data-corner='tl'] { top: 9px; left: 9px; }
+.bolt[data-corner='tr'] { top: 9px; right: 9px; }
+.bolt[data-corner='bl'] { bottom: 9px; left: 9px; }
+.bolt[data-corner='br'] { bottom: 9px; right: 9px; }

@@ -1,0 +1,65 @@
+.dieSection {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: clamp(1.8rem, 6vw, 5rem);
+  align-items: center;
+  padding-block: var(--band-wide);
+  min-height: 58vh;
+}
+
+.blank { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; }
+
+.blankSvg {
+  width: min(100%, 22rem);
+  height: auto;
+  filter:
+    drop-shadow(0 2px 2px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 14px 24px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 30px 52px rgba(0, 0, 0, 0.7));
+}
+
+.blankLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+}
+
+/* The cutting mark. Shown while motion is welcome; swapped for a single
+   static step under prefers-reduced-motion, because a loader that cannot
+   loop should still say what it is. */
+.cutting { display: inline; }
+.cuttingStatic { display: none; }
+
+/* Stroke lives here, not on the element: var() is not substituted inside SVG
+   presentation attributes, which is why the die's own circles carry literal
+   hex. The stroke scales with the mark rather than being pinned in pixels, so
+   at die size it keeps a punch's 1.55-on-24 proportion instead of thinning to
+   a hairline. */
+.cutting path,
+.cuttingStatic {
+  stroke: var(--bronze-bright);
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.65));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cutting { display: none; }
+  .cuttingStatic { display: inline; }
+}
+
+.registerCol { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.small {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+  line-height: 1.6;
+}
+
+@media (max-width: 820px) {
+  .dieSection { grid-template-columns: 1fr; min-height: 0; }
+}

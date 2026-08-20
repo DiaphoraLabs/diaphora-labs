@@ -1,0 +1,96 @@
+.drop {
+  padding-top: var(--band-tight);
+  padding-bottom: var(--band-wide);
+}
+
+.courses { list-style: none; margin: 0; padding: 0; position: relative; }
+
+/* The vertical sightline: the river above, the tailrace below. */
+.courses::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--current-dim), var(--bronze-dim) 22%, var(--rule) 88%, transparent);
+}
+
+.course {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.6rem);
+  padding: clamp(1.4rem, 4vh, 2.8rem) 0 clamp(1.4rem, 4vh, 2.8rem) clamp(1.4rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--rule);
+}
+.course:last-child { border-bottom: 0; }
+
+.depth {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  color: var(--bronze);
+  padding-top: 0.45rem;
+  font-feature-settings: 'tnum' 1;
+}
+
+.courseBody { display: flex; flex-direction: column; }
+
+.courseHead {
+  font-size: var(--step-2);
+  font-stretch: 118%;
+  color: var(--bone);
+  max-width: 20ch;
+}
+.courseBody p { margin: 0.7rem 0 0; color: var(--bone-dim); }
+
+@media (max-width: 620px) {
+  .course { grid-template-columns: 1fr; gap: 0.5rem; }
+  .depth { padding-top: 0; }
+}
+
+/* --- The economic case ---------------------------------------------------
+   A register, not a card grid: ruled rows of condition and consequence, the
+   same schedule form Project: Waterfall uses. A card grid here would read as
+   a feature matrix, which is exactly the wrong genre for an argument being
+   made to a ministry. */
+.caseSection {
+  padding-top: var(--band);
+  padding-bottom: var(--band-wide);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  border-top: 1px solid var(--rule);
+}
+
+.caseHead { font-size: var(--step-2); color: var(--bone); max-width: 20ch; }
+
+.case {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.caseRow {
+  display: grid;
+  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  column-gap: clamp(1.2rem, 3vw, 2.6rem);
+  row-gap: 0.5rem;
+  align-items: baseline;
+  padding: clamp(1rem, 2.4vw, 1.5rem) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.caseKey { color: var(--bronze); line-height: 1.6; }
+
+.caseBody {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--bone-dim);
+  line-height: 1.6;
+}
+
+@media (max-width: 820px) {
+  .caseRow { grid-template-columns: minmax(0, 1fr); }
+}

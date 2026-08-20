@@ -1,0 +1,94 @@
+.wrap { display: flex; flex-direction: column; gap: 1.15rem; }
+
+.row {
+  list-style: none;
+  margin: 0;
+  padding: 0.9rem 0;
+  display: grid;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  gap: 0.2rem;
+  max-width: var(--row-max);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.punch {
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: 0.45rem;
+  cursor: pointer;
+  border-radius: 1px;
+  transition:
+    transform 90ms var(--ease-strike),
+    background-color 90ms var(--ease-strike),
+    box-shadow 90ms var(--ease-strike);
+}
+.punch:hover, .punch:focus-visible {
+  background: rgba(0, 0, 0, 0.32);
+  transform: translateY(0.5px);
+}
+/* Struck home: the ground takes the impression, not just the mark. */
+.punch:active {
+  transform: translateY(1.5px);
+  background-color: rgba(0, 0, 0, 0.46);
+  box-shadow:
+    0 2px 3px 0 rgba(0, 0, 0, 0.75) inset,
+    0 7px 12px -6px rgba(0, 0, 0, 0.6) inset,
+    0 -1px 0 rgba(236, 231, 217, 0.1) inset;
+}
+
+.readout {
+  margin: 0;
+  min-height: 3.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.readName {
+  font-family: var(--font-plaque), sans-serif;
+  font-stretch: 118%;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: var(--step-1);
+  color: var(--bone);
+  line-height: 1.1;
+}
+
+.readFacets {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+.readBinds {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+}
+
+.readIdle {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+}
+
+/* The svg fills its cell, so fifteen punches hold one line at any width. */
+.punch :global(svg) { width: 100%; height: auto; max-width: 44px; }
+
+@media (max-width: 720px) {
+  /* Five to a row: fifteen divides exactly, so no punch is ever stranded
+     alone on a last line. */
+  .row { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.3rem; max-width: none; }
+}

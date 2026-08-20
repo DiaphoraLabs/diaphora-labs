@@ -1,0 +1,309 @@
+/* ==========================================================================
+   HALLMARK — the Diaphora Labs visual world.
+   Oxidized copper ground, struck bronze marks, one live-current signal ink.
+   Colour commits at page scale: verdigris owns whole regions; chartreuse
+   marks only what is live, and appears nowhere else in the system.
+   ========================================================================== */
+
+:root {
+  /* Ground — oxidized copper, the station's roof after a century of spray */
+  --patina-deep: #0b1815;
+  --patina: #123029;
+  --patina-raised: #16382f;
+  --patina-edge: #1e4a3e;
+
+  /* Struck metal */
+  --bronze: #b8894a;
+  --bronze-bright: #d9a865;
+  --bronze-dim: #7d5c33;
+
+  /* Bone — the engraved fill */
+  --bone: #ece7d9;
+  --bone-dim: #a9b5ac;
+  --bone-faint: #7c9086;
+
+  /* The only signal ink. Live things, and nothing else. */
+  --current: #cbf51f;
+  --current-dim: #8fa81b;
+
+  /* The one sanctioned break in the palette. A failure has to be legible as
+     a failure, and bronze cannot say that without reading as ornament. Used
+     for error text and the 1px edge beside it, and for nothing else. */
+  --alarm: #f0b7a0;
+
+  --rule: rgba(236, 231, 217, 0.14);
+  --rule-strong: rgba(236, 231, 217, 0.28);
+
+  --axis-w: 88px;
+
+  /* Band rhythm. Three deliberate intervals, not one repeated value:
+     tight = the section continues the thought above it;
+     band  = a new movement in the same argument;
+     wide  = the argument changes hands. */
+  --band-tight: clamp(1.5rem, 3.5vh, 2.4rem);
+  --band: clamp(2.4rem, 6vh, 4rem);
+  --band-wide: clamp(3.6rem, 10vh, 7rem);
+
+  /* The mark row is a struck line, not a stretched one. */
+  --row-max: 44rem;
+
+  --step--1: clamp(0.72rem, 0.69rem + 0.14vw, 0.8rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.22vw, 1.06rem);
+  --step-1: clamp(1.18rem, 1.05rem + 0.6vw, 1.5rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.4vw, 2.4rem);
+  --step-3: clamp(2.2rem, 1.5rem + 3.2vw, 4rem);
+  --step-4: clamp(2.8rem, 1.4rem + 6vw, 6rem);
+
+  --ease-strike: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+/* Reduced motion means less motion, not no feedback. Movement goes — the
+   strike, transforms, scroll animation — while colour and opacity stay, so
+   hover, focus and state changes still say what they said before. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    /* Restricting the property list is enough: anything that had no transition
+       keeps duration 0s and stays instant, while anything that animated
+       movement now animates only its colour. Never cancel transform itself —
+       the axis ticks use rotate() for layout, not for motion. */
+    transition-property: color, background-color, border-color, outline-color,
+      text-decoration-color, fill, stroke, opacity !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--patina-deep);
+  color: var(--bone);
+  font-family: var(--font-text), Georgia, serif;
+  font-size: var(--step-0);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* --- Browser surfaces. These belong to the world too. ------------------- */
+::selection { background: var(--current); color: var(--patina-deep); }
+::-moz-selection { background: var(--current); color: var(--patina-deep); }
+
+* { scrollbar-color: var(--bronze-dim) var(--patina-deep); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--patina-deep); }
+::-webkit-scrollbar-thumb {
+  background: var(--bronze-dim);
+  border: 3px solid var(--patina-deep);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--bronze); }
+
+:focus-visible {
+  outline: 2px solid var(--current);
+  outline-offset: 3px;
+}
+
+a { color: inherit; text-decoration-color: var(--bronze); text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--current); }
+
+input, button, textarea, select { font: inherit; color: inherit; }
+input { caret-color: var(--current); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-plaque), 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.94;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p { text-wrap: pretty; }
+
+/* --- Engraved / struck lettering ---------------------------------------- */
+.plaque-text {
+  color: var(--bone);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55), 0 -1px 0 rgba(236, 231, 217, 0.07);
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  color: var(--bone-dim);
+}
+
+.assay-line {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  font-feature-settings: 'tnum' 1;
+}
+
+.measure { max-width: 68ch; }
+
+/* The way past the axis. Off-canvas until focused, then struck in current
+   against the ground. Fixed rather than absolute so it lands in the viewport
+   even if focus returns to it partway down a long page. */
+.skip-link {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--patina-deep);
+  background: var(--current);
+  padding: 0.85rem 1.1rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.skip-link:focus {
+  left: 0.75rem;
+  top: 0.75rem;
+}
+
+/* --- The plaque: cast bronze on patina ---------------------------------- */
+.plaque {
+  position: relative;
+  background:
+    /* cast grain — the tooth of a sand-cast face, just above invisible */
+    repeating-linear-gradient(
+      112deg,
+      rgba(236, 231, 217, 0.014) 0 1px,
+      rgba(0, 0, 0, 0.016) 1px 3px
+    ),
+    /* the specular pool, where the light actually falls */
+    radial-gradient(120% 90% at 22% 8%, rgba(236, 231, 217, 0.09), transparent 58%),
+    /* and the body of the metal */
+    linear-gradient(158deg, var(--patina-raised) 0%, var(--patina) 58%, var(--patina-deep) 100%);
+  border: 1px solid var(--patina-edge);
+  box-shadow:
+    /* bevel: light on the top lip, dark under the bottom, sides half-lit */
+    0 1px 0 rgba(236, 231, 217, 0.16) inset,
+    1px 0 0 rgba(236, 231, 217, 0.05) inset,
+    -1px 0 0 rgba(0, 0, 0, 0.4) inset,
+    0 -2px 0 rgba(0, 0, 0, 0.62) inset,
+    /* the ground darkens where the casting meets it */
+    0 0 0 1px rgba(0, 0, 0, 0.45),
+    /* contact, mid and ambient shadow — three ranges, not one blur */
+    0 2px 3px -1px rgba(0, 0, 0, 0.7),
+    0 12px 22px -10px rgba(0, 0, 0, 0.8),
+    0 30px 60px -24px rgba(0, 0, 0, 0.9);
+}
+
+/* --- Layout shell -------------------------------------------------------- */
+.shell {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: var(--axis-w) minmax(0, 1fr);
+  min-height: 100vh;
+}
+.shell > * { min-width: 0; }
+
+@media (max-width: 860px) {
+  .shell { grid-template-columns: 1fr; }
+}
+
+.page-pad {
+  padding: clamp(1.25rem, 4vw, 4rem);
+}
+
+hr.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+/* --- Forced colours (Windows High Contrast) ------------------------------
+   PRODUCT.md names ministers and public-sector stakeholders as a core
+   audience, which is exactly the population on managed machines running a
+   forced palette. The system paint replaces every colour we chose, so the
+   job here is to make sure nothing DISAPPEARS: surfaces the world drew with
+   background and shadow alone need real borders to survive. */
+@media (forced-colors: active) {
+  .plaque {
+    border: 1px solid CanvasText;
+    box-shadow: none;
+  }
+  .assay-line,
+  .mono { color: CanvasText; }
+  .plaque-text { text-shadow: none; }
+  .skip-link {
+    background: Canvas;
+    color: LinkText;
+    border: 1px solid LinkText;
+    forced-color-adjust: none;
+  }
+  :focus-visible { outline: 2px solid Highlight; outline-offset: 3px; }
+  hr.rule { border-top-color: CanvasText; }
+}
+
+/* --- Print ---------------------------------------------------------------
+   Project: Waterfall is a document people will put on paper in front of a
+   committee. Ink on white, the navigation gone, and every external link
+   showing where it went — a printed page cannot be clicked. */
+@media print {
+  :root {
+    --patina-deep: #ffffff;
+    --patina: #ffffff;
+    --patina-raised: #ffffff;
+    --patina-edge: #999999;
+    --bone: #000000;
+    --bone-dim: #1a1a1a;
+    --bone-faint: #444444;
+    --bronze: #5a4526;
+    --bronze-bright: #5a4526;
+    --bronze-dim: #7d5c33;
+    --current: #000000;
+    --current-dim: #444444;
+    --rule: rgba(0, 0, 0, 0.28);
+    --rule-strong: rgba(0, 0, 0, 0.5);
+  }
+
+  body { background: #fff; color: #000; }
+  .shell { display: block; }
+
+  /* Navigation, the skip link, and the forms — a register you cannot submit
+     is noise on paper. The mark row is NOT hidden: those punches are content,
+     and they happen to be buttons. */
+  nav[aria-label='Diaphora Labs'],
+  .skip-link,
+  form { display: none !important; }
+
+  .plaque {
+    background: none !important;
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+  }
+  .plaque-text { text-shadow: none !important; }
+
+  a { color: #000; text-decoration: underline; }
+  a[href^='http']::after,
+  a[href^='mailto']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+
+  h1, h2, h3 { break-after: avoid-page; }
+  li, p { break-inside: avoid-page; }
+  section { break-inside: auto; }
+}

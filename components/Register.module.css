@@ -1,0 +1,77 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: clamp(1.1rem, 2.8vw, 1.9rem);
+  background: linear-gradient(158deg, var(--patina-raised), var(--patina-deep));
+  border: 1px solid var(--patina-edge);
+  box-shadow: 0 16px 40px -22px rgba(0, 0, 0, 0.9);
+}
+
+.label { color: var(--bronze); }
+
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.fieldLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+
+.input {
+  background: rgba(0, 0, 0, 0.34);
+  border: 1px solid var(--rule-strong);
+  padding: 0.68rem 0.75rem;
+  color: var(--bone);
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.05em;
+  width: 100%;
+}
+.input:focus-visible { border-color: var(--current); }
+.textarea { resize: vertical; line-height: 1.6; text-transform: none; letter-spacing: 0.02em; }
+
+.error {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+  color: var(--alarm);
+  border-left: 1px solid var(--alarm);
+  padding-left: 0.7rem;
+}
+
+.submit {
+  appearance: none;
+  margin-top: 0.3rem;
+  border: 1px solid var(--bone);
+  background: var(--bone);
+  color: var(--patina-deep);
+  font-family: var(--font-plaque), sans-serif;
+  font-stretch: 118%;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: var(--step--1);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  transition: transform 90ms var(--ease-strike), background-color 160ms var(--ease-strike);
+}
+.current { background: var(--current); border-color: var(--current); }
+.submit:hover:not(:disabled) { background: var(--bronze-bright); border-color: var(--bronze-bright); }
+.submit:active:not(:disabled) { transform: translateY(1px); }
+.submit:disabled { opacity: 0.55; cursor: progress; }
+
+.doneBox { gap: 0.5rem; }
+.doneLabel { color: var(--current); }
+.doneText { margin: 0; color: var(--bone-dim); }
+
+/* Required is stated, not starred. An asterisk is a footnote mark standing in
+   for a sentence; the register says which line it will not accept blank. */
+.required {
+  color: var(--bronze);
+  letter-spacing: 0.14em;
+}

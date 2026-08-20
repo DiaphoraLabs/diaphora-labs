@@ -1,0 +1,19 @@
+/* Incised rather than struck: sunk into the ground, ruled through, still
+   legible — you have to be able to read your own typo. */
+.asked { margin: 0; min-width: 0; }
+
+.askedPath {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--step-1);
+  letter-spacing: 0.04em;
+  color: var(--bone-dim);
+  background: rgba(0, 0, 0, 0.34);
+  border-left: 1px solid var(--bronze);
+  padding: 0.55rem 0.85rem;
+  text-decoration: line-through;
+  text-decoration-color: var(--bronze);
+  text-decoration-thickness: 1px;
+}

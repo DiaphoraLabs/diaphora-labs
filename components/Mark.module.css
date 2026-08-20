@@ -1,0 +1,94 @@
+.mark {
+  display: block;
+  overflow: visible;
+  transition: transform 90ms var(--ease-strike);
+}
+
+.shade,
+.light,
+.face {
+  fill: none;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition:
+    stroke 140ms var(--ease-strike),
+    transform 90ms var(--ease-strike),
+    stroke-width 90ms var(--ease-strike);
+}
+
+/* At rest the punch stands proud of the ground: light catches its upper lip,
+   the shadow falls below it. This is the whole illusion, and it is only two
+   sub-pixel offsets. */
+.shade {
+  stroke: rgba(0, 0, 0, 0.78);
+  transform: translateY(0.62px);
+}
+.light {
+  stroke: rgba(236, 231, 217, 0.1);
+  transform: translateY(-0.42px);
+}
+.face { stroke: var(--bone-faint); }
+
+/* Struck: the mark stands proud in bronze. */
+.struck .face { stroke: var(--bronze-bright); }
+.struck .light { stroke: rgba(236, 231, 217, 0.2); }
+
+/* Marks that bind every audience, partners included, carry current. */
+.struck.current .face { stroke: var(--current); }
+
+/* --- Impressed -----------------------------------------------------------
+   Pressing swaps the lighting. The shadow moves to the upper lip and deepens,
+   the catch of light drops to the lower lip and brightens, the face dims and
+   thins, and the whole punch sinks a fraction. Light still comes from above;
+   the mark has simply gone below the surface. Any activated ancestor drives
+   it, so the row buttons, the forge options and the sign-on rows all press
+   the same way without knowing anything about each other. */
+:global(button:active) .shade,
+:global(label:active) .shade,
+:global(a:active) .shade {
+  transform: translateY(-0.72px);
+  stroke: rgba(0, 0, 0, 0.95);
+  stroke-width: 1.75;
+}
+:global(button:active) .light,
+:global(label:active) .light,
+:global(a:active) .light {
+  transform: translateY(0.78px);
+  stroke: rgba(236, 231, 217, 0.3);
+}
+:global(button:active) .face,
+:global(label:active) .face,
+:global(a:active) .face {
+  stroke-width: 1.4;
+  filter: brightness(0.72);
+}
+:global(button:active) .mark,
+:global(label:active) .mark,
+:global(a:active) .mark {
+  transform: translateY(0.9px) scale(0.985);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mark,
+  .shade,
+  .light,
+  /* stroke-width is SVG paint geometry, not box layout: it repaints the
+     stroke, it does not reflow the document. */
+  /* impeccable-disable-next-line layout-transition */
+  .face { transition-property: stroke, stroke-width; }
+}
+
+/* Forced colours flatten every stroke to one system paint, which would
+   collapse the punch: the three copies are the same path, so under one paint
+   they would land on top of each other and read as a smudge. Keep the face
+   alone — one clean stroke is the honest reduction of a struck mark to a
+   single colour. */
+@media (forced-colors: active) {
+  .shade,
+  .light { display: none; }
+  .face { stroke: CanvasText; }
+  .struck .face,
+  .struck.current .face { stroke: Highlight; }
+}

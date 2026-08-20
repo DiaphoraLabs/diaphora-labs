@@ -1,0 +1,133 @@
+.axis {
+  min-width: 0;
+  max-width: 100%;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  border-right: 1px solid var(--rule);
+  background: var(--patina-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-block: 1rem;
+  z-index: 20;
+}
+
+/* The sightline itself — it runs the full height and off both edges. */
+.rail {
+  position: absolute;
+  inset-block: 0;
+  left: calc(var(--axis-w) / 2);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--rule-strong) 8%,
+    var(--rule-strong) 92%,
+    transparent
+  );
+}
+
+.ticks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.55rem, 1.5vh, 1.4rem);
+  position: relative;
+}
+
+.tick {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 0.4rem 0.2rem;
+  min-height: 44px;
+  justify-content: center;
+  color: var(--bone-faint);
+  transition: color 220ms var(--ease-strike);
+}
+.tick:hover { color: var(--bone); }
+
+.notch {
+  writing-mode: horizontal-tb;
+  width: 15px;
+  height: 1px;
+  background: var(--bronze);
+  /* A one-pixel line inside a rotated vertical-rl tick: scaleX would grow from
+     the visually opposite edge, and the layout cost here is not measurable. */
+  /* impeccable-disable-next-line layout-transition */
+  transition: width 260ms var(--ease-strike), background-color 260ms var(--ease-strike);
+}
+.tick:hover .notch { width: 25px; background: var(--bronze-bright); }
+
+.ord {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--bronze);
+  font-feature-settings: 'tnum' 1;
+}
+
+.label {
+  font-family: var(--font-plaque), sans-serif;
+  font-stretch: 112%;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.64rem;
+  letter-spacing: 0.13em;
+  white-space: nowrap;
+}
+
+/* Live is the only place current appears in the rail. */
+.live { color: var(--current); }
+.live .notch { width: 32px; background: var(--current); }
+.live .ord { color: var(--current-dim); }
+
+@media (max-width: 860px) {
+  .axis {
+    position: sticky;
+    justify-content: flex-start;
+    height: auto;
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 0.5rem 0;
+    overflow-x: auto;
+  }
+  .rail {
+    inset-block: auto;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--rule-strong) 6%, var(--rule-strong) 94%, transparent);
+  }
+  .ticks {
+    flex-direction: row;
+    gap: 0.35rem;
+    padding-inline: 0.75rem;
+  }
+  .tick {
+    writing-mode: horizontal-tb;
+    transform: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0.7rem;
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .notch { width: 100%; min-width: 34px; }
+  .tick:hover .notch { width: 100%; }
+  .live .notch { width: 100%; }
+  .ord { display: none; }
+}

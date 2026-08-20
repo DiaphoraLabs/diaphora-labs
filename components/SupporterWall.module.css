@@ -1,0 +1,57 @@
+.wall { display: flex; flex-direction: column; gap: 1.4rem; }
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  /* Fixed counts so the eight slots always fill their rows exactly. */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--patina-deep);
+  border: 1px solid var(--rule);
+}
+
+.slot {
+  background: var(--patina-deep);
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  aspect-ratio: 5 / 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+}
+
+.name {
+  font-family: var(--font-plaque), sans-serif;
+  font-stretch: 118%;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--bone);
+  text-align: center;
+}
+
+.blank { color: var(--bone-faint); }
+
+.die { width: 58%; height: auto; opacity: 0.5; }
+
+.blankLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.note {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--bone-dim);
+}

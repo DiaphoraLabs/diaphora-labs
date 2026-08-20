@@ -1,0 +1,96 @@
+.h2 { font-size: var(--step-2); color: var(--bone); }
+
+/* Two-up separated by a rule showing the ground through, never by a gap. */
+.plateSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 1px;
+  background: var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 0;
+}
+
+.plateCol,
+.plateAside {
+  background: var(--patina-deep);
+  padding: clamp(1.5rem, 4vw, 3.2rem);
+  min-width: 0;
+}
+
+.plateCol { display: flex; align-items: center; }
+
+.plateAside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+.plateAside p { margin: 0; color: var(--bone-dim); }
+
+.registerSection {
+  padding-top: var(--band);
+  padding-bottom: var(--band);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.register {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* A schedule attached to a drawing: condition, description, destination. */
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) minmax(0, auto);
+  column-gap: clamp(1.2rem, 3vw, 2.6rem);
+  row-gap: 0.55rem;
+  align-items: baseline;
+  padding: clamp(1rem, 2.4vw, 1.5rem) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.who { color: var(--bronze); line-height: 1.6; }
+
+.what {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--bone-dim);
+  line-height: 1.6;
+}
+
+.action {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone);
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  box-shadow: inset 0 -1px 0 var(--bronze);
+  transition: color 160ms var(--ease-strike), box-shadow 160ms var(--ease-strike);
+}
+.action:hover { color: var(--current); box-shadow: inset 0 -1px 0 var(--current); }
+
+.pendingSection {
+  padding-top: var(--band);
+  padding-bottom: var(--band-wide);
+}
+.pendingBlock p { color: var(--bone-dim); }
+
+@media (max-width: 900px) {
+  .plateSection { grid-template-columns: 1fr; }
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .action { justify-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action { transition: none; }
+}
