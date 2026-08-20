@@ -24,6 +24,9 @@ export default function Waterfall() {
           'Base of the falls · Ontario · Canada',
           'Ontario Power Company station',
           'Proposal · nothing here is built',
+          // A submission to a public body has to be filable: dated, and
+          // distinguishable from a later revision.
+          'Issued August 2026 · innovate@diaphoralabs.com',
         ]}
         marks={marksFor('Partners')}
       />
@@ -191,15 +194,20 @@ export default function Waterfall() {
         <p className={`measure ${styles.waysLede}`}>
           A building this size moves when enough people say out loud that it should.
           Six ways in, each about two minutes, none of them costing anything. If you
-          are local and you think this is the wrong idea, the fourth one is still
-          for you.
+          are local and you think this is the wrong idea,{' '}
+          <a href="#local">the community lane</a> is still for you. Write to{' '}
+          <a href="mailto:innovate@diaphoralabs.com">innovate@diaphoralabs.com</a>{' '}
+          if none of them fit.
         </p>
         <SignOn />
       </section>
 
       {/* THE REGISTER ------------------------------------------------------ */}
-      <section className={`page-pad ${styles.register}`}>
-        <h2 className={styles.waysHead}>Who has signed on</h2>
+      <section className={`page-pad ${styles.registerSection}`}>
+        {/* "Who has signed on" sat under "Put your name on the drawing" and read
+            as an endorsement of this proposal. These three back Diaphora Labs;
+            none has been asked about the station. */}
+        <h2 className={styles.waysHead}>Who supports Diaphora Labs</h2>
         <SupporterWall supporters={SUPPORTERS} />
       </section>
     </main>

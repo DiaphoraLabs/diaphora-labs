@@ -1,11 +1,10 @@
 import styles from './SupporterWall.module.css';
 
-// The wall is empty, and says so. Eight unstruck dies rather than eight fake
-// logos: the world already has a state for what does not exist yet.
-const SLOTS = 8;
-
+// One unstruck die, not a fixed grid of them. A fixed count invents a target
+// nobody set and then draws the project failing to reach it; a single blank says
+// the same true thing — the next name is not here yet — without the denominator.
 export default function SupporterWall({ supporters = [] }) {
-  const blanks = Math.max(0, SLOTS - supporters.length);
+  const blanks = supporters.length === 0 ? 3 : 1;
 
   return (
     <div className={styles.wall}>
@@ -27,7 +26,7 @@ export default function SupporterWall({ supporters = [] }) {
       <p className={styles.note}>
         {supporters.length === 0
           ? 'Nobody has signed on yet. There are no logos here because there are no supporters here — not because we have not got around to adding them. The first name on this wall is worth more than the fiftieth.'
-          : 'These organisations have backed our founders and agreed to support Diaphora Labs. They are supporters, not funders, and nothing here is a commitment of capital or space. Wordmarks stand in until each supplies its own mark. Every remaining die is unstruck, and stays that way until a name is genuinely on it.'}
+          : 'These organisations have backed our founders and agreed to support Diaphora Labs. They are supporters, not funders, nothing here is a commitment of capital or space, and none of them has been asked to endorse Project: Waterfall. Wordmarks stand in until each supplies its own mark. The next die stays unstruck until a name is genuinely on it.'}
       </p>
     </div>
   );

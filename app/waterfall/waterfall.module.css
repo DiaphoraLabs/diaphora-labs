@@ -53,7 +53,10 @@
 .waysHead { font-size: var(--step-2); color: var(--bone); }
 .waysLede { margin: 0 0 0.8rem; color: var(--bone-dim); }
 
-.register {
+/* Named for the section, not the register inside it. Sharing the name with the
+   ruled-row list below merged both rule sets onto every usage, which put a
+   1.4rem gap between each row and its own rule. */
+.registerSection {
   padding-top: var(--band);
   padding-bottom: var(--band-wide);
   display: flex;

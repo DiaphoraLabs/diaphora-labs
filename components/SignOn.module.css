@@ -178,9 +178,11 @@
 .submit:active:not(:disabled) { transform: translateY(1px); }
 .submit:disabled { opacity: 0.55; cursor: progress; }
 
+/* The consent promise. It is the most load-bearing sentence in the interaction,
+   so it sits on the type scale rather than below it. */
 .fine {
   font-family: var(--font-mono), monospace;
-  font-size: 0.6rem;
+  font-size: var(--step--1);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--bone-faint);
@@ -197,6 +199,17 @@
   color: var(--alarm);
   border-left: 1px solid var(--alarm);
   padding-left: 0.7rem;
+}
+
+/* Only appears in the last 500 characters, so a long answer is warned before it
+   is cut rather than after it is sent. */
+.count {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+  margin-top: 0.4rem;
 }
 
 .doneBox { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }

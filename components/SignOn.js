@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { LANES } from '../lib/waterfall';
 import { MARKS_BY_ID } from '../lib/marks';
 import Mark from './Mark';
@@ -12,19 +12,46 @@ const EMPTY = { name: '', org: '', role: '', email: '', city: '', note: '', use:
 export default function SignOn() {
   const [laneId, setLaneId] = useState('partner');
   const [values, setValues] = useState(EMPTY);
-  const [commitments, setCommitments] = useState(['name']);
+  // Nothing is pre-committed. The fine print promises written permission, so the
+  // first mark has to be struck by the person giving it.
+  const [commitments, setCommitments] = useState([]);
   const [state, setState] = useState('idle');
   const [error, setError] = useState('');
+  const doneRef = useRef(null);
+  const lanesRef = useRef(null);
 
   const lane = LANES.find((l) => l.id === laneId);
   // The suggestion box is the point of the community lane; never hide it behind a tick.
   const wantsUse = Boolean(lane.useField);
 
+  // The lane lives in the URL so this page can be forwarded to the door that
+  // suits the reader: /waterfall#local reaches the community lane directly.
+  useEffect(() => {
+    const apply = () => {
+      const fromHash = window.location.hash.replace('#', '');
+      if (LANES.some((l) => l.id === fromHash)) setLaneId(fromHash);
+    };
+    apply();
+    // In-page links to a lane have to move the register too, not just the scroll.
+    window.addEventListener('hashchange', apply);
+    return () => window.removeEventListener('hashchange', apply);
+  }, []);
+
+  // Focus follows the outcome. Without this the form unmounts on success and a
+  // keyboard or screen-reader user is dropped back at the top of the document.
+  useEffect(() => {
+    if (state === 'struck') doneRef.current?.focus();
+  }, [state]);
+
   function selectLane(id) {
     setLaneId(id);
     setState('idle');
     setError('');
-    setCommitments(LANES.find((l) => l.id === id)?.commitments ? ['name'] : []);
+    setCommitments([]);
+    // Fields differ per lane, and anything typed under the old lane was never
+    // shown under the new one. Carrying it over would ship an invisible payload.
+    setValues(EMPTY);
+    window.history.replaceState(null, '', `#${id}`);
   }
 
   function set(k, v) {
@@ -40,7 +67,13 @@ export default function SignOn() {
     e.preventDefault();
     setState('submitting');
     setError('');
-    const result = await postRegister({ ...values, commitments, list: `waterfall-${laneId}` });
+    // Built from the fields this lane actually rendered, so what is sent is what
+    // was seen. Spreading `values` would carry text the reader typed elsewhere.
+    const payload = { list: `waterfall-${laneId}`, email: values.email, commitments };
+    lane.fields.forEach((f) => { payload[f] = values[f]; });
+    if (wantsUse) payload.use = values.use;
+
+    const result = await postRegister(payload);
     if (result.ok) {
       setState('struck');
       return;
@@ -51,16 +84,17 @@ export default function SignOn() {
 
   return (
     <div className={styles.signon}>
-      {/* Lane selection is a register of marks, not a row of tabs. */}
-      <ul className={styles.lanes} role="tablist" aria-label="Ways in">
+      {/* A register of marks, not a tab strip — so it stays a real list with real
+          buttons. The ARIA tab pattern promised arrow-key navigation this never
+          implemented, and put six controls in the tab order with no way out. */}
+      <ul className={styles.lanes} aria-label="Ways in" ref={lanesRef}>
         {LANES.map((l) => {
           const on = l.id === laneId;
           return (
             <li key={l.id}>
               <button
                 type="button"
-                role="tab"
-                aria-selected={on}
+                aria-current={on || undefined}
                 className={`${styles.lane} ${on ? styles.laneOn : ''}`}
                 onClick={() => selectLane(l.id)}
               >
@@ -72,14 +106,25 @@ export default function SignOn() {
         })}
       </ul>
 
-      <div className={styles.panel} role="tabpanel">
+      <div className={styles.panel} role="region" aria-label={lane.name}>
         <p className={`measure ${styles.laneLine}`}>{lane.line}</p>
 
         {state === 'struck' ? (
-          <div className={styles.doneBox} role="status">
+          <div className={styles.doneBox} role="status" tabIndex={-1} ref={doneRef}>
             <span className={`assay-line ${styles.doneLabel}`}>Struck</span>
             <p className={styles.doneText}>{lane.done}</p>
-            <button type="button" className={styles.again} onClick={() => { setValues(EMPTY); setState('idle'); }}>
+            <button
+              type="button"
+              className={styles.again}
+              onClick={() => {
+                setValues(EMPTY);
+                setCommitments([]);
+                setState('idle');
+                // The label promises another way in, so send them to the register
+                // of ways in rather than back to the form they just submitted.
+                lanesRef.current?.querySelector('button')?.focus();
+              }}
+            >
               Sign on another way
             </button>
           </div>
@@ -127,6 +172,7 @@ export default function SignOn() {
                   autoComplete="email"
                   maxLength={254}
                   aria-invalid={state === 'error' || undefined}
+                  aria-describedby={state === 'error' ? 'signon-error' : undefined}
                 />
               </label>
             </div>
@@ -172,8 +218,14 @@ export default function SignOn() {
                   rows={4}
                   value={values.use}
                   onChange={(e) => set('use', e.target.value)}
+                  maxLength={FIELD_LIMITS.use}
                   placeholder="Anything. A use, a worry, a memory of the place, a reason this is a bad idea."
                 />
+                {values.use.length > FIELD_LIMITS.use - 500 && (
+                  <span className={styles.count}>
+                    {FIELD_LIMITS.use - values.use.length} characters left
+                  </span>
+                )}
               </label>
             )}
 
@@ -191,7 +243,7 @@ export default function SignOn() {
             )}
 
             {state === 'error' && (
-              <p className={styles.error} role="alert">{error}</p>
+              <p className={styles.error} id="signon-error" role="alert">{error}</p>
             )}
 
             <div className={styles.submitRow}>
