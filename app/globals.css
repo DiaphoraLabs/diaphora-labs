@@ -51,6 +51,10 @@
   /* The mark row is a struck line, not a stretched one. */
   --row-max: 44rem;
 
+  /* The micro-label step: punch names, field labels, axis ordinals. It exists
+     because six one-off sizes had collected below the scale floor (0.56 to
+     0.66rem), and six arbitrary values is how a type scale stops being one. */
+  --step--2: clamp(0.64rem, 0.61rem + 0.14vw, 0.7rem);
   --step--1: clamp(0.72rem, 0.69rem + 0.14vw, 0.8rem);
   --step-0: clamp(0.95rem, 0.9rem + 0.22vw, 1.06rem);
   --step-1: clamp(1.18rem, 1.05rem + 0.6vw, 1.5rem);

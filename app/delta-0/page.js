@@ -74,7 +74,7 @@ export default function Delta0() {
           </div>
         </div>
 
-        <div className={`${prose.pending} ${prose.block}`}>
+        <div className={prose.pending}>
           <span className={`assay-line ${prose.pendingLabel}`}>Not yet published</span>
           <p className="measure">
             The wiki is still being written and has no home yet. The community and

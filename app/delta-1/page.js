@@ -75,7 +75,7 @@ export default function Delta1() {
       </section>
 
       <section className={`page-pad ${prose.prose}`}>
-        <div className={`${prose.pending} ${prose.block}`}>
+        <div className={prose.pending}>
           <span className={`assay-line ${prose.pendingLabel}`}>Not yet decided</span>
           <p className="measure">
             Cohort dates, cohort size, program length, terms and whether Delta 1

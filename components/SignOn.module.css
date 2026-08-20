@@ -39,7 +39,7 @@
 
 .laneName {
   font-family: var(--font-mono), monospace;
-  font-size: 0.66rem;
+  font-size: var(--step--2);
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--bone-dim);
@@ -70,7 +70,7 @@
 
 .label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.62rem;
+  font-size: var(--step--2);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--bone-dim);
@@ -85,6 +85,9 @@
   font-size: var(--step--1);
   letter-spacing: 0.05em;
   width: 100%;
+  /* Held to the same 44px floor the axis, footer and skip link already enforce;
+     the padding alone fell just under it at the small end of the clamp. */
+  min-height: 44px;
 }
 .input:focus-visible { border-color: var(--current); }
 .input::placeholder { color: var(--bone-faint); }
@@ -106,6 +109,9 @@
 }
 
 .tick {
+  /* The visually-hidden checkbox inside is absolutely positioned; without this
+     it resolves against some distant ancestor, and focus-driven scrolling jumps. */
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 0.85rem;
@@ -149,6 +155,8 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  /* Optical, not drift: uppercase condensed Archivo at 0.82rem carries the same
+     apparent height as the 0.9rem serif description below it. */
   font-size: 0.82rem;
   color: var(--bone);
   line-height: 1.25;
@@ -176,7 +184,13 @@
 }
 .submit:hover:not(:disabled) { background: var(--bone); border-color: var(--bone); }
 .submit:active:not(:disabled) { transform: translateY(1px); }
-.submit:disabled { opacity: 0.55; cursor: progress; }
+/* Dimmed by token rather than opacity: fading the fill and the text together put
+   the one state in the system whose contrast nothing guaranteed. */
+.submit:disabled {
+  background: var(--current-dim);
+  border-color: var(--current-dim);
+  cursor: progress;
+}
 
 /* The consent promise. It is the most load-bearing sentence in the interaction,
    so it sits on the type scale rather than below it. */
@@ -193,7 +207,7 @@
 .error {
   margin: 0;
   font-family: var(--font-mono), monospace;
-  font-size: 0.66rem;
+  font-size: var(--step--2);
   letter-spacing: 0.06em;
   line-height: 1.6;
   color: var(--alarm);
@@ -222,6 +236,9 @@
   border: 0;
   border-bottom: 1px solid var(--bronze);
   padding: 0 0 2px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   color: var(--bronze-bright);
   font-family: var(--font-mono), monospace;
   font-size: var(--step--1);

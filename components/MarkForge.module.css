@@ -49,7 +49,7 @@
 
 .optName {
   font-family: var(--font-mono), monospace;
-  font-size: 0.62rem;
+  font-size: var(--step--2);
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--bone-dim);
@@ -143,7 +143,7 @@
 .note {
   margin: 0;
   font-family: var(--font-mono), monospace;
-  font-size: 0.62rem;
+  font-size: var(--step--2);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--bone-faint);

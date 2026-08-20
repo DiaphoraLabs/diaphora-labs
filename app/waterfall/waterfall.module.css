@@ -5,7 +5,8 @@
   align-items: start;
   padding-top: var(--band);
   padding-bottom: var(--band-wide);
-  border-bottom: 1px solid var(--rule);
+  /* No border-bottom: the next section carries a border-top, and the two stacked
+     to a 2px rule where every other boundary on the page is 1px. */
 }
 
 /* The specification, set on the ground. A rule and bronze lines do the work
@@ -103,7 +104,9 @@
 
 .era {
   display: grid;
-  grid-template-columns: 9rem minmax(0, 1fr);
+  /* Matches .row's condition column, so the timeline and the registers keep one
+     left rag. Two schedules on one drawing should agree. */
+  grid-template-columns: 11rem minmax(0, 1fr);
   gap: clamp(0.8rem, 2.5vw, 2rem);
   padding: clamp(1rem, 2.6vh, 1.7rem) 0 clamp(1rem, 2.6vh, 1.7rem) clamp(1.2rem, 3vw, 2.4rem);
   border-bottom: 1px solid var(--rule);
@@ -168,9 +171,11 @@
   gap: clamp(1.1rem, 3vw, 2.2rem);
   align-items: start;
   margin-top: clamp(1.6rem, 4vh, 2.6rem);
-  padding: clamp(1.2rem, 3vw, 2rem);
-  border: 1px solid var(--patina-edge);
-  background: linear-gradient(158deg, var(--patina-raised), var(--patina-deep));
+  /* Set on the ground under a bronze rule, not in a filled box. This was a card
+     built from the plaque's own gradient, angle and edge token — a second cast
+     object on a page that had already refused one for the building spec. */
+  padding-top: clamp(1.2rem, 3vw, 2rem);
+  border-top: 1px solid var(--bronze);
   max-width: 62rem;
 }
 .provenMark { display: block; padding-top: 0.2rem; }

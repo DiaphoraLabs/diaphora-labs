@@ -124,6 +124,17 @@ export default function Waterfall() {
               <p className={styles.rowBody}>{r.body}</p>
             </li>
           ))}
+          {/* The catalogue was announced and then withheld with no affordance.
+              The last row is the way to the rest of it. */}
+          <li className={styles.row}>
+            <span className={styles.rowWhere}>Eleven more</span>
+            <h3 className={styles.rowHead}>The rest of the catalogue</h3>
+            <p className={styles.rowBody}>
+              Still being written up. If a condition you need is not listed, say which
+              one — it is how the catalogue gets finished.{' '}
+              <a href="#research">Ask through the research lane</a>.
+            </p>
+          </li>
         </ol>
 
         {/* The proposal's own certification mark, struck in the same alphabet. */}
@@ -172,7 +183,7 @@ export default function Waterfall() {
           </div>
         </div>
 
-        <div className={`${prose.pending} ${prose.block}`}>
+        <div className={prose.pending}>
           <span className={`assay-line ${prose.pendingLabel}`}>What is not settled</span>
           <p className="measure">
             Everything on this page is proposed. Nothing described here is built,

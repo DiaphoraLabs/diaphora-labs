@@ -40,7 +40,7 @@
 
 .blankLabel {
   font-family: var(--font-mono), monospace;
-  font-size: 0.56rem;
+  font-size: var(--step--2);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--bone-faint);
