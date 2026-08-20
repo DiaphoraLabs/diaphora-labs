@@ -88,17 +88,18 @@ export default function Home() {
           <div>
             <span className="assay-line">Origin</span>
             <p className="measure">
-              Niagara Falls, at the line between two countries. Diaphora is Greek
-              for the difference that distinguishes one thing within its kind. The
-              border is not our address. It is the argument.
+              Niagara Falls, where the boundary runs down the middle of the river
+              and nearly $3.6 billion in goods and services crosses it every day.
+              Diaphora is Greek for the difference that distinguishes one thing
+              within its kind. The address is the argument.
             </p>
           </div>
           <div>
             <span className="assay-line">Standard</span>
             <p className="measure">
               Fifteen values, four of which bind every audience we have — founders,
-              partners, and ourselves alike. They are struck into the work, not
-              printed on a wall.
+              partners, and ourselves alike. Each one has to show up in the work to
+              count for anything.
             </p>
           </div>
           <div>
