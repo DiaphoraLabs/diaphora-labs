@@ -43,3 +43,6 @@ src/plugins/impeccable-live.client.ts
 
 # local env
 .env*.local
+.vercel
+.env*
+
