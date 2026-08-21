@@ -27,12 +27,12 @@ const DROP = [
   {
     head: 'Getting across the line is the oldest industry here',
     body:
-      'Niagara was one of the great crossing points of the Underground Railroad. The river that marked the boundary was also the thing that had to be got across, and the far bank meant a different legal status for the person standing on it. That work continues in less consequential form: several international road crossings sit within minutes of the site, the Welland Canal cuts the peninsula for shipping, and two international airports serve the region from opposite sides of the line.',
+      'Niagara rivalled Detroit as a crossing point of the Underground Railroad. Freedom seekers crossed by the Suspension Bridge, by ferry, and on foot; Harriet Tubman brought a party over by train in November 1856. The river that marked the boundary was also the thing that had to be got across, and the far bank meant a different legal status for the person standing on it. That work continues in less consequential form: several international road crossings sit within minutes of the site, the Welland Canal cuts the peninsula for shipping, and two international airports serve the region from opposite sides of the line.',
   },
   {
     head: 'The current went out from here',
     body:
-      'In the 1890s Niagara became the proving ground for long-distance alternating current, and power generated at the falls reached Buffalo. The argument over whether electricity could travel at all was settled at this spot, and the industrial map of North America was redrawn around the answer. A place that has already settled one argument about the future carries weight when the next one is held there.',
+      'On 16 November 1896, power generated at the falls reached Buffalo — twenty-two miles, stepped up to 11,000 volts, on Tesla and Westinghouse’s polyphase alternating current. The argument over whether electricity could travel at all was settled at this spot, and the industrial map of North America was redrawn around the answer. A place that has already settled one argument about the future carries weight when the next one is held there.',
   },
   {
     head: 'The audience is already here',
@@ -110,6 +110,16 @@ const SOURCES = [
     cite: 'Brock University, Institutional Planning, Analysis & Performance',
     href: 'https://brocku.ca/institutional-analysis/institutional-reporting/headcount-and-course-enrolment-reports/',
   },
+  {
+    fact: 'Power reaching Buffalo, 1896',
+    cite: 'IEEE, Milestones: Adams Hydroelectric Generating Plant',
+    href: 'https://ethw.org/Milestones:Adams_Hydroelectric_Generating_Plant,_1895',
+  },
+  {
+    fact: 'The Underground Railroad crossing',
+    cite: 'US National Park Service, The Niagara River: Between Slavery and Freedom',
+    href: 'https://www.nps.gov/articles/the-niagara-river-between-slavery-and-freedom.htm',
+  },
 ];
 
 export default function Niagara() {
@@ -159,10 +169,10 @@ export default function Niagara() {
             appears on this page or on{' '}
             <Link href="/waterfall">Project: Waterfall</Link>.
           </p>
-          <ul className={styles.sources}>
+          <ul className={prose.sources}>
             {SOURCES.map((s) => (
-              <li key={s.href} className={styles.source}>
-                <span className={`assay-line ${styles.sourceFact}`}>{s.fact}</span>
+              <li key={s.href} className={prose.source}>
+                <span className={`assay-line ${prose.sourceFact}`}>{s.fact}</span>
                 <a href={s.href}>{s.cite}</a>
               </li>
             ))}

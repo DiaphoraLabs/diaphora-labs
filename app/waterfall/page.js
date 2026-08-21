@@ -13,6 +13,32 @@ export const metadata = {
     'A flagship home at the old Ontario Power Company generating station, at the base of Niagara Falls.',
 };
 
+// The station's own record, cited. Niagara Parks staff know this building better
+// than we do; a proposal to them that states its history without sources invites
+// them to check it against their own file and find us approximate.
+const SOURCES = [
+  {
+    fact: 'The station: 1905 to 1999, 203,000 hp',
+    cite: 'Ontario Power Company Generating Station',
+    href: 'https://en.wikipedia.org/wiki/Ontario_Power_Company_Generating_Station',
+  },
+  {
+    fact: 'Owned by Niagara Parks, out of service',
+    cite: 'Niagara Parks, Interests in Redevelopment of Inactive Power Stations',
+    href: 'https://www.niagaraparks.com/media-room/news/power-stations-redevelopment',
+  },
+  {
+    fact: 'The 1890 commission',
+    cite: 'IEEE, Milestones: Adams Hydroelectric Generating Plant',
+    href: 'https://ethw.org/Milestones:Adams_Hydroelectric_Generating_Plant,_1895',
+  },
+  {
+    fact: 'Power reaching Buffalo, 1896',
+    cite: 'Engineering and Technology History Wiki, Early Electrification of Buffalo',
+    href: 'https://ethw.org/Early_Electrification_of_Buffalo',
+  },
+];
+
 export default function Waterfall() {
   return (
     <main>
@@ -199,6 +225,22 @@ export default function Waterfall() {
             today. There are no renderings here and no photographs of the station.
             We hold none that are real, and we will not manufacture any.
           </p>
+        </div>
+
+        <div className={prose.block}>
+          <h3>Where the history comes from</h3>
+          <p className="measure">
+            The building&rsquo;s record is not ours to assert. Everything stated above
+            about the station and the commission is cited here.
+          </p>
+          <ul className={prose.sources}>
+            {SOURCES.map((s) => (
+              <li key={s.href} className={prose.source}>
+                <span className={`assay-line ${prose.sourceFact}`}>{s.fact}</span>
+                <a href={s.href}>{s.cite}</a>
+              </li>
+            ))}
+          </ul>
         </div>
 
       </section>

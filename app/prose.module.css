@@ -19,3 +19,31 @@
 }
 .pendingLabel { color: var(--bronze); }
 .pending p { margin: 0; }
+
+/* The citation register. Shared: any page that states a figure owes the reader
+   the source, on the same two-column measure the registers already use. */
+.sources {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.source {
+  display: grid;
+  grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+  column-gap: clamp(1.2rem, 3vw, 2.6rem);
+  row-gap: 0.35rem;
+  align-items: baseline;
+  padding: clamp(0.85rem, 1.8vw, 1.15rem) 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--bone-dim);
+}
+
+.sourceFact { color: var(--bronze); line-height: 1.6; }
+
+@media (max-width: 820px) {
+  .source { grid-template-columns: minmax(0, 1fr); }
+}
