@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/init-db.mjs && next build",
-    "start": "next start"
+    "start": "next start",
+    "media": "node scripts/build-media-kit.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

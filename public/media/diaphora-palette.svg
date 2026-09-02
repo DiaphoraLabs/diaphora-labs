@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 832" width="640" height="832">
+  <rect width="640" height="832" fill="#0b1815"/>
+  <rect x="0" y="0" width="150" height="60" fill="#0b1815"/>
+  <text x="168" y="26" font-family="monospace" font-size="14" fill="#ece7d9">--patina-deep</text>
+  <text x="168" y="46" font-family="monospace" font-size="12" fill="#a9b5ac">#0b1815 · Page ground</text>
+  <rect x="0" y="64" width="150" height="60" fill="#123029"/>
+  <text x="168" y="90" font-family="monospace" font-size="14" fill="#ece7d9">--patina</text>
+  <text x="168" y="110" font-family="monospace" font-size="12" fill="#a9b5ac">#123029 · Raised surface, hover ground</text>
+  <rect x="0" y="128" width="150" height="60" fill="#16382f"/>
+  <text x="168" y="154" font-family="monospace" font-size="14" fill="#ece7d9">--patina-raised</text>
+  <text x="168" y="174" font-family="monospace" font-size="12" fill="#a9b5ac">#16382f · Plaque and die highlight edge</text>
+  <rect x="0" y="192" width="150" height="60" fill="#1e4a3e"/>
+  <text x="168" y="218" font-family="monospace" font-size="14" fill="#ece7d9">--patina-edge</text>
+  <text x="168" y="238" font-family="monospace" font-size="12" fill="#a9b5ac">#1e4a3e · Cast borders</text>
+  <rect x="0" y="256" width="150" height="60" fill="#b8894a"/>
+  <text x="168" y="282" font-family="monospace" font-size="14" fill="#ece7d9">--bronze</text>
+  <text x="168" y="302" font-family="monospace" font-size="12" fill="#a9b5ac">#b8894a · Assay lines, ordinals, bolts</text>
+  <rect x="0" y="320" width="150" height="60" fill="#d9a865"/>
+  <text x="168" y="346" font-family="monospace" font-size="14" fill="#ece7d9">--bronze-bright</text>
+  <text x="168" y="366" font-family="monospace" font-size="12" fill="#a9b5ac">#d9a865 · Struck mark face, subheads</text>
+  <rect x="0" y="384" width="150" height="60" fill="#7d5c33"/>
+  <text x="168" y="410" font-family="monospace" font-size="14" fill="#ece7d9">--bronze-dim</text>
+  <text x="168" y="430" font-family="monospace" font-size="12" fill="#a9b5ac">#7d5c33 · Gradients, scrollbar — never text</text>
+  <rect x="0" y="448" width="150" height="60" fill="#ece7d9"/>
+  <text x="168" y="474" font-family="monospace" font-size="14" fill="#ece7d9">--bone</text>
+  <text x="168" y="494" font-family="monospace" font-size="12" fill="#a9b5ac">#ece7d9 · Plaque lettering, headings</text>
+  <rect x="0" y="512" width="150" height="60" fill="#a9b5ac"/>
+  <text x="168" y="538" font-family="monospace" font-size="14" fill="#ece7d9">--bone-dim</text>
+  <text x="168" y="558" font-family="monospace" font-size="12" fill="#a9b5ac">#a9b5ac · Body text on patina</text>
+  <rect x="0" y="576" width="150" height="60" fill="#7c9086"/>
+  <text x="168" y="602" font-family="monospace" font-size="14" fill="#ece7d9">--bone-faint</text>
+  <text x="168" y="622" font-family="monospace" font-size="12" fill="#a9b5ac">#7c9086 · Resting labels, placeholders</text>
+  <rect x="0" y="640" width="150" height="60" fill="#cbf51f"/>
+  <text x="168" y="666" font-family="monospace" font-size="14" fill="#ece7d9">--current</text>
+  <text x="168" y="686" font-family="monospace" font-size="12" fill="#a9b5ac">#cbf51f · THE ONLY SIGNAL INK</text>
+  <rect x="0" y="704" width="150" height="60" fill="#8fa81b"/>
+  <text x="168" y="730" font-family="monospace" font-size="14" fill="#ece7d9">--current-dim</text>
+  <text x="168" y="750" font-family="monospace" font-size="12" fill="#a9b5ac">#8fa81b · Current at rest, underlines</text>
+  <rect x="0" y="768" width="150" height="60" fill="#f0b7a0"/>
+  <text x="168" y="794" font-family="monospace" font-size="14" fill="#ece7d9">--alarm</text>
+  <text x="168" y="814" font-family="monospace" font-size="12" fill="#a9b5ac">#f0b7a0 · The one sanctioned break — errors</text>
+</svg>

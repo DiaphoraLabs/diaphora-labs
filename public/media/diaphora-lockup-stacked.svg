@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 185" width="480" height="370" role="img" aria-label="Diaphora Labs">
+  <title>Diaphora Labs</title>
+  <g transform="translate(84 12.6) scale(3)">
+    <path d="M3 17h9V7h9" fill="none" stroke="#ece7d9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="120" y="128.88" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-stretch="125%" letter-spacing="0.02em" fill="#ece7d9" font-size="34">DIAPHORA</text>
+  <text x="120" y="167.98" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-stretch="125%" letter-spacing="0.02em" fill="#ece7d9" font-size="34">LABS</text>
+</svg>

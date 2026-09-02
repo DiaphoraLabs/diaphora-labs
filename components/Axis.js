@@ -14,6 +14,7 @@ const TICKS = [
   { href: '/delta-2', label: 'Delta 2', ord: '04' },
   { href: '/waterfall', label: 'Waterfall', ord: '05' },
   { href: '/contact', label: 'Contact', ord: '06' },
+  { href: '/press', label: 'Press', ord: '07' },
 ];
 
 export default function Axis() {

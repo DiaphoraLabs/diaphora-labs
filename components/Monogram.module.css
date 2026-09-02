@@ -1,0 +1,37 @@
+.monogram { display: block; overflow: visible; }
+
+.shade,
+.light,
+.face {
+  fill: none;
+  stroke-width: var(--mono-w, 2.4);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The same illusion the punch alphabet runs on, at the logo's weight. */
+.shade { stroke: rgba(0, 0, 0, 0.78); transform: translateY(0.62px); }
+.light { stroke: rgba(236, 231, 217, 0.12); transform: translateY(-0.42px); }
+.face { stroke: var(--bone); }
+
+.bronze .face { stroke: var(--bronze-bright); }
+.current .face { stroke: var(--current); }
+.patina .face { stroke: var(--patina-deep); }
+.patina .shade { stroke: rgba(0, 0, 0, 0.18); }
+.patina .light { stroke: rgba(255, 255, 255, 0.5); }
+
+.die {
+  fill: var(--patina-raised);
+  stroke: var(--patina-edge);
+  stroke-width: 1;
+}
+.patina .die { fill: var(--bone); stroke: rgba(0, 0, 0, 0.2); }
+
+/* Flattened to one paint, three copies of one path would stack into a smudge.
+   The face alone is the honest reduction. */
+@media (forced-colors: active) {
+  .shade,
+  .light { display: none; }
+  .face { stroke: CanvasText; }
+  .die { fill: Canvas; stroke: CanvasText; }
+}

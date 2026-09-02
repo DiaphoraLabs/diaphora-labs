@@ -1,0 +1,28 @@
+.block {
+  border-top: 1px solid var(--rule);
+  padding: clamp(1rem, 2.4vw, 1.5rem) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem 1rem; }
+.label { color: var(--bronze); }
+.meta { color: var(--bone-faint); margin-right: auto; }
+
+.copy {
+  background: none;
+  border: 1px solid var(--current-dim);
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--2);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--current);
+  transition: background-color 90ms var(--ease-strike);
+}
+.copy:hover { background: var(--patina); }
+.copy:active { transform: translateY(1px); }
+
+.text { margin: 0; max-width: 68ch; color: var(--bone-dim); line-height: 1.65; }

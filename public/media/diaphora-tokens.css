@@ -1,0 +1,16 @@
+/* Diaphora Labs — colour tokens. Generated from app/globals.css. */
+:root {
+  --patina-deep: #0b1815; /* Page ground */
+  --patina: #123029; /* Raised surface, hover ground */
+  --patina-raised: #16382f; /* Plaque and die highlight edge */
+  --patina-edge: #1e4a3e; /* Cast borders */
+  --bronze: #b8894a; /* Assay lines, ordinals, bolts */
+  --bronze-bright: #d9a865; /* Struck mark face, subheads */
+  --bronze-dim: #7d5c33; /* Gradients, scrollbar — never text */
+  --bone: #ece7d9; /* Plaque lettering, headings */
+  --bone-dim: #a9b5ac; /* Body text on patina */
+  --bone-faint: #7c9086; /* Resting labels, placeholders */
+  --current: #cbf51f; /* THE ONLY SIGNAL INK */
+  --current-dim: #8fa81b; /* Current at rest, underlines */
+  --alarm: #f0b7a0; /* The one sanctioned break — errors */
+}

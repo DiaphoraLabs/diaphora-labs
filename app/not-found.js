@@ -14,12 +14,13 @@ export const metadata = {
 // the whole register, struck and legible.
 const REGISTER = [
   { href: '/', ord: '00', label: 'Diaphora', what: 'The institution, and which door is yours.' },
-  { href: '/niagara', ord: '01', label: 'Niagara', what: 'Why here: the falls, the border, the history.' },
+  { href: '/niagara', ord: '01', label: 'Niagara & Buffalo', what: 'The register: every programme, fund and workspace on both sides of the river.' },
   { href: '/delta-0', ord: '02', label: 'Delta 0', what: 'Open, self-service, global. Start here.' },
   { href: '/delta-1', ord: '03', label: 'Delta 1', what: 'The selective program, and the partners it needs.' },
   { href: '/delta-2', ord: '04', label: 'Delta 2', what: 'An unstruck die. Not open, no date.' },
   { href: '/waterfall', ord: '05', label: 'Project: Waterfall', what: 'The proposal for the generating station.' },
   { href: '/contact', ord: '06', label: 'Contact', what: 'One address, and what it is for.' },
+  { href: '/press', ord: '07', label: 'Press', what: 'The mark, the palette, boilerplate, and what is not true.' },
 ];
 
 export default function NotFound() {
