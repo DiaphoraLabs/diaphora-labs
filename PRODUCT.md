@@ -78,7 +78,7 @@ Confirmed site architecture:
 
 **Real, confirmed material:**
 
-- **Supporters:** Niagara Innovation Hub, Brock University, Velocity — all three back the founders and support Diaphora Labs. Wordmarks only; no logo files yet.
+- **Supporters:** Niagara Falls Innovation Hub, Brock University, Velocity — all three back the founders and support Diaphora Labs. Wordmarks only; no logo files yet.
 - **The Project: Waterfall proposal document**, which is the user's own and describes the intended programme for the station and its outlying spaces.
 - **The team values document** (`Branding_Value_Diaphora.xlsx`).
 - **Delta 0 community:** https://discord.gg/AnWHBBTjB — open now, no application.
@@ -91,7 +91,7 @@ Confirmed site architecture:
 - **No further named institutions or government backers** beyond the three confirmed supporters — *as supporters, funders, partners, or backers*. This does **not** forbid listing a third-party organisation in the Niagara & Buffalo register: a listing there is a directory entry describing a publicly advertised programme, carries an explicit on-page disclaimer that it is neither endorsement nor partnership, and links to the organisation's own site as its citation. Only the entries flagged `supporter: true` in `lib/ecosystem.js` may be described as supporting Diaphora Labs, and only the three confirmed names qualify.
 - **No cohort data, alumni, portfolio companies, testimonials, metrics, funding totals, or press.**
 - **No specifics of the cross-border legal tooling** beyond its existence as a positioning pillar. Do not invent legal mechanisms, jurisdictions, or services.
-- **Three real supporters exist**, confirmed by the user: **Niagara Innovation Hub**, **Brock University**, and **Velocity**. All three have backed the founders and agreed to be in support of Diaphora Labs. No logo files have been supplied yet, so they currently appear as wordmarks. Do not add a fourth name.
+- **Three real supporters exist**, confirmed by the user: **Niagara Falls Innovation Hub**, **Brock University**, and **Velocity**. All three have backed the founders and agreed to be in support of Diaphora Labs. No logo files have been supplied yet, so they currently appear as wordmarks. Do not add a fourth name.
 - **The proposal programme is real intent, not fabrication.** The Project: Waterfall proposal document is the user's own and describes what Diaphora Labs *aims to build*: six uses for the station, a catalogue of seventeen environmental test ranges, a "Niagara-Proven" certification mark, and an international design competition. None of it is built. It may be presented as proposal, and must never be presented as existing.
 - **Still absent:** photographs of the station, renderings, cohort data, alumni, metrics, press coverage, and any capital commitment. Delta 1 remains unfunded.
 - Real content assets: the **team values document** (not yet in this repo) and the **Delta 0 repository** at https://github.com/francois-build/delta-0 — public and MIT licensed, which makes "open source" a checkable claim rather than an assertion.

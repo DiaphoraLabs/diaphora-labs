@@ -83,7 +83,7 @@ Key source:
    - Both 64px door CTAs are `<span>`, not headings; absent from the heading outline.
    - `aria-live` on the mark row fires fourteen times on a sweep with no context.
    - `layout-transition` warning at `components/Axis.module.css:62`.
-4. **Supporter logos.** Niagara Innovation Hub, Brock University and Velocity render
+4. **Supporter logos.** Niagara Falls Innovation Hub, Brock University and Velocity render
    as wordmarks; `components/SupporterWall.js` takes `{ name }` and wants real marks.
 5. **Delta 0's wiki link**, once it exists and has a host. The community (Discord)
    and the source (GitHub, MIT) are live and linked from `/delta-0`.
