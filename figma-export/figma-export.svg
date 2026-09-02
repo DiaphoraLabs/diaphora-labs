@@ -2,14 +2,14 @@
   <title>Diaphora Labs — Hallmark design system</title>
   <defs>
     <linearGradient id="plaqueBody" x1="0" y1="0" x2="0.55" y2="1">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="58%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#ffffff"/>
+      <stop offset="0%" stop-color="#16382f"/>
+      <stop offset="58%" stop-color="#123029"/>
+      <stop offset="100%" stop-color="#0b1815"/>
     </linearGradient>
     <radialGradient id="boltHead" cx="32%" cy="26%">
       <stop offset="0%" stop-color="#f0cf9a"/>
-      <stop offset="24%" stop-color="#5a4526"/>
-      <stop offset="58%" stop-color="#5a4526"/>
+      <stop offset="24%" stop-color="#d9a865"/>
+      <stop offset="58%" stop-color="#b8894a"/>
       <stop offset="100%" stop-color="#7d5c33"/>
     </radialGradient>
     <radialGradient id="dieFace" cx="38%" cy="30%">
@@ -26,310 +26,310 @@
       <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.8"/>
     </filter>
   </defs>
-  <rect id="Ground" x="0" y="0" width="1720" height="3004" fill="#ffffff"/>
+  <rect id="Ground" x="0" y="0" width="1720" height="3004" fill="#0b1815"/>
 <g id="00 · Cover">
-  <text x="80" y="96" font-family="Archivo" font-size="72" font-weight="900" letter-spacing="-1" fill="#000000">DIAPHORA LABS</text>
-  <text x="80" y="136" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#5a4526">HALLMARK — DESIGN SYSTEM EXPORT</text>
-  <text x="80" y="162" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="2" fill="#1a1a1a">GENERATED FROM SOURCE · app/globals.css + lib/marks.js</text>
+  <text x="80" y="96" font-family="Archivo" font-size="72" font-weight="900" letter-spacing="-1" fill="#ece7d9">DIAPHORA LABS</text>
+  <text x="80" y="136" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#b8894a">HALLMARK — DESIGN SYSTEM EXPORT</text>
+  <text x="80" y="162" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="2" fill="#a9b5ac">GENERATED FROM SOURCE · app/globals.css + lib/marks.js</text>
 </g>
 <g id="01 · Colour tokens">
-  <text x="80" y="222" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#5a4526">01 · COLOUR</text>
+  <text x="80" y="222" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#b8894a">01 · COLOUR</text>
   <g id="patina-deep">
-    <rect x="80" y="246" width="72" height="72" fill="#ffffff" stroke="#999999"/>
-    <text x="172" y="272" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">PATINA-DEEP</text>
-    <text x="172" y="292" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#FFFFFF</text>
-    <text x="172" y="312" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Page ground</text>
+    <rect x="80" y="246" width="72" height="72" fill="#0b1815" stroke="#1e4a3e"/>
+    <text x="172" y="272" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">PATINA-DEEP</text>
+    <text x="172" y="292" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#0B1815</text>
+    <text x="172" y="312" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Page ground</text>
   </g>
   <g id="patina">
-    <rect x="480" y="246" width="72" height="72" fill="#ffffff" stroke="#999999"/>
-    <text x="572" y="272" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">PATINA</text>
-    <text x="572" y="292" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#FFFFFF</text>
-    <text x="572" y="312" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Raised surface, hover ground</text>
+    <rect x="480" y="246" width="72" height="72" fill="#123029" stroke="#1e4a3e"/>
+    <text x="572" y="272" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">PATINA</text>
+    <text x="572" y="292" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#123029</text>
+    <text x="572" y="312" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Raised surface, hover ground</text>
   </g>
   <g id="patina-raised">
-    <rect x="880" y="246" width="72" height="72" fill="#ffffff" stroke="#999999"/>
-    <text x="972" y="272" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">PATINA-RAISED</text>
-    <text x="972" y="292" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#FFFFFF</text>
-    <text x="972" y="312" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Plaque and die highlight edge</text>
+    <rect x="880" y="246" width="72" height="72" fill="#16382f" stroke="#1e4a3e"/>
+    <text x="972" y="272" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">PATINA-RAISED</text>
+    <text x="972" y="292" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#16382F</text>
+    <text x="972" y="312" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Plaque and die highlight edge</text>
   </g>
   <g id="patina-edge">
-    <rect x="1280" y="246" width="72" height="72" fill="#999999" stroke="#999999"/>
-    <text x="1372" y="272" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">PATINA-EDGE</text>
-    <text x="1372" y="292" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#999999</text>
-    <text x="1372" y="312" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Cast borders</text>
+    <rect x="1280" y="246" width="72" height="72" fill="#1e4a3e" stroke="#1e4a3e"/>
+    <text x="1372" y="272" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">PATINA-EDGE</text>
+    <text x="1372" y="292" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#1E4A3E</text>
+    <text x="1372" y="312" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Cast borders</text>
   </g>
   <g id="bronze">
-    <rect x="80" y="378" width="72" height="72" fill="#5a4526" stroke="#999999"/>
-    <text x="172" y="404" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">BRONZE</text>
-    <text x="172" y="424" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#5A4526</text>
-    <text x="172" y="444" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Assay lines, ordinals, bolts</text>
+    <rect x="80" y="378" width="72" height="72" fill="#b8894a" stroke="#1e4a3e"/>
+    <text x="172" y="404" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">BRONZE</text>
+    <text x="172" y="424" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#B8894A</text>
+    <text x="172" y="444" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Assay lines, ordinals, bolts</text>
   </g>
   <g id="bronze-bright">
-    <rect x="480" y="378" width="72" height="72" fill="#5a4526" stroke="#999999"/>
-    <text x="572" y="404" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">BRONZE-BRIGHT</text>
-    <text x="572" y="424" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#5A4526</text>
-    <text x="572" y="444" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Struck mark face, subheads</text>
+    <rect x="480" y="378" width="72" height="72" fill="#d9a865" stroke="#1e4a3e"/>
+    <text x="572" y="404" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">BRONZE-BRIGHT</text>
+    <text x="572" y="424" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#D9A865</text>
+    <text x="572" y="444" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Struck mark face, subheads</text>
   </g>
   <g id="bronze-dim">
-    <rect x="880" y="378" width="72" height="72" fill="#7d5c33" stroke="#999999"/>
-    <text x="972" y="404" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">BRONZE-DIM</text>
-    <text x="972" y="424" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#7D5C33</text>
-    <text x="972" y="444" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Gradients, scrollbar — never text</text>
+    <rect x="880" y="378" width="72" height="72" fill="#7d5c33" stroke="#1e4a3e"/>
+    <text x="972" y="404" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">BRONZE-DIM</text>
+    <text x="972" y="424" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#7D5C33</text>
+    <text x="972" y="444" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Gradients, scrollbar — never text</text>
   </g>
   <g id="bone">
-    <rect x="1280" y="378" width="72" height="72" fill="#000000" stroke="#999999"/>
-    <text x="1372" y="404" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">BONE</text>
-    <text x="1372" y="424" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#000000</text>
-    <text x="1372" y="444" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Plaque lettering, headings</text>
+    <rect x="1280" y="378" width="72" height="72" fill="#ece7d9" stroke="#1e4a3e"/>
+    <text x="1372" y="404" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">BONE</text>
+    <text x="1372" y="424" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#ECE7D9</text>
+    <text x="1372" y="444" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Plaque lettering, headings</text>
   </g>
   <g id="bone-dim">
-    <rect x="80" y="510" width="72" height="72" fill="#1a1a1a" stroke="#999999"/>
-    <text x="172" y="536" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">BONE-DIM</text>
-    <text x="172" y="556" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#1A1A1A</text>
-    <text x="172" y="576" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Body text on patina</text>
+    <rect x="80" y="510" width="72" height="72" fill="#a9b5ac" stroke="#1e4a3e"/>
+    <text x="172" y="536" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">BONE-DIM</text>
+    <text x="172" y="556" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#A9B5AC</text>
+    <text x="172" y="576" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Body text on patina</text>
   </g>
   <g id="bone-faint">
-    <rect x="480" y="510" width="72" height="72" fill="#444444" stroke="#999999"/>
-    <text x="572" y="536" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">BONE-FAINT</text>
-    <text x="572" y="556" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#444444</text>
-    <text x="572" y="576" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Resting labels, placeholders</text>
+    <rect x="480" y="510" width="72" height="72" fill="#7c9086" stroke="#1e4a3e"/>
+    <text x="572" y="536" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">BONE-FAINT</text>
+    <text x="572" y="556" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#7C9086</text>
+    <text x="572" y="576" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Resting labels, placeholders</text>
   </g>
   <g id="current">
-    <rect x="880" y="510" width="72" height="72" fill="#000000" stroke="#999999"/>
-    <text x="972" y="536" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">CURRENT</text>
-    <text x="972" y="556" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#000000</text>
-    <text x="972" y="576" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">THE ONLY SIGNAL INK</text>
+    <rect x="880" y="510" width="72" height="72" fill="#cbf51f" stroke="#1e4a3e"/>
+    <text x="972" y="536" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">CURRENT</text>
+    <text x="972" y="556" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#CBF51F</text>
+    <text x="972" y="576" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">THE ONLY SIGNAL INK</text>
   </g>
   <g id="current-dim">
-    <rect x="1280" y="510" width="72" height="72" fill="#444444" stroke="#999999"/>
-    <text x="1372" y="536" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">CURRENT-DIM</text>
-    <text x="1372" y="556" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#444444</text>
-    <text x="1372" y="576" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">Current at rest, underlines</text>
+    <rect x="1280" y="510" width="72" height="72" fill="#8fa81b" stroke="#1e4a3e"/>
+    <text x="1372" y="536" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">CURRENT-DIM</text>
+    <text x="1372" y="556" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#8FA81B</text>
+    <text x="1372" y="576" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">Current at rest, underlines</text>
   </g>
   <g id="alarm">
-    <rect x="80" y="642" width="72" height="72" fill="#f0b7a0" stroke="#999999"/>
-    <text x="172" y="668" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#5a4526">ALARM</text>
-    <text x="172" y="688" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#000000">#F0B7A0</text>
-    <text x="172" y="708" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#1a1a1a">The one sanctioned break — errors</text>
+    <rect x="80" y="642" width="72" height="72" fill="#f0b7a0" stroke="#1e4a3e"/>
+    <text x="172" y="668" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#b8894a">ALARM</text>
+    <text x="172" y="688" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.8" fill="#ece7d9">#F0B7A0</text>
+    <text x="172" y="708" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.8" fill="#a9b5ac">The one sanctioned break — errors</text>
   </g>
 </g>
 <g id="02 · Type">
-  <text x="80" y="790" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#5a4526">02 · TYPE</text>
+  <text x="80" y="790" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#b8894a">02 · TYPE</text>
   <g id="Plaque display — Archivo 900">
-    <text x="80" y="874" font-family="Archivo" font-size="64" font-weight="900" letter-spacing="-0.6" fill="#000000">TAKE YOUR MARK</text>
-    <text x="80" y="898" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#5a4526">ARCHIVO · 900 · WDTH 125% · UPPERCASE · LH 0.88–0.94</text>
+    <text x="80" y="874" font-family="Archivo" font-size="64" font-weight="900" letter-spacing="-0.6" fill="#ece7d9">TAKE YOUR MARK</text>
+    <text x="80" y="898" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#b8894a">ARCHIVO · 900 · WDTH 125% · UPPERCASE · LH 0.88–0.94</text>
   </g>
   <g id="Assay line — Martian Mono">
-    <text x="80" y="954" font-family="Martian Mono" font-size="14" letter-spacing="2" fill="#5a4526">NIAGARA FALLS · 43°04′N 79°04′W</text>
-    <text x="80" y="978" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#5a4526">MARTIAN MONO · UPPERCASE · TRACKING 0.06–0.2EM · TNUM ON</text>
+    <text x="80" y="954" font-family="Martian Mono" font-size="14" letter-spacing="2" fill="#b8894a">NIAGARA FALLS · 43°04′N 79°04′W</text>
+    <text x="80" y="978" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#b8894a">MARTIAN MONO · UPPERCASE · TRACKING 0.06–0.2EM · TNUM ON</text>
   </g>
   <g id="Reading — Source Serif 4">
-    <text x="80" y="1034" font-family="Source Serif 4" font-size="24" fill="#1a1a1a">An incubator that marks, not one that ranks.</text>
-    <text x="80" y="1058" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#5a4526">SOURCE SERIF 4 · REGULAR + ITALIC · MEASURE CAPPED AT 68CH</text>
+    <text x="80" y="1034" font-family="Source Serif 4" font-size="24" fill="#a9b5ac">An incubator that marks, not one that ranks.</text>
+    <text x="80" y="1058" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#b8894a">SOURCE SERIF 4 · REGULAR + ITALIC · MEASURE CAPPED AT 68CH</text>
   </g>
 </g>
 <g id="03 · Punch alphabet">
-  <text x="80" y="1090" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#5a4526">03 · THE PUNCH ALPHABET — 15 MARKS</text>
+  <text x="80" y="1090" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#b8894a">03 · THE PUNCH ALPHABET — 15 MARKS</text>
   <g id="Mark · Wonder">
-    <rect x="80" y="1114" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="80" y="1114" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Wonder" transform="translate(104 1138) scale(2.1666666666666665)">
       <g transform="translate(0 0)">
         <path id="Alphabet-wonder-shade" d="wonder" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-wonder-light" d="wonder" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-wonder-face" d="wonder" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-wonder-face" d="wonder" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="176" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">WONDER</text>
-    <text x="176" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">BEAUTY · AUTHENTICITY</text>
-    <text x="176" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">wonder</text>
+    <text x="176" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">WONDER</text>
+    <text x="176" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">BEAUTY · AUTHENTICITY</text>
+    <text x="176" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">wonder</text>
   </g>
   <g id="Mark · Pressure-Seeking">
-    <rect x="400" y="1114" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="400" y="1114" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Pressure-Seeking" transform="translate(424 1138) scale(2.1666666666666665)">
       <g transform="translate(0 0)">
         <path id="Alphabet-pressure-seeking-shade" d="pressure-seeking" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-pressure-seeking-light" d="pressure-seeking" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-pressure-seeking-face" d="pressure-seeking" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-pressure-seeking-face" d="pressure-seeking" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="496" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">PRESSURE-SEEKING</text>
-    <text x="496" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">OPENNESS · LEVEL-HEADEDNESS</text>
-    <text x="496" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">pressure-seeking</text>
+    <text x="496" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">PRESSURE-SEEKING</text>
+    <text x="496" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">OPENNESS · LEVEL-HEADEDNESS</text>
+    <text x="496" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">pressure-seeking</text>
   </g>
   <g id="Mark · Omotenashi">
-    <rect x="720" y="1114" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="720" y="1114" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Omotenashi" transform="translate(744 1138) scale(2.1666666666666665)">
       <g transform="translate(0 -0.95)">
         <path id="Alphabet-omotenashi-shade" d="omotenashi" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-omotenashi-light" d="omotenashi" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-omotenashi-face" d="omotenashi" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-omotenashi-face" d="omotenashi" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="816" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">OMOTENASHI</text>
-    <text x="816" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">HUMILITY · LOW EGO</text>
-    <text x="816" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">omotenashi</text>
+    <text x="816" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">OMOTENASHI</text>
+    <text x="816" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">HUMILITY · LOW EGO</text>
+    <text x="816" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">omotenashi</text>
   </g>
   <g id="Mark · Loyalty">
-    <rect x="1040" y="1114" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="1040" y="1114" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Loyalty" transform="translate(1064 1138) scale(2.1666666666666665)">
       <g transform="translate(0 0)">
         <path id="Alphabet-loyal-shade" d="loyal" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-loyal-light" d="loyal" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-loyal-face" d="loyal" fill="none" stroke="#000000" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-loyal-face" d="loyal" fill="none" stroke="#cbf51f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="1136" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">LOYALTY</text>
-    <text x="1136" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">BINDS EVERY AUDIENCE</text>
-    <text x="1136" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">loyal</text>
+    <text x="1136" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#cbf51f">LOYALTY</text>
+    <text x="1136" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">BINDS EVERY AUDIENCE</text>
+    <text x="1136" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">loyal</text>
   </g>
   <g id="Mark · Sankofa">
-    <rect x="1360" y="1114" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="1360" y="1114" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Sankofa" transform="translate(1384 1138) scale(2.1666666666666665)">
       <g transform="translate(-4.55 0)">
         <path id="Alphabet-sankofa-shade" d="sankofa" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-sankofa-light" d="sankofa" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-sankofa-face" d="sankofa" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-sankofa-face" d="sankofa" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="1456" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">SANKOFA</text>
-    <text x="1456" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">—</text>
-    <text x="1456" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">sankofa</text>
+    <text x="1456" y="1160" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">SANKOFA</text>
+    <text x="1456" y="1182" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">—</text>
+    <text x="1456" y="1202" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">sankofa</text>
   </g>
   <g id="Mark · Transparency">
-    <rect x="80" y="1264" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="80" y="1264" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Transparency" transform="translate(104 1288) scale(2.1666666666666665)">
       <g transform="translate(0 0)">
         <path id="Alphabet-transparency-shade" d="transparency" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-transparency-light" d="transparency" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-transparency-face" d="transparency" fill="none" stroke="#000000" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-transparency-face" d="transparency" fill="none" stroke="#cbf51f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="176" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">TRANSPARENCY</text>
-    <text x="176" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">BINDS EVERY AUDIENCE</text>
-    <text x="176" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">transparency</text>
+    <text x="176" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#cbf51f">TRANSPARENCY</text>
+    <text x="176" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">BINDS EVERY AUDIENCE</text>
+    <text x="176" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">transparency</text>
   </g>
   <g id="Mark · Curiosity">
-    <rect x="400" y="1264" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="400" y="1264" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Curiosity" transform="translate(424 1288) scale(2.1666666666666665)">
       <g transform="translate(0.63 0)">
         <path id="Alphabet-curious-shade" d="curious" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-curious-light" d="curious" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-curious-face" d="curious" fill="none" stroke="#000000" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-curious-face" d="curious" fill="none" stroke="#cbf51f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="496" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">CURIOSITY</text>
-    <text x="496" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">BINDS EVERY AUDIENCE</text>
-    <text x="496" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">curious</text>
+    <text x="496" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#cbf51f">CURIOSITY</text>
+    <text x="496" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">BINDS EVERY AUDIENCE</text>
+    <text x="496" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">curious</text>
   </g>
   <g id="Mark · Speed">
-    <rect x="720" y="1264" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="720" y="1264" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Speed" transform="translate(744 1288) scale(2.1666666666666665)">
       <g transform="translate(0 0)">
         <path id="Alphabet-speed-shade" d="speed" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-speed-light" d="speed" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-speed-face" d="speed" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-speed-face" d="speed" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="816" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">SPEED</text>
-    <text x="816" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">—</text>
-    <text x="816" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">speed</text>
+    <text x="816" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">SPEED</text>
+    <text x="816" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">—</text>
+    <text x="816" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">speed</text>
   </g>
   <g id="Mark · Perseverance">
-    <rect x="1040" y="1264" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="1040" y="1264" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Perseverance" transform="translate(1064 1288) scale(2.1666666666666665)">
       <g transform="translate(0 0)">
         <path id="Alphabet-perseverance-shade" d="perseverance" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-perseverance-light" d="perseverance" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-perseverance-face" d="perseverance" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-perseverance-face" d="perseverance" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="1136" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">PERSEVERANCE</text>
-    <text x="1136" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">DRIVE · DEDICATION</text>
-    <text x="1136" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">perseverance</text>
+    <text x="1136" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">PERSEVERANCE</text>
+    <text x="1136" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">DRIVE · DEDICATION</text>
+    <text x="1136" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">perseverance</text>
   </g>
   <g id="Mark · Fun">
-    <rect x="1360" y="1264" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="1360" y="1264" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Fun" transform="translate(1384 1288) scale(2.1666666666666665)">
       <g transform="translate(-0.55 -3.6)">
         <path id="Alphabet-fun-shade" d="fun" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-fun-light" d="fun" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-fun-face" d="fun" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-fun-face" d="fun" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="1456" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">FUN</text>
-    <text x="1456" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">—</text>
-    <text x="1456" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">fun</text>
+    <text x="1456" y="1310" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">FUN</text>
+    <text x="1456" y="1332" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">—</text>
+    <text x="1456" y="1352" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">fun</text>
   </g>
   <g id="Mark · Vision">
-    <rect x="80" y="1414" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="80" y="1414" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Vision" transform="translate(104 1438) scale(2.1666666666666665)">
       <g transform="translate(0 -0.45)">
         <path id="Alphabet-visionary-shade" d="visionary" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-visionary-light" d="visionary" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-visionary-face" d="visionary" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-visionary-face" d="visionary" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="176" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">VISION</text>
-    <text x="176" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">FORWARD THINKING · OPTIMISM</text>
-    <text x="176" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">visionary</text>
+    <text x="176" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">VISION</text>
+    <text x="176" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">FORWARD THINKING · OPTIMISM</text>
+    <text x="176" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">visionary</text>
   </g>
   <g id="Mark · Fairness">
-    <rect x="400" y="1414" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="400" y="1414" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Fairness" transform="translate(424 1438) scale(2.1666666666666665)">
       <g transform="translate(1.25 0)">
         <path id="Alphabet-fairness-shade" d="fairness" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-fairness-light" d="fairness" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-fairness-face" d="fairness" fill="none" stroke="#000000" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-fairness-face" d="fairness" fill="none" stroke="#cbf51f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="496" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">FAIRNESS</text>
-    <text x="496" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">BINDS EVERY AUDIENCE</text>
-    <text x="496" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">fairness</text>
+    <text x="496" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#cbf51f">FAIRNESS</text>
+    <text x="496" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">BINDS EVERY AUDIENCE</text>
+    <text x="496" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">fairness</text>
   </g>
   <g id="Mark · Ingenuity">
-    <rect x="720" y="1414" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="720" y="1414" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Ingenuity" transform="translate(744 1438) scale(2.1666666666666665)">
       <g transform="translate(0 0)">
         <path id="Alphabet-ingenuity-shade" d="ingenuity" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-ingenuity-light" d="ingenuity" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-ingenuity-face" d="ingenuity" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-ingenuity-face" d="ingenuity" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="816" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">INGENUITY</text>
-    <text x="816" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">INVENTION · RESOURCEFULNESS</text>
-    <text x="816" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">ingenuity</text>
+    <text x="816" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">INGENUITY</text>
+    <text x="816" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">INVENTION · RESOURCEFULNESS</text>
+    <text x="816" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">ingenuity</text>
   </g>
   <g id="Mark · Execution">
-    <rect x="1040" y="1414" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="1040" y="1414" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Execution" transform="translate(1064 1438) scale(2.1666666666666665)">
       <g transform="translate(0 0.3)">
         <path id="Alphabet-execution-shade" d="execution" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-execution-light" d="execution" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-execution-face" d="execution" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-execution-face" d="execution" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="1136" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">EXECUTION</text>
-    <text x="1136" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">INTELLIGENCE · ELOQUENCE</text>
-    <text x="1136" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">execution</text>
+    <text x="1136" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">EXECUTION</text>
+    <text x="1136" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">INTELLIGENCE · ELOQUENCE</text>
+    <text x="1136" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">execution</text>
   </g>
   <g id="Mark · Danketsu">
-    <rect x="1360" y="1414" width="288" height="118" fill="none" stroke="rgba(0, 0, 0, 0.28)"/>
+    <rect x="1360" y="1414" width="288" height="118" fill="none" stroke="rgba(236, 231, 217, 0.38)"/>
     <g id="Alphabet · Danketsu" transform="translate(1384 1438) scale(2.1666666666666665)">
       <g transform="translate(0 0)">
         <path id="Alphabet-danketsu-shade" d="danketsu" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Alphabet-danketsu-light" d="danketsu" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Alphabet-danketsu-face" d="danketsu" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Alphabet-danketsu-face" d="danketsu" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
-    <text x="1456" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#000000">DANKETSU</text>
-    <text x="1456" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#1a1a1a">COLLABORATION · KINDNESS</text>
-    <text x="1456" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#444444">danketsu</text>
+    <text x="1456" y="1460" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="1.6" fill="#ece7d9">DANKETSU</text>
+    <text x="1456" y="1482" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#a9b5ac">COLLABORATION · KINDNESS</text>
+    <text x="1456" y="1502" font-family="Martian Mono" font-size="9" font-weight="400" letter-spacing="1" fill="#7c9086">danketsu</text>
   </g>
 </g>
 <g id="04 · Plaque">
-  <text x="80" y="1600" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#5a4526">04 · THE PLAQUE — CAST TABLET</text>
+  <text x="80" y="1600" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#b8894a">04 · THE PLAQUE — CAST TABLET</text>
   <g id="Plaque">
-    <rect x="80" y="1624" width="720" height="300" fill="url(#plaqueBody)" stroke="#999999" filter="url(#castShadow)"/>
+    <rect x="80" y="1624" width="720" height="300" fill="url(#plaqueBody)" stroke="#1e4a3e" filter="url(#castShadow)"/>
     <path d="M80 1924 L80 1624 L800 1624" fill="none" stroke="rgba(236,231,217,0.16)" stroke-width="2"/>
     <path d="M800 1624 L800 1924 L80 1924" fill="none" stroke="rgba(0,0,0,0.62)" stroke-width="2"/>
     <g id="Bolts">
@@ -338,121 +338,121 @@
       <circle id="bolt-3" cx="97" cy="1907" r="3.5" fill="url(#boltHead)" stroke="rgba(0,0,0,0.55)"/>
       <circle id="bolt-4" cx="783" cy="1907" r="3.5" fill="url(#boltHead)" stroke="rgba(0,0,0,0.55)"/>
     </g>
-    <text id="Name" x="128" y="1732" font-family="Archivo" font-size="76" font-weight="900" letter-spacing="-1" fill="#000000">DIAPHORA</text>
-    <text x="128" y="1804" font-family="Archivo" font-size="76" font-weight="900" letter-spacing="-1" fill="#000000">LABS</text>
+    <text id="Name" x="128" y="1732" font-family="Archivo" font-size="76" font-weight="900" letter-spacing="-1" fill="#ece7d9">DIAPHORA</text>
+    <text x="128" y="1804" font-family="Archivo" font-size="76" font-weight="900" letter-spacing="-1" fill="#ece7d9">LABS</text>
     <g id="Struck line">
       <g id="Plaque · Loyalty" transform="translate(128 1826) scale(1.1666666666666667)">
       <g transform="translate(0 0)">
         <path id="Plaque-loyal-shade" d="loyal" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Plaque-loyal-light" d="loyal" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Plaque-loyal-face" d="loyal" fill="none" stroke="#000000" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Plaque-loyal-face" d="loyal" fill="none" stroke="#cbf51f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
       <g id="Plaque · Transparency" transform="translate(172 1826) scale(1.1666666666666667)">
       <g transform="translate(0 0)">
         <path id="Plaque-transparency-shade" d="transparency" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Plaque-transparency-light" d="transparency" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Plaque-transparency-face" d="transparency" fill="none" stroke="#000000" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Plaque-transparency-face" d="transparency" fill="none" stroke="#cbf51f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
       <g id="Plaque · Curiosity" transform="translate(216 1826) scale(1.1666666666666667)">
       <g transform="translate(0.63 0)">
         <path id="Plaque-curious-shade" d="curious" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Plaque-curious-light" d="curious" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Plaque-curious-face" d="curious" fill="none" stroke="#000000" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Plaque-curious-face" d="curious" fill="none" stroke="#cbf51f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
       <g id="Plaque · Fairness" transform="translate(260 1826) scale(1.1666666666666667)">
       <g transform="translate(1.25 0)">
         <path id="Plaque-fairness-shade" d="fairness" fill="none" stroke="rgba(0,0,0,0.78)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0.62)"/>
         <path id="Plaque-fairness-light" d="fairness" fill="none" stroke="rgba(236,231,217,0.20)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.42)"/>
-        <path id="Plaque-fairness-face" d="fairness" fill="none" stroke="#000000" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+        <path id="Plaque-fairness-face" d="fairness" fill="none" stroke="#cbf51f" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
       </g>
     </g>
     </g>
     <line x1="128" y1="1870" x2="752" y2="1870" stroke="rgba(236,231,217,0.14)"/>
-    <text x="128" y="1892" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#5a4526">NIAGARA FALLS · 43°04′N 79°04′W</text>
-    <text x="128" y="1910" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#5a4526">DELTA 0 · DELTA 1 · DELTA 2</text>
+    <text x="128" y="1892" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#b8894a">NIAGARA FALLS · 43°04′N 79°04′W</text>
+    <text x="128" y="1910" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#b8894a">DELTA 0 · DELTA 1 · DELTA 2</text>
   </g>
   <g id="Plaque — anatomy notes">
-    <text x="840" y="1664" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="2" fill="#5a4526">MAKER — MARKS — WHERE AND WHEN</text>
-    <text x="840" y="1686" font-family="Source Serif 4" font-size="12" font-weight="400" letter-spacing="0" fill="#1a1a1a">A hallmark reads in a fixed order and so does this.</text>
-    <text x="840" y="1724" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.6" fill="#1a1a1a">BEVEL  inset top +16% bone · bottom −62% black</text>
-    <text x="840" y="1746" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.6" fill="#1a1a1a">SHADOW  three ranges: 2/3 · 12/22 · 30/60</text>
-    <text x="840" y="1768" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.6" fill="#1a1a1a">GRAIN  112° repeating, 1.4% bone / 1.6% black</text>
-    <text x="840" y="1790" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.6" fill="#1a1a1a">CORNERS  square. no radii anywhere in this system</text>
+    <text x="840" y="1664" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="2" fill="#b8894a">MAKER — MARKS — WHERE AND WHEN</text>
+    <text x="840" y="1686" font-family="Source Serif 4" font-size="12" font-weight="400" letter-spacing="0" fill="#a9b5ac">A hallmark reads in a fixed order and so does this.</text>
+    <text x="840" y="1724" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.6" fill="#a9b5ac">BEVEL  inset top +16% bone · bottom −62% black</text>
+    <text x="840" y="1746" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.6" fill="#a9b5ac">SHADOW  three ranges: 2/3 · 12/22 · 30/60</text>
+    <text x="840" y="1768" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.6" fill="#a9b5ac">GRAIN  112° repeating, 1.4% bone / 1.6% black</text>
+    <text x="840" y="1790" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="0.6" fill="#a9b5ac">CORNERS  square. no radii anywhere in this system</text>
   </g>
 </g>
 <g id="05 · Die — cut block">
-  <text x="80" y="1960" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#5a4526">05 · THE DIE — CUT BLOCK</text>
+  <text x="80" y="1960" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#b8894a">05 · THE DIE — CUT BLOCK</text>
   <g id="Die">
     <rect x="80" y="1984" width="240" height="240" fill="url(#dieFace)"/>
     <rect x="80" y="1984" width="240" height="240" fill="url(#dieSheen)"/>
     <path d="M80 2224 L80 1984 L320 1984" fill="none" stroke="rgba(236,231,217,0.17)" stroke-width="2"/>
     <path d="M320 1984 L320 2224 L80 2224" fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="2"/>
-    <rect x="80" y="1984" width="240" height="240" fill="none" stroke="#999999"/>
+    <rect x="80" y="1984" width="240" height="240" fill="none" stroke="#1e4a3e"/>
     <rect x="108" y="2012" width="184" height="184" fill="none" stroke="rgba(236,231,217,0.12)" stroke-dasharray="3 8"/>
     <rect x="146" y="2050" width="108" height="108" fill="none" stroke="rgba(184,137,74,0.35)"/>
-    <g id="Mark state A — delta"><path d="M5 19 L12 5 L19 19 L5 19" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(176 2080) scale(2)"/></g>
+    <g id="Mark state A — delta"><path d="M5 19 L12 5 L19 19 L5 19" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(176 2080) scale(2)"/></g>
   </g>
   <g id="Die — loading states">
-    <text x="380" y="2016" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="2" fill="#5a4526">CHANGE IS COMING — 3.2S LOOP</text>
-    <text x="380" y="2038" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1" fill="#1a1a1a">THREE LINES. THE TRIANGLE UNFOLDS INTO ONE STEP.</text>
-    <g transform="translate(380 1964)"><g id="State A · delta"><path d="M5 19 L12 5 L19 19 L5 19" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 2080) scale(2)"/></g></g>
-    <g transform="translate(480 1964)"><g id="State B · step"><path d="M7 19 L7 12 L17 12 L17 5" fill="none" stroke="#5a4526" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 2080) scale(2)"/></g></g>
-    <text x="380" y="2174" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#5a4526">A · DELTA</text>
-    <text x="480" y="2174" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#5a4526">B · STEP</text>
+    <text x="380" y="2016" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="2" fill="#b8894a">CHANGE IS COMING — 3.2S LOOP</text>
+    <text x="380" y="2038" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1" fill="#a9b5ac">THREE LINES. THE TRIANGLE UNFOLDS INTO ONE STEP.</text>
+    <g transform="translate(380 1964)"><g id="State A · delta"><path d="M5 19 L12 5 L19 19 L5 19" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 2080) scale(2)"/></g></g>
+    <g transform="translate(480 1964)"><g id="State B · step"><path d="M7 19 L7 12 L17 12 L17 5" fill="none" stroke="#d9a865" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 2080) scale(2)"/></g></g>
+    <text x="380" y="2174" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#b8894a">A · DELTA</text>
+    <text x="480" y="2174" font-family="Martian Mono" font-size="10" font-weight="400" letter-spacing="1.4" fill="#b8894a">B · STEP</text>
   </g>
 </g>
 <g id="06 · Doors and actions">
-  <text x="80" y="2280" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#5a4526">06 · DOORS AND ACTIONS</text>
+  <text x="80" y="2280" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#b8894a">06 · DOORS AND ACTIONS</text>
   <g id="Door · Delta 0 (live)">
-  <rect x="80" y="2304" width="500" height="260" fill="#ffffff" stroke="rgba(236,231,217,0.14)"/>
-  <text x="120" y="2356" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="2.6" fill="#5a4526">DELTA 0</text>
-  <text x="120" y="2420" font-family="Archivo" font-size="44" font-weight="900" fill="#000000">ON YOUR MARK</text>
-  <text x="120" y="2460" font-family="Source Serif 4" font-size="15" fill="#1a1a1a">Start here. Open source, self-service, global.</text>
-  <text x="120" y="2526" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#5a4526">START HERE · OPEN · NO GATE</text>
+  <rect x="80" y="2304" width="500" height="260" fill="#0b1815" stroke="rgba(236,231,217,0.14)"/>
+  <text x="120" y="2356" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="2.6" fill="#b8894a">DELTA 0</text>
+  <text x="120" y="2420" font-family="Archivo" font-size="44" font-weight="900" fill="#cbf51f">ON YOUR MARK</text>
+  <text x="120" y="2460" font-family="Source Serif 4" font-size="15" fill="#a9b5ac">Start here. Open source, self-service, global.</text>
+  <text x="120" y="2526" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#b8894a">START HERE · OPEN · NO GATE</text>
 </g>
   <g id="Door · Delta 1">
-  <rect x="620" y="2304" width="500" height="260" fill="#ffffff" stroke="rgba(236,231,217,0.14)"/>
-  <text x="660" y="2356" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="2.6" fill="#5a4526">DELTA 1</text>
-  <text x="660" y="2420" font-family="Archivo" font-size="44" font-weight="900" fill="#000000">MAKE YOUR MARK</text>
-  <text x="660" y="2460" font-family="Source Serif 4" font-size="15" fill="#1a1a1a">The one you cannot give yourself.</text>
-  <text x="660" y="2526" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#5a4526">SELECTIVE · IN PERSON · TRL ASSESSED</text>
+  <rect x="620" y="2304" width="500" height="260" fill="#0b1815" stroke="rgba(236,231,217,0.14)"/>
+  <text x="660" y="2356" font-family="Martian Mono" font-size="12" font-weight="400" letter-spacing="2.6" fill="#b8894a">DELTA 1</text>
+  <text x="660" y="2420" font-family="Archivo" font-size="44" font-weight="900" fill="#ece7d9">MAKE YOUR MARK</text>
+  <text x="660" y="2460" font-family="Source Serif 4" font-size="15" fill="#a9b5ac">The one you cannot give yourself.</text>
+  <text x="660" y="2526" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#b8894a">SELECTIVE · IN PERSON · TRL ASSESSED</text>
 </g>
   <g id="Button · Current (self-service strike)">
-  <rect x="80" y="2604" width="230" height="46" fill="#000000" stroke="#000000"/>
-  <text x="100" y="2633" font-family="Archivo" font-size="13" font-weight="800" letter-spacing="1" fill="#ffffff">JOIN THE DISCORD</text>
+  <rect x="80" y="2604" width="230" height="46" fill="#cbf51f" stroke="#cbf51f"/>
+  <text x="100" y="2633" font-family="Archivo" font-size="13" font-weight="800" letter-spacing="1" fill="#0b1815">JOIN THE DISCORD</text>
 </g>
   <g id="Button · Bone (submit)">
-  <rect x="340" y="2604" width="230" height="46" fill="#000000" stroke="#000000"/>
-  <text x="360" y="2633" font-family="Archivo" font-size="13" font-weight="800" letter-spacing="1" fill="#ffffff">JOIN THE WAITLIST</text>
+  <rect x="340" y="2604" width="230" height="46" fill="#ece7d9" stroke="#ece7d9"/>
+  <text x="360" y="2633" font-family="Archivo" font-size="13" font-weight="800" letter-spacing="1" fill="#0b1815">JOIN THE WAITLIST</text>
 </g>
   <g id="Button · Hover (bronze)">
-  <rect x="600" y="2604" width="230" height="46" fill="#5a4526" stroke="#5a4526"/>
-  <text x="620" y="2633" font-family="Archivo" font-size="13" font-weight="800" letter-spacing="1" fill="#ffffff">HOVER STATE</text>
+  <rect x="600" y="2604" width="230" height="46" fill="#d9a865" stroke="#d9a865"/>
+  <text x="620" y="2633" font-family="Archivo" font-size="13" font-weight="800" letter-spacing="1" fill="#0b1815">HOVER STATE</text>
 </g>
   <g id="Button · Disabled">
   <rect x="860" y="2604" width="230" height="46" fill="none" stroke="rgba(236,231,217,0.28)"/>
-  <text x="880" y="2633" font-family="Archivo" font-size="13" font-weight="800" letter-spacing="1" fill="#444444">DISABLED</text>
+  <text x="880" y="2633" font-family="Archivo" font-size="13" font-weight="800" letter-spacing="1" fill="#7c9086">DISABLED</text>
 </g>
 </g>
 <g id="07 · Register">
-  <text x="80" y="2680" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#5a4526">07 · REGISTER — RULED ROWS, NEVER CARDS</text>
+  <text x="80" y="2680" font-family="Martian Mono" font-size="13" font-weight="400" letter-spacing="3" fill="#b8894a">07 · REGISTER — RULED ROWS, NEVER CARDS</text>
   <line x1="80" y1="2704" x2="1200" y2="2704" stroke="rgba(236,231,217,0.14)"/>
   <g id="Register row 1">
-    <text x="100" y="2746" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#5a4526">ONE YOU TAKE</text>
-    <text x="420" y="2746" font-family="Source Serif 4" font-size="16" fill="#1a1a1a">Delta 0 is open, self-service and global.</text>
+    <text x="100" y="2746" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#b8894a">ONE YOU TAKE</text>
+    <text x="420" y="2746" font-family="Source Serif 4" font-size="16" fill="#a9b5ac">Delta 0 is open, self-service and global.</text>
     <line x1="80" y1="2772" x2="1200" y2="2772" stroke="rgba(236,231,217,0.14)"/>
   </g>
   <g id="Register row 2">
-    <text x="100" y="2814" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#5a4526">ONE YOU ARE GRANTED</text>
-    <text x="420" y="2814" font-family="Source Serif 4" font-size="16" fill="#1a1a1a">Delta 1 is in person, and cannot be self-struck.</text>
+    <text x="100" y="2814" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#b8894a">ONE YOU ARE GRANTED</text>
+    <text x="420" y="2814" font-family="Source Serif 4" font-size="16" fill="#a9b5ac">Delta 1 is in person, and cannot be self-struck.</text>
     <line x1="80" y1="2840" x2="1200" y2="2840" stroke="rgba(236,231,217,0.14)"/>
   </g>
   <g id="Register row 3">
-    <text x="100" y="2882" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#5a4526">NOT YET CUT</text>
-    <text x="420" y="2882" font-family="Source Serif 4" font-size="16" fill="#1a1a1a">Delta 2 is a blank die. No date.</text>
+    <text x="100" y="2882" font-family="Martian Mono" font-size="11" font-weight="400" letter-spacing="1.8" fill="#b8894a">NOT YET CUT</text>
+    <text x="420" y="2882" font-family="Source Serif 4" font-size="16" fill="#a9b5ac">Delta 2 is a blank die. No date.</text>
     <line x1="80" y1="2908" x2="1200" y2="2908" stroke="rgba(236,231,217,0.14)"/>
   </g>
 </g>

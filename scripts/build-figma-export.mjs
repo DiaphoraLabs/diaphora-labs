@@ -3,29 +3,14 @@
 // alphabet from lib/marks.js — so the export cannot drift from the site.
 // Re-run with:  node scripts/build-figma-export.mjs
 import { readFileSync, writeFileSync } from 'node:fs';
+import { COLOR_ROLES } from '../lib/palette.js';
+import { readTokens } from '../lib/tokens.server.js';
 
-const css = readFileSync('app/globals.css', 'utf8');
 const marksSrc = readFileSync('lib/marks.js', 'utf8');
 
 /* ---- tokens ------------------------------------------------------------ */
-const T = {};
-for (const m of css.matchAll(/^\s*--([\w-]+):\s*([^;]+);/gm)) T[m[1]] = m[2].trim();
+const T = readTokens();
 
-const COLOR_ROLES = [
-  ['patina-deep', 'Page ground'],
-  ['patina', 'Raised surface, hover ground'],
-  ['patina-raised', 'Plaque and die highlight edge'],
-  ['patina-edge', 'Cast borders'],
-  ['bronze', 'Assay lines, ordinals, bolts'],
-  ['bronze-bright', 'Struck mark face, subheads'],
-  ['bronze-dim', 'Gradients, scrollbar — never text'],
-  ['bone', 'Plaque lettering, headings'],
-  ['bone-dim', 'Body text on patina'],
-  ['bone-faint', 'Resting labels, placeholders'],
-  ['current', 'THE ONLY SIGNAL INK'],
-  ['current-dim', 'Current at rest, underlines'],
-  ['alarm', 'The one sanctioned break — errors'],
-];
 
 /* ---- the punch alphabet ------------------------------------------------ */
 const MARKS = [];
