@@ -16,21 +16,6 @@
   z-index: 20;
 }
 
-/* The sightline itself — it runs the full height and off both edges. */
-.rail {
-  position: absolute;
-  inset-block: 0;
-  left: calc(var(--axis-w) / 2);
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--rule-strong) 8%,
-    var(--rule-strong) 92%,
-    transparent
-  );
-}
-
 .ticks {
   list-style: none;
   margin: 0;
@@ -86,7 +71,7 @@
   white-space: nowrap;
 }
 
-/* Live is the only place current appears in the rail. */
+/* Live is the only place current appears in the axis. */
 .live { color: var(--current); }
 .live .notch { width: 32px; background: var(--current); }
 .live .ord { color: var(--current-dim); }
@@ -101,15 +86,6 @@
     border-bottom: 1px solid var(--rule);
     padding: 0.5rem 0;
     overflow-x: auto;
-  }
-  .rail {
-    inset-block: auto;
-    top: 50%;
-    left: 0;
-    right: 0;
-    width: auto;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--rule-strong) 6%, var(--rule-strong) 94%, transparent);
   }
   .ticks {
     flex-direction: row;

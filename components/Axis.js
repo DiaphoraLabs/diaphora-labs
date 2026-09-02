@@ -4,8 +4,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Axis.module.css';
 
-// The governing axis. One sightline holds every destination; the open one is
-// the only thing on the page allowed to carry current.
+// The governing axis. The open destination is the only thing here allowed to
+// carry current.
+//
+// The sightline the rail used to draw is gone: on mobile the axis becomes a
+// horizontal scroller and the line ran through the ticks rather than behind
+// them, and it was carrying no information the notches do not already carry.
 const TICKS = [
   { href: '/', label: 'Diaphora', ord: '00' },
   { href: '/niagara', label: 'Niagara', ord: '01' },
@@ -22,7 +26,6 @@ export default function Axis() {
 
   return (
     <nav className={styles.axis} aria-label="Diaphora Labs">
-      <div className={styles.rail} aria-hidden="true" />
       <ol className={styles.ticks}>
         {TICKS.map((t) => {
           const live = pathname === t.href;
