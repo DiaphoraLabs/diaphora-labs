@@ -40,7 +40,7 @@ Diaphora Labs competes with Y Combinator on a different axis. Three things a nei
 - **Project: Waterfall is a live proposal** being presented to **Niagara Parks**, the steward of the land, and used to build public and institutional support. Everything in it is proposed, not built, and the site must keep that distinction visible on every claim.
 - **Delta 2** — a future program, not yet launched. It gets a "coming soon" page with email capture for launch notification. No details about its content exist; do not invent any.
 - **Project: Waterfall** — the flagship building initiative, based on the old Ontario Power Company generating station at the base of Niagara Falls. Warrants its own page.
-- **Niagara & Buffalo** — as of 2026-09-02, at the user's direction, this page is **a unified portal for all programming and entrepreneurship in Niagara and Buffalo**, not solely the narrative case for the address. It lists third-party organisations on both sides of the border; the historical argument (the falls, the border, 1896) survives compressed into three cited points, which is the reason the register spans the line. The register lives in `lib/ecosystem.js`.
+- **Niagara River** — as of 2026-09-02, at the user's direction, this page is **a unified portal for all programming and entrepreneurship in Niagara and Buffalo**, not solely the narrative case for the address. It lists third-party organisations on both sides of the border; the historical argument (the falls, the border, 1896) survives compressed into three cited points, which is the reason the register spans the line. The register lives in `lib/ecosystem.js`.
 - The site is read by four audiences with different stakes, often in the same session (a minister and an investor may both arrive from the same press mention).
 
 ## Capabilities and Constraints
@@ -50,7 +50,7 @@ Confirmed site architecture:
 | Page | Job |
 |---|---|
 | Home | Make the institution legible and credible to all four audiences; route each to their door. |
-| Niagara & Buffalo | **The regional portal.** One register of every programme, fund, incubator and workspace open to entrepreneurs on both sides of the river, filterable by side and by need. The narrative case for the address is compressed into it rather than owning the page. |
+| Niagara River | **The regional portal.** One register of every programme, fund, incubator and workspace open to entrepreneurs on both sides of the river, filterable by side and by need. The narrative case for the address is compressed into it rather than owning the page. |
 | Delta 0 | The open, global, self-service program: community, wiki, agent-run incubation tool. |
 | Delta 1 | **Two conversions on one page**: a founder application waitlist, and a distinct path for partners and funders. |
 | Delta 2 | "We're working on something wonderful" — coming soon, with email capture for launch notification. |
@@ -88,7 +88,7 @@ Confirmed site architecture:
 
 - **No photographs** of the Ontario Power Company generating station, the falls, or any facility. Project: Waterfall has no imagery yet, and no renderings exist.
 - **No funders or sponsors.** Delta 1 is explicitly unfunded. The three supporters above are supporters, not funders, and must not be described as investors, funders, or as having committed capital or space.
-- **No further named institutions or government backers** beyond the three confirmed supporters — *as supporters, funders, partners, or backers*. This does **not** forbid listing a third-party organisation in the Niagara & Buffalo register: a listing there is a directory entry describing a publicly advertised programme, carries an explicit on-page disclaimer that it is neither endorsement nor partnership, and links to the organisation's own site as its citation. Only the entries flagged `supporter: true` in `lib/ecosystem.js` may be described as supporting Diaphora Labs, and only the three confirmed names qualify.
+- **No further named institutions or government backers** beyond the three confirmed supporters — *as supporters, funders, partners, or backers*. This does **not** forbid listing a third-party organisation in the Niagara River register: a listing there is a directory entry describing a publicly advertised programme, carries an explicit on-page disclaimer that it is neither endorsement nor partnership, and links to the organisation's own site as its citation. The register does not mark which listed organisations support Diaphora Labs — that was removed on 2026-09-02 at the user's direction, so the directory reads as a directory. The three confirmed supporters are still named as supporters on Project: Waterfall, and nowhere else.
 - **No cohort data, alumni, portfolio companies, testimonials, metrics, funding totals, or press.**
 - **No specifics of the cross-border legal tooling** beyond its existence as a positioning pillar. Do not invent legal mechanisms, jurisdictions, or services.
 - **Three real supporters exist**, confirmed by the user: **Niagara Falls Innovation Hub**, **Brock University**, and **Velocity**. All three have backed the founders and agreed to be in support of Diaphora Labs. No logo files have been supplied yet, so they currently appear as wordmarks. Do not add a fourth name.

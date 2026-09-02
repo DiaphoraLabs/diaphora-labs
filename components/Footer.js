@@ -5,7 +5,7 @@ import styles from './Footer.module.css';
 // The page has to end somewhere. The foot of a hallmarked piece carries the
 // assay line again, and the way back to every other destination.
 const DESTINATIONS = [
-  { href: '/niagara', label: 'Niagara & Buffalo' },
+  { href: '/niagara', label: 'Niagara River' },
   { href: '/delta-0', label: 'Delta 0' },
   { href: '/delta-1', label: 'Delta 1' },
   { href: '/delta-2', label: 'Delta 2' },

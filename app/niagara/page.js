@@ -7,7 +7,7 @@ import prose from '../prose.module.css';
 import styles from './niagara.module.css';
 
 export const metadata = {
-  title: 'Niagara & Buffalo — Diaphora Labs',
+  title: 'Niagara River — Diaphora Labs',
   description:
     'One register of every programme, fund, incubator and workspace open to entrepreneurs on both sides of the Niagara river — Ontario and Western New York — kept by Diaphora Labs and filterable by what you are short of.',
 };
@@ -17,7 +17,7 @@ export default function Niagara() {
     <main>
       <PageHead
         ord="01"
-        title="Niagara & Buffalo"
+        title="Niagara River"
         standfirst="The border runs down the middle of the river, and so does the ecosystem. Ontario has a Regional Innovation Centre, two campuses and a college, a lender and municipal enterprise centres; Western New York has a five-county incubator network, a CDFI, a university hub and the region's largest competition — and almost nobody can name both lists. This is both lists, on one page, filterable by what you are actually short of. Most of it is not ours."
         meta={['43°04′N 79°04′W', 'Ontario · New York', 'The line runs mid-river']}
         marks={BINDING}
@@ -30,8 +30,8 @@ export default function Niagara() {
             Everything here is open to entrepreneurs in the region right now. Each entry links
             to the organisation&rsquo;s own site, which is where its terms and figures come
             from; we quote them rather than restate them. A listing is not an endorsement and
-            not a partnership. Except where an entry is marked as supporting Diaphora Labs,
-            these organisations have no relationship with us and did not ask to be here.
+            not a partnership. Nobody here asked to be listed, and inclusion implies no
+            relationship with Diaphora Labs in either direction.
           </p>
         </div>
         <EcosystemRegister />

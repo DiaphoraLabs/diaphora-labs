@@ -117,9 +117,6 @@ export default function EcosystemRegister() {
                       {NEEDS.find((x) => x.id === n).label}
                     </li>
                   ))}
-                  {e.supporter && (
-                    <li className={`assay-line ${styles.supporter}`}>Supports Diaphora Labs</li>
-                  )}
                 </ul>
                 {e.note && <p className={styles.warn}>{e.note}</p>}
               </div>

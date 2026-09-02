@@ -140,15 +140,13 @@
 }
 
 .tag,
-.open,
-.supporter {
+.open {
   border: 1px solid var(--rule);
   padding: 0.18rem 0.5rem;
   color: var(--bone-faint);
   line-height: 1.5;
 }
 .open { color: var(--bronze); border-color: var(--bronze-dim); }
-.supporter { color: var(--current); border-color: var(--current-dim); }
 
 .warn {
   margin: 0;

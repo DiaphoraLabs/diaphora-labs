@@ -249,7 +249,7 @@ export default function Press() {
             For interviews, the Project: Waterfall proposal document, or anything not in this
             kit, the address is on the <Link href="/contact">contact page</Link>. If you are
             writing about entrepreneurship in the region rather than about us, the{' '}
-            <Link href="/niagara">Niagara &amp; Buffalo register</Link> lists every programme
+            <Link href="/niagara">Niagara River register</Link> lists every programme
             on both sides of the river, with sources.
           </p>
           <p className="measure">
