@@ -113,7 +113,7 @@ export default function Home() {
         </div>
 
         <p className={styles.beneathNote}>
-          <Link href="/niagara">Why this happens at Niagara →</Link>
+          <Link href="/niagara">The Niagara &amp; Buffalo register →</Link>
         </p>
       </section>
     </main>

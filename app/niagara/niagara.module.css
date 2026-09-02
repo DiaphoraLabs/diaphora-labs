@@ -1,6 +1,26 @@
-.drop {
+/* The Niagara–Buffalo register.
+   The portal leads; the argument for the address follows it and is kept short.
+   Section heads are shared across all three bands so the page reads as one
+   document rather than three stapled ones. */
+.sectionHead { font-size: var(--step-2); color: var(--bone); max-width: 22ch; }
+.sectionNote { margin: 0.7rem 0 0; color: var(--bone-dim); }
+
+.registerSection {
   padding-top: var(--band-tight);
   padding-bottom: var(--band-wide);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.4rem, 4vh, 2.2rem);
+}
+.registerHead { display: flex; flex-direction: column; }
+
+.drop {
+  padding-top: var(--band);
+  padding-bottom: var(--band-wide);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.2rem, 3vh, 1.8rem);
 }
 
 .courses { list-style: none; margin: 0; padding: 0; position: relative; }
@@ -49,30 +69,23 @@
   .depth { padding-top: 0; }
 }
 
-/* --- The economic case ---------------------------------------------------
-   A register, not a card grid: ruled rows of condition and consequence, the
-   same schedule form Project: Waterfall uses. A card grid here would read as
-   a feature matrix, which is exactly the wrong genre for an argument being
-   made to a ministry. */
-.caseSection {
+/* --- our own two doors ---------------------------------------------------
+   The same ruled register as everything else, deliberately NOT dressed up
+   relative to the eleven entries above it. Making Delta 0 and Delta 1 louder
+   than the organisations we just listed would undo the reason the page is
+   credible. */
+.oursSection {
   padding-top: var(--band);
   padding-bottom: var(--band-wide);
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.2rem;
   border-top: 1px solid var(--rule);
 }
 
-.caseHead { font-size: var(--step-2); color: var(--bone); max-width: 20ch; }
+.ours { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 
-.case {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--rule);
-}
-
-.caseRow {
+.oursRow {
   display: grid;
   grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
   column-gap: clamp(1.2rem, 3vw, 2.6rem);
@@ -82,16 +95,17 @@
   border-bottom: 1px solid var(--rule);
 }
 
-.caseKey { color: var(--bronze); line-height: 1.6; }
-
-.caseBody {
-  margin: 0;
-  max-width: 62ch;
-  color: var(--bone-dim);
+.oursKey {
+  color: var(--current);
   line-height: 1.6;
+  text-decoration: none;
+  border-bottom: 1px solid var(--current-dim);
+  justify-self: start;
 }
+.oursKey:hover { color: var(--bone); border-bottom-color: var(--bone); }
+
+.oursBody { margin: 0; max-width: 62ch; color: var(--bone-dim); line-height: 1.6; }
 
 @media (max-width: 820px) {
-  .caseRow { grid-template-columns: minmax(0, 1fr); }
+  .oursRow { grid-template-columns: minmax(0, 1fr); }
 }
-
