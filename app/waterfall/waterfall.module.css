@@ -1,3 +1,10 @@
+/* The ask leads the page: the proposal download and the six sign-on lanes sit
+   above the argument for them. */
+.ask {
+  padding-top: var(--band-tight);
+  padding-bottom: var(--band);
+}
+
 .tablet {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -77,24 +84,13 @@
 
 /* Cadence, not one interval seven times. The uses and the ranges are two halves
    of one answer to "what does it become", so they close tight; the story and the
-   proving ground each end an argument, so they close wide. */
+   uses each end an argument, so they close wide. */
 .story,
 .uses,
-.proving {
-  padding-top: var(--band);
-  padding-bottom: var(--band);
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  border-top: 1px solid var(--rule);
-}
 
 /* The two boundaries where the argument genuinely changes hands: history hands
    over to the proposal, and the proposal hands over to what is not settled. */
 .story,
-.proving {
-  padding-bottom: var(--band-wide);
-}
 
 /* --- the story: a dated register down one line --------------------------- */
 .timeline {
@@ -115,7 +111,7 @@
 
 .era {
   display: grid;
-  /* Matches .row's condition column, so the timeline and the registers keep one
+  /* Matches the entry column, so the timeline and the programme keep one
      left rag. Two schedules on one drawing should agree. */
   grid-template-columns: 11rem minmax(0, 1fr);
   gap: clamp(0.8rem, 2.5vw, 2rem);
@@ -184,67 +180,16 @@
 
 /* The schedule. Tight, uniform, tabular figures — built to be compared down the
    column rather than read across the row. */
-.register {
-  list-style: none;
-  margin: var(--band-tight) 0 0;
-  padding: 0;
-  border-top: 1px solid var(--rule);
-}
 
-.row {
-  display: grid;
-  grid-template-columns: 11rem minmax(0, 14rem) minmax(0, 1fr);
-  gap: clamp(0.6rem, 2.2vw, 2rem);
-  align-items: baseline;
-  padding: clamp(0.6rem, 1.6vh, 0.95rem) 0;
-  border-bottom: 1px solid var(--rule);
-}
 
-.rowWhere {
-  font-family: var(--font-mono), monospace;
-  font-size: var(--step--1);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--bronze);
-  font-feature-settings: 'tnum' 1;
-}
 
-.rowHead {
-  font-size: var(--step-0);
-  font-stretch: 112%;
-  color: var(--bone);
-}
 
-.rowBody { margin: 0; color: var(--bone-dim); }
 
 /* --- the proposed mark ---------------------------------------------------- */
-.proven {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: clamp(1.1rem, 3vw, 2.2rem);
-  align-items: start;
-  /* Tight: the mark belongs to the catalogue above it, not to a new movement. */
-  margin-top: var(--band-tight);
-  /* Set on the ground under a bronze rule, not in a filled box. This was a card
-     built from the plaque's own gradient, angle and edge token — a second cast
-     object on a page that had already refused one for the building spec. */
-  padding-top: clamp(1.2rem, 3vw, 2rem);
-  border-top: 1px solid var(--bronze);
-  max-width: 62rem;
-}
-.provenMark { display: block; padding-top: 0.2rem; }
-.provenHead {
-  font-size: var(--step-1);
-  font-stretch: 118%;
-  color: var(--current);
-}
-.proven p { margin: 0.5rem 0 0; color: var(--bone-dim); }
 
 @media (max-width: 860px) {
   .era { grid-template-columns: 1fr; gap: 0.3rem; }
   .year { padding-top: 0; }
-  .row { grid-template-columns: 1fr; gap: 0.3rem; }
-  .proven { grid-template-columns: 1fr; }
   /* The two registers still have to read as different documents once both are
      single-column: the programme keeps its air, the schedule keeps its tightness. */
   .entry { grid-template-columns: 1fr; gap: 0.35rem; padding: clamp(1.1rem, 3vh, 1.7rem) 0; }

@@ -2,8 +2,8 @@ import PageHead from '../../components/PageHead';
 import { marksFor } from '../../lib/marks';
 import SignOn from '../../components/SignOn';
 import SupporterWall from '../../components/SupporterWall';
-import Mark from '../../components/Mark';
-import { STORY, USES, RANGES, PROVEN_MARK, SUPPORTERS } from '../../lib/proposal';
+import BriefGate from '../../components/BriefGate';
+import { STORY, USES, SUPPORTERS, SOURCES } from '../../lib/proposal';
 import prose from '../prose.module.css';
 import styles from './waterfall.module.css';
 
@@ -13,31 +13,6 @@ export const metadata = {
     'A flagship home at the old Ontario Power Company generating station, at the base of Niagara Falls.',
 };
 
-// The station's own record, cited. Niagara Parks staff know this building better
-// than we do; a proposal to them that states its history without sources invites
-// them to check it against their own file and find us approximate.
-const SOURCES = [
-  {
-    fact: 'The station: 1905 to 1999, 203,000 hp',
-    cite: 'Ontario Power Company Generating Station',
-    href: 'https://en.wikipedia.org/wiki/Ontario_Power_Company_Generating_Station',
-  },
-  {
-    fact: 'Owned by Niagara Parks, out of service',
-    cite: 'Niagara Parks, Interests in Redevelopment of Inactive Power Stations',
-    href: 'https://www.niagaraparks.com/media-room/news/power-stations-redevelopment',
-  },
-  {
-    fact: 'The 1890 commission',
-    cite: 'IEEE, Milestones: Adams Hydroelectric Generating Plant',
-    href: 'https://ethw.org/Milestones:Adams_Hydroelectric_Generating_Plant,_1895',
-  },
-  {
-    fact: 'Power reaching Buffalo, 1896',
-    cite: 'Engineering and Technology History Wiki, Early Electrification of Buffalo',
-    href: 'https://ethw.org/Early_Electrification_of_Buffalo',
-  },
-];
 
 export default function Waterfall() {
   return (
@@ -56,6 +31,30 @@ export default function Waterfall() {
         ]}
         marks={marksFor('Partners')}
       />
+
+      {/* THE ASK ----------------------------------------------------------
+          Both calls to action sit above the argument. A reader who is already
+          convinced should not have to scroll a proposal to act on it, and a
+          reader who is not can carry the PDF away and be convinced elsewhere. */}
+      <section className={`page-pad ${styles.ask}`}>
+        <BriefGate />
+      </section>
+
+      {/* WAYS IN ---------------------------------------------------------- */}
+      <section className={`page-pad ${styles.ways}`}>
+        <h2 className={styles.waysHead}>Put your name on the drawing</h2>
+        <p className={`measure ${styles.waysLede}`}>
+          A building this size moves when enough people say out loud that it should.
+          Six ways in, each about two minutes, none of them costing anything, and every
+          one of them the same commitment: your name on the drawing. If you
+          are local and you think this is the wrong idea,{' '}
+          <a href="#local">the community lane</a> is still for you. Write to{' '}
+          <a href="mailto:innovate@diaphoralabs.com">innovate@diaphoralabs.com</a>{' '}
+          if none of them fit.
+        </p>
+        <SignOn />
+      </section>
+
 
       <section className={`page-pad ${styles.tablet}`}>
         {/* Set as text, not cast: the page head is already the tablet, and two
@@ -132,58 +131,6 @@ export default function Waterfall() {
         </ol>
       </section>
 
-      {/* THE PROVING GROUND ------------------------------------------------ */}
-      <section className={`page-pad ${styles.proving}`}>
-        <h2 className={styles.sectionHead}>
-          Everything that makes this site impossible is something industry pays to simulate
-        </h2>
-        <p className={`measure ${styles.sectionLede}`}>
-          Mist, natural icing, a permanent roar, a long tailrace tunnel, live hydraulic
-          infrastructure, a sustained grade, and millions of visitors a year. Companies
-          spend fortunes recreating these conditions badly indoors. We are cataloguing
-          seventeen test ranges that offer them real, and one steward controls land,
-          water, roads and underground — so the whole catalogue could run under a single
-          site agreement. Six of the seventeen are below.
-        </p>
-
-        <ol className={styles.register}>
-          {RANGES.map((r) => (
-            <li key={r.head} className={styles.row}>
-              <span className={styles.rowWhere}>{r.cond}</span>
-              <h3 className={styles.rowHead}>{r.head}</h3>
-              <p className={styles.rowBody}>{r.body}</p>
-            </li>
-          ))}
-          {/* The catalogue was announced and then withheld with no affordance.
-              The last row is the way to the rest of it. */}
-          <li className={styles.row}>
-            <span className={styles.rowWhere}>Eleven more</span>
-            <h3 className={styles.rowHead}>The rest of the catalogue</h3>
-            <p className={styles.rowBody}>
-              Still being written up. If a condition you need is not listed, say which
-              one — it is how the catalogue gets finished.{' '}
-              <a href="#research">Ask through the research lane</a>.
-            </p>
-          </li>
-        </ol>
-
-        {/* The proposal's own certification mark, struck in the same alphabet. */}
-        <div className={styles.proven}>
-          <span className={styles.provenMark}>
-            <Mark mark={PROVEN_MARK} size={54} struck current />
-          </span>
-          <div>
-            <h3 className={styles.provenHead}>Niagara-Proven</h3>
-            <p className="measure">
-              A proposed mark for products that pass here. A hallmark certifies where a
-              thing was made and to what standard; this one would certify that a product
-              survived conditions no laboratory can honestly reproduce. It does not exist
-              yet, and nothing carries it.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className={`page-pad ${prose.prose}`}>
         <div className={prose.steps}>
           <div className={prose.block}>
@@ -220,9 +167,10 @@ export default function Waterfall() {
             funded, approved or agreed. Diaphora Labs does not control this building:
             there is no lease, no purchase, no agreement and no municipal approval,
             and the proposal is offered to Niagara Parks and the region, whose land
-            and whose decision this is. The seventeen ranges are a catalogue in
-            progress. Niagara-Proven is a proposed mark that certifies nothing
-            today. There are no renderings here and no photographs of the station.
+            and whose decision this is. The catalogue of test ranges is still
+            being written, and Niagara-Proven is a proposed mark that certifies
+            nothing today; both are set out in the proposal above. There are no
+            renderings here and no photographs of the station.
             We hold none that are real, and we will not manufacture any.
           </p>
         </div>
@@ -243,20 +191,6 @@ export default function Waterfall() {
           </ul>
         </div>
 
-      </section>
-
-      {/* WAYS IN ---------------------------------------------------------- */}
-      <section className={`page-pad ${styles.ways}`}>
-        <h2 className={styles.waysHead}>Put your name on the drawing</h2>
-        <p className={`measure ${styles.waysLede}`}>
-          A building this size moves when enough people say out loud that it should.
-          Six ways in, each about two minutes, none of them costing anything. If you
-          are local and you think this is the wrong idea,{' '}
-          <a href="#local">the community lane</a> is still for you. Write to{' '}
-          <a href="mailto:innovate@diaphoralabs.com">innovate@diaphoralabs.com</a>{' '}
-          if none of them fit.
-        </p>
-        <SignOn />
       </section>
 
       {/* THE REGISTER ------------------------------------------------------ */}

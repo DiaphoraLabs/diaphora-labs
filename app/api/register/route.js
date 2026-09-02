@@ -15,6 +15,10 @@ const LISTS = new Set([
   'waterfall-local',
   'waterfall-capital',
   'waterfall-media',
+  // The proposal PDF gate. Same register as every other lane; the document is
+  // handed over in the browser rather than emailed, because nothing here sends
+  // mail and a promised email that never arrives is worse than no gate at all.
+  'waterfall-brief',
 ]);
 
 export const runtime = 'nodejs';

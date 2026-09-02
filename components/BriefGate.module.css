@@ -1,0 +1,91 @@
+/* The proposal gate. It sits high on the page and is the one thing there
+   allowed to look like a plaque, because it is the page's actual ask. */
+.gate {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: linear-gradient(158deg, var(--patina-raised), var(--patina-deep));
+  border: 1px solid var(--patina-edge);
+  max-width: 46rem;
+}
+
+.kicker { color: var(--bronze); margin: 0; }
+
+.lead,
+.doneLead {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--bone);
+  line-height: 1.6;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.7rem;
+  margin-top: 0.2rem;
+}
+
+.field { display: flex; flex-direction: column; gap: 0.35rem; flex: 1 1 16rem; min-width: 0; }
+.field span { color: var(--bone-faint); }
+
+.input {
+  background: var(--patina-deep);
+  border: 1px solid var(--rule);
+  color: var(--bone);
+  font: inherit;
+  padding: 0.6rem 0.7rem;
+  min-height: 44px;
+  min-width: 0;
+}
+.input::placeholder { color: var(--bone-faint); }
+.input:focus-visible { outline: 2px solid var(--current); outline-offset: 1px; }
+.input[aria-invalid='true'] { border-color: var(--alarm); }
+
+/* The one live control in this block, so it is the one thing carrying current. */
+.submit {
+  background: var(--current);
+  color: var(--patina-deep);
+  border: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.1rem;
+  min-height: 44px;
+  cursor: pointer;
+  transition: transform 90ms var(--ease-strike), filter 90ms var(--ease-strike);
+}
+.submit:hover:not(:disabled) { filter: brightness(1.08); }
+.submit:active:not(:disabled) { transform: translateY(1px); }
+.submit:disabled { cursor: wait; opacity: 0.6; }
+
+.download {
+  align-self: flex-start;
+  background: var(--current);
+  color: var(--patina-deep);
+  text-decoration: none;
+  font-family: var(--font-mono), monospace;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.1rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+.download:hover { filter: brightness(1.08); }
+
+.error {
+  margin: 0;
+  color: var(--alarm);
+  border-left: 1px solid var(--alarm);
+  padding-left: 0.7rem;
+  line-height: 1.55;
+}
+
+.fine { margin: 0; color: var(--bone-faint); font-size: 0.88rem; line-height: 1.55; max-width: 60ch; }
+.plain { color: var(--bone-dim); }

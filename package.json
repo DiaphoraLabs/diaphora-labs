@@ -6,12 +6,16 @@
     "dev": "next dev",
     "build": "node scripts/init-db.mjs && next build",
     "start": "next start",
-    "media": "node scripts/build-media-kit.mjs"
+    "media": "node scripts/build-media-kit.mjs",
+    "pdf": "node scripts/build-proposal-pdf.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
     "next": "^16.3.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "pdfkit": "^0.20.2"
   }
 }
