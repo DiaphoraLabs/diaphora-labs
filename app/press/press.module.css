@@ -108,15 +108,17 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
   gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
 }
+/* Ringed individually rather than sat on a filled container: fifteen marks
+   into six columns leaves three empty cells in the last row, and a container
+   background paints them as a grey slab. See EcosystemRegister.module.css. */
 .punch {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   padding: 0.7rem 0.8rem;
   background: var(--patina-deep);
+  box-shadow: 0 0 0 1px var(--rule);
 }
 .punchName { color: var(--bone-dim); line-height: 1.25; }
 
