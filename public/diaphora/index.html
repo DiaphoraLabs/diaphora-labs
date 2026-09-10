@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change is coming — Diaphora Labs</title>
+<meta name="description" content="Diaphora is building something big. Delta 0 is open now — join the community on Discord.">
+<meta name="theme-color" content="#0b1815">
+<meta property="og:title" content="Change is coming">
+<meta property="og:description" content="Diaphora is building something big.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://diaphoralabs.com/">
+<meta property="og:site_name" content="Diaphora Labs">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://diaphoralabs.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Martian+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..500;1,8..60,400&display=swap">
+<style>
+/* Diaphora Labs tokens — mirrors public/media/diaphora-tokens.css. Inlined
+   because this page is served standalone, ahead of the site bundle. */
+:root{
+  --patina-deep:#0b1815;
+  --patina:#123029;
+  --patina-raised:#16382f;
+  --patina-edge:#1e4a3e;
+  --bronze:#b8894a;
+  --bronze-bright:#d9a865;
+  --bone:#ece7d9;
+  --bone-dim:#a9b5ac;
+  --bone-faint:#7c9086;
+  --current:#cbf51f;
+  --current-dim:#8fa81b;
+
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"Martian Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;}
+html{scrollbar-color:var(--bronze) var(--patina-deep);}
+body{
+  background:var(--patina-deep);
+  color:var(--bone);
+  font-family:var(--body);
+  font-optical-sizing:auto;
+  margin:0;
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:56px 24px 40px;
+  text-align:center;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--current);color:var(--patina-deep);}
+.wrap{width:100%;max-width:36rem;display:flex;flex-direction:column;align-items:center;}
+
+.lockup{display:flex;align-items:center;gap:9px;margin-bottom:48px;}
+.lockup svg{display:block;flex:none;}
+.lockup span{
+  font-family:var(--display);font-weight:900;font-stretch:125%;
+  font-size:11px;letter-spacing:.07em;color:var(--bone);
+}
+
+h1{
+  font-family:var(--display);font-weight:900;font-stretch:125%;
+  font-size:clamp(2.5rem,10vw,4.6rem);
+  line-height:.99;letter-spacing:-.02em;text-wrap:balance;
+  margin:0;color:var(--bone);
+}
+
+.sub{
+  font-size:clamp(1.05rem,3vw,1.3rem);line-height:1.5;
+  color:var(--bone-dim);margin:22px 0 0;max-width:30rem;text-wrap:pretty;
+}
+
+.rule{width:60px;height:3px;background:var(--bronze);margin:38px 0 0;flex:none;}
+
+/* Delta 0 is the open door in this system, and the door is struck in current.
+   It is the one place the signal ink appears on this page. */
+.door{margin:38px 0 0;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.door .label{
+  font-family:var(--mono);font-size:8.5px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--bone-faint);
+}
+a.cta{
+  font-family:var(--mono);font-weight:600;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--patina-deep);background:var(--current);
+  border:1px solid var(--current);
+  padding:14px 26px;text-decoration:none;display:inline-block;
+  transition:background 200ms var(--ease),border-color 200ms var(--ease);
+}
+a.cta:hover{background:var(--bone);border-color:var(--bone);}
+a.cta:focus-visible{outline:2px solid var(--bone);outline-offset:3px;}
+
+.foot{
+  font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bone-faint);margin-top:64px;line-height:2;
+}
+.foot a{color:var(--bone-faint);text-decoration:none;border-bottom:1px solid var(--patina-edge);}
+.foot a:hover{color:var(--bronze-bright);}
+
+@media (prefers-reduced-motion:reduce){*{transition-duration:1ms !important;}}
+@media (max-width:520px){
+  a.cta{width:100%;text-align:center;}
+  .foot{margin-top:44px;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="lockup">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path d="M3 17h9V7h9" fill="none" stroke="#ece7d9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>DIAPHORA LABS</span>
+  </div>
+
+  <h1>Change is coming</h1>
+
+  <p class="sub">Diaphora is building something big.</p>
+
+  <div class="rule" role="presentation"></div>
+
+  <div class="door">
+    <span class="label">Delta 0 is open now</span>
+    <a class="cta" href="https://discord.gg/AnWHBBTjB" rel="noopener">Join the community</a>
+  </div>
+
+  <p class="foot">
+    Diaphora Labs &middot; Niagara Falls, Ontario
+  </p>
+
+</div>
+
+</body>
+</html>

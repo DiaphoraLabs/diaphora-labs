@@ -20,9 +20,27 @@ const NTW_FILES = {
   '/sitemap.xml': '/niagara-tech-week/sitemap.xml',
 };
 
+// diaphoralabs.com is parked on a coming-soon page while the site is rebuilt.
+// Only the root is taken: the rest of the app stays reachable at its own paths,
+// because Project: Waterfall is a live proposal with Niagara Parks and its URL
+// is in circulation. Parking the whole host would take that offline.
+const DIAPHORA_HOSTS = new Set([
+  'diaphoralabs.com',
+  'www.diaphoralabs.com',
+]);
+
+const DIAPHORA_PAGE = '/diaphora/index.html';
+
 export function proxy(request) {
   // The Host header carries the port in local dev; the domain is what matters.
   const host = (request.headers.get('host') || '').toLowerCase().split(':')[0];
+
+  if (DIAPHORA_HOSTS.has(host)) {
+    return request.nextUrl.pathname === '/'
+      ? NextResponse.rewrite(new URL(DIAPHORA_PAGE, request.url))
+      : NextResponse.next();
+  }
+
   if (!NTW_HOSTS.has(host)) return NextResponse.next();
 
   const { pathname } = request.nextUrl;
