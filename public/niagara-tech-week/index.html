@@ -247,135 +247,190 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   var ctx = canvas.getContext('2d');
 
   var css = getComputedStyle(document.documentElement);
-  function token(name, fallback) {
-    return (css.getPropertyValue(name) || fallback).trim();
-  }
-  // Read the tokens rather than restating them, so the water cannot drift
-  // away from the palette the rest of the page is built from.
-  var GROUND = token('--patina-deep', '#0b1815');
-  var WATER = hexToRgb(token('--bone', '#ece7d9'));
-  var MIST = hexToRgb(token('--bone-faint', '#7c9086'));
-  var CREST = hexToRgb(token('--bronze', '#b8894a'));
-
-  function hexToRgb(h) {
+  function token(n, f) { return (css.getPropertyValue(n) || f).trim(); }
+  function rgb(h) {
     h = h.replace('#', '');
-    return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+    return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
   }
   function rgba(c, a) { return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
 
-  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var w = 0, h = 0, dpr = 1;
-  var drops = [], puffs = [], raf = null;
+  // Read the tokens rather than restate them, so the water cannot drift away
+  // from the palette the rest of the page is built from.
+  var GROUND = token('--patina-deep', '#0b1815'), G = rgb(GROUND);
+  var WATER  = rgb(token('--bone', '#ece7d9'));
+  var SPRAY  = rgb(token('--bone-faint', '#7c9086'));
+  var LIP    = rgb(token('--bronze', '#b8894a'));
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = canvas.clientWidth;
-    h = canvas.clientHeight;
-    canvas.width = Math.round(w * dpr);
-    canvas.height = Math.round(h * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    seed();
-    if (still.matches) frame(true);
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var w = 0, h = 0, dpr = 1, raf = null, t0 = 0;
+  var tile = null, TILE_H = 620;
+  var plume = [];
+
+  // The sheet, as one seamless texture rather than a field of separate drops.
+  // A waterfall has no gaps: you cannot follow one element down it, only the
+  // striations moving inside a continuous body. So the water is a tile that
+  // repeats vertically, and every layer of it is drawn from the same cloth.
+  function buildTile() {
+    tile = document.createElement('canvas');
+    tile.width = Math.max(1, Math.round(w));
+    tile.height = TILE_H;
+    var c = tile.getContext('2d');
+
+    var count = Math.round(Math.max(26, Math.min(150, w / 7)));
+    for (var i = 0; i < count; i++) {
+      var x = Math.random() * w;
+      var wide = 1 + Math.random() * (Math.random() < 0.14 ? 7 : 2.4);
+
+      // The falls have a body: ribs thin out at the shoulders instead of
+      // running to the window edge, which is what gives the sheet its width.
+      var edge = Math.min(1, Math.pow(Math.sin(Math.PI * (x / w)), 0.55));
+      var base = (0.05 + Math.random() * 0.16) * edge;
+      if (base <= 0.002) continue;
+
+      // Alpha is modulated down the rib by a whole number of periods, so the
+      // tile still meets itself when it repeats. Without that the sheet shows
+      // a seam every loop and the whole illusion goes.
+      var periods = 1 + Math.floor(Math.random() * 4);
+      var phase = Math.random() * Math.PI * 2;
+      var step = 3;
+      for (var y = 0; y < TILE_H; y += step) {
+        var m = 0.18 + 0.82 * Math.pow(0.5 + 0.5 * Math.sin(periods * 2 * Math.PI * y / TILE_H + phase), 1.7);
+        c.fillStyle = rgba(WATER, base * m);
+        c.fillRect(x, y, wide, step + 0.6);
+      }
+    }
   }
 
-  function seed() {
-    // Density tracks area, so a phone does not run a desktop's particle count.
-    var count = Math.round(Math.min(260, Math.max(70, (w * h) / 5200)));
-    drops = [];
-    for (var i = 0; i < count; i++) drops.push(drop(Math.random() * h));
-
-    puffs = [];
-    for (var j = 0; j < 9; j++) {
-      puffs.push({
-        x: Math.random() * w,
-        y: h - Math.random() * h * 0.22,
-        r: 70 + Math.random() * 150,
-        a: 0.02 + Math.random() * 0.035,
-        vy: -0.06 - Math.random() * 0.1,
-        vx: (Math.random() - 0.5) * 0.12
+  function seedPlume() {
+    plume = [];
+    for (var i = 0; i < 26; i++) {
+      plume.push({
+        x: w * (0.10 + Math.random() * 0.80),
+        y: h * (0.86 + Math.random() * 0.24),
+        r: h * (0.12 + Math.random() * 0.24),
+        a: 0.06 + Math.random() * 0.09,
+        vy: -(0.10 + Math.random() * 0.22),
+        vx: (Math.random() - 0.5) * 0.16,
+        grow: 1 + Math.random() * 0.0009
       });
     }
   }
 
-  function drop(y) {
-    return {
-      x: Math.random() * w,
-      y: y,
-      len: 26 + Math.random() * 120,
-      // Falling water accelerates. Speed scales with how far it has already
-      // fallen, which is what stops the sheet reading as a scrolling texture.
-      v: 0.9 + Math.random() * 2.1,
-      a: 0.05 + Math.random() * 0.11,
-      wpx: Math.random() < 0.18 ? 1.4 : 0.8
-    };
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildTile();
+    seedPlume();
+    if (still.matches) frame(0, true);
   }
 
-  function frame(single) {
+  // Three passes of the same cloth at different speeds and stretches. The
+  // variation is what churns; the shared texture is what keeps it one mass.
+  var LAYERS = [
+    { speed:  38, scale: 0.72, alpha: 0.55 },
+    { speed:  74, scale: 1.15, alpha: 0.85 },
+    { speed: 132, scale: 1.85, alpha: 0.55 }
+  ];
+
+  function frame(now, single) {
+    if (!t0) t0 = now || 0;
+    var t = ((now || 0) - t0) / 1000;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.fillStyle = GROUND;
     ctx.fillRect(0, 0, w, h);
 
-    // The crest: the lip the sheet leaves, a single warm line high on the page.
-    var crest = h * 0.13;
-    var lip = ctx.createLinearGradient(0, crest - 26, 0, crest + 10);
-    lip.addColorStop(0, rgba(CREST, 0));
-    lip.addColorStop(0.72, rgba(CREST, 0.11));
-    lip.addColorStop(1, rgba(CREST, 0));
-    ctx.fillStyle = lip;
-    ctx.fillRect(0, crest - 26, w, 36);
+    var crest = h * 0.15;
 
-    for (var i = 0; i < drops.length; i++) {
-      var d = drops[i];
-      var depth = Math.max(0, (d.y - crest) / Math.max(1, h - crest));
-      ctx.fillStyle = rgba(WATER, d.a * (0.25 + depth * 0.75));
-      ctx.fillRect(d.x, d.y, d.wpx, d.len * (0.5 + depth * 0.9));
+    // The sheet, from the lip down.
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(0, crest, w, h - crest);
+    ctx.clip();
 
-      if (!single) {
-        d.y += d.v * (1 + depth * 2.6);
-        if (d.y > h + d.len) {
-          drops[i] = drop(crest - d.len - Math.random() * 60);
-        }
+    for (var i = 0; i < LAYERS.length; i++) {
+      var L = LAYERS[i];
+      var span = TILE_H * L.scale;
+      var off = ((t * L.speed) % span + span) % span;
+      ctx.globalAlpha = L.alpha;
+      for (var y = crest - span + off; y < h; y += span) {
+        ctx.drawImage(tile, 0, 0, tile.width, TILE_H, 0, y, w, span);
       }
     }
+    ctx.globalAlpha = 1;
 
-    // Spray, where the sheet lands.
-    for (var j = 0; j < puffs.length; j++) {
-      var p = puffs[j];
+    // Water does not reach the bottom of the frame: it is taken apart by its
+    // own impact and becomes the plume. Dissolving the sheet here is what
+    // gives the fall a bottom.
+    var into = ctx.createLinearGradient(0, h * 0.62, 0, h * 0.94);
+    into.addColorStop(0, rgba(G, 0));
+    into.addColorStop(0.55, rgba(G, 0.55));
+    into.addColorStop(1, rgba(G, 0.95));
+    ctx.fillStyle = into;
+    ctx.fillRect(0, h * 0.62, w, h * 0.38);
+    ctx.restore();
+
+    // The lip: water turns over here, so it is the one warm line on the page
+    // and the sheet is brightest just under it.
+    var lip = ctx.createLinearGradient(0, crest - 30, 0, crest + 46);
+    lip.addColorStop(0, rgba(LIP, 0));
+    lip.addColorStop(0.40, rgba(LIP, 0.22));
+    lip.addColorStop(0.52, rgba(WATER, 0.20));
+    lip.addColorStop(0.66, rgba(WATER, 0.12));
+    lip.addColorStop(1, rgba(WATER, 0));
+    ctx.fillStyle = lip;
+    ctx.fillRect(0, crest - 30, w, 76);
+
+    // The plunge: the line the sheet lands on, and the plume standing off it.
+    // This is the half rain does not have, and the half that says waterfall.
+    var pool = h * 0.84;
+    var glow = ctx.createLinearGradient(0, pool - h * 0.13, 0, pool + h * 0.06);
+    glow.addColorStop(0, rgba(SPRAY, 0));
+    glow.addColorStop(0.72, rgba(SPRAY, 0.20));
+    glow.addColorStop(1, rgba(SPRAY, 0.06));
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, pool - h * 0.13, w, h * 0.19);
+
+    for (var j = 0; j < plume.length; j++) {
+      var p = plume[j];
       var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-      g.addColorStop(0, rgba(MIST, p.a));
-      g.addColorStop(1, rgba(MIST, 0));
+      g.addColorStop(0, rgba(SPRAY, p.a));
+      g.addColorStop(0.55, rgba(SPRAY, p.a * 0.42));
+      g.addColorStop(1, rgba(SPRAY, 0));
       ctx.fillStyle = g;
       ctx.fillRect(p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);
 
       if (!single) {
-        p.y += p.vy;
-        p.x += p.vx;
-        if (p.y + p.r < h * 0.55) {
-          p.x = Math.random() * w;
-          p.y = h + p.r * 0.3;
-          p.r = 70 + Math.random() * 150;
+        p.y += p.vy; p.x += p.vx; p.r *= p.grow;
+        if (p.y + p.r < h * 0.42) {
+          p.x = w * (0.10 + Math.random() * 0.80);
+          p.y = h * (0.94 + Math.random() * 0.16);
+          p.r = h * (0.10 + Math.random() * 0.20);
         }
       }
     }
 
-    // Hold the middle of the page quiet so the type never fights the water.
+    // Hold the middle quiet so the type never fights the water.
     var veil = ctx.createLinearGradient(0, 0, 0, h);
-    veil.addColorStop(0, rgba(hexToRgb(GROUND), 0.28));
-    veil.addColorStop(0.40, rgba(hexToRgb(GROUND), 0.70));
-    veil.addColorStop(0.76, rgba(hexToRgb(GROUND), 0.62));
-    veil.addColorStop(1, rgba(hexToRgb(GROUND), 0.26));
+    veil.addColorStop(0, rgba(G, 0.30));
+    veil.addColorStop(0.34, rgba(G, 0.72));
+    veil.addColorStop(0.72, rgba(G, 0.66));
+    veil.addColorStop(1, rgba(G, 0.24));
     ctx.fillStyle = veil;
     ctx.fillRect(0, 0, w, h);
 
-    if (!single) raf = requestAnimationFrame(function () { frame(false); });
+    if (!single) raf = requestAnimationFrame(function (ts) { frame(ts, false); });
   }
 
   function start() {
     if (raf || still.matches) return;
-    raf = requestAnimationFrame(function () { frame(false); });
+    t0 = 0;
+    raf = requestAnimationFrame(function (ts) { frame(ts, false); });
   }
-  function stop() {
-    if (raf) { cancelAnimationFrame(raf); raf = null; }
-  }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
 
   window.addEventListener('resize', resize);
   // A background animation in a tab nobody is looking at is just battery.
@@ -384,11 +439,11 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   });
   still.addEventListener('change', function () {
     stop();
-    if (still.matches) frame(true); else start();
+    if (still.matches) frame(0, true); else start();
   });
 
   resize();
-  if (still.matches) frame(true); else start();
+  if (still.matches) frame(0, true); else start();
 })();
 
 (function () {
