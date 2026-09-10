@@ -36,6 +36,9 @@
   /* One leading for the page, so the gap under the date line can be set from
      the same number the body paragraph is set on. */
   --leading:1.9;
+  /* One weight for every lime rule on the page: the divider and the underline
+     under "Are you in?" are the same mark and should not disagree. */
+  --rule-weight:3px;
   --size-body:clamp(1.02rem,2.9vw,1.2rem);
   --size-meta:clamp(9px,2.4vw,11px);
 }
@@ -119,7 +122,7 @@ h1 .yr{display:block;color:var(--current);}
 }
 .dates .pl .sep{color:var(--current-dim);}
 
-.rule{width:60px;height:1px;background:var(--current-dim);margin:34px 0;flex:none;}
+.rule{width:60px;height:var(--rule-weight);background:var(--current-dim);margin:34px 0;flex:none;}
 
 .pitch{
   font-size:var(--size-body);line-height:var(--leading);
@@ -133,7 +136,7 @@ h1 .yr{display:block;color:var(--current);}
   color:var(--bone);margin:30px 0 0;
   text-decoration:underline;
   text-decoration-color:var(--current);
-  text-decoration-thickness:3px;
+  text-decoration-thickness:var(--rule-weight);
   text-underline-offset:9px;
 }
 
@@ -310,6 +313,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   var w = 0, h = 0, dpr = 1, raf = null, t0 = 0;
   var tile = null, TILE_H = 620;
   var plume = [], rings = [], chop = [];
+  var boat = null, wake = [], lastT = 0;
 
   // The sheet, as one seamless texture rather than a field of separate drops.
   // A waterfall has no gaps: you cannot follow one element down it, only the
@@ -399,6 +403,110 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   }
 
   var lastW = 0, lastH = 0;
+  // The Maid of the Mist. Drawn as a profile in one stroke weight with round
+  // caps and joins, which is the only part of the punch alphabet that applies
+  // here — the punches are abstract devices and never pictograms, so this is
+  // deliberately not one of them. Units are a 96-long hull with the waterline
+  // at y=0, so the boat sits on the pool rather than in front of it.
+  var HULL = [
+    // Hull, stopping AT the waterline: a boat shows only its freeboard, and
+    // drawing the whole hull is what made the first pass read as a barge
+    // sitting on the water rather than in it. Rounded transom, sheer rising
+    // to the bow, stem raking back down to where it enters.
+    'M -34 0 C -37 -5 -37 -9 -34 -11 C -6 -13 22 -14 44 -12 L 36 0 Z',
+    // Main deck house, standing on the deck.
+    'M -28 -11 L -28 -24 L 26 -24 L 26 -12',
+    // The window band as one line: at this size a row of panes is mud.
+    'M -25 -18 L 23 -18',
+    // The house roof is the upper deck, overhanging slightly.
+    'M -31 -24 L 30 -24',
+    // Canopy over the after deck — the stretch that is all ponchos, and the
+    // most recognisable thing about this boat after its size.
+    'M -29 -33 L 4 -33',
+    'M -26 -33 L -26 -24',
+    'M 1 -33 L 1 -24',
+    // Wheelhouse, forward, where it sits on these boats.
+    'M 8 -24 L 8 -34 L 24 -34 L 24 -24',
+    // Mast.
+    'M 16 -34 L 16 -42'
+  ];
+
+  function seedBoat() {
+    var poolY = h * 0.84;
+    boat = {
+      p: 0.18,          // where along the crossing
+      dir: 1,           // which way it is headed
+      facing: 1,        // eases through zero, so the turn is the boat coming about
+      scale: Math.min(w * 0.00098, 1.02),
+      y: poolY + (h - poolY) * 0.34,
+      spawn: 0
+    };
+    wake = [];
+  }
+
+  function drawBoat(t, dt, single) {
+    if (!boat) return;
+    var travel = 46;                       // seconds to cross
+    var margin = w * 0.12;
+    var x = margin + boat.p * (w - margin * 2);
+
+    if (!single) {
+      // Ease the facing through zero rather than flipping: a boat that turns
+      // around passes through edge-on, and the width doing that IS the turn.
+      var target = boat.dir;
+      boat.facing += (target - boat.facing) * Math.min(1, dt * 0.55);
+
+      if (Math.abs(boat.facing - target) < 0.06) {
+        boat.p += (boat.dir * dt) / travel;
+        if (boat.p >= 1) { boat.p = 1; boat.dir = -1; }
+        if (boat.p <= 0) { boat.p = 0; boat.dir = 1; }
+      }
+
+      boat.spawn -= dt;
+      if (boat.spawn <= 0) {
+        boat.spawn = 0.55;
+        wake.push({ x: x - 26 * boat.facing * boat.scale, y: boat.y, r: 2, maxR: 46 + Math.random() * 34, a: 0.16 });
+      }
+    }
+
+    // Wake first, so the hull sits on top of the water it has disturbed.
+    for (var i = wake.length - 1; i >= 0; i--) {
+      var k = wake[i];
+      var life = k.r / k.maxR;
+      ctx.strokeStyle = rgba(WATER, k.a * (1 - life) * 0.9);
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.ellipse(k.x, k.y, k.r, Math.max(0.5, k.r * 0.15), 0, 0, Math.PI * 2);
+      ctx.stroke();
+      if (!single) {
+        k.r += 13 * dt;
+        if (k.r >= k.maxR) wake.splice(i, 1);
+      }
+    }
+
+    var bob = single ? 0 : Math.sin(t * 1.15) * 1.5;
+    var pitch = single ? 0 : Math.sin(t * 0.83) * 0.014;
+
+    ctx.save();
+    ctx.translate(x, boat.y + bob);
+    ctx.rotate(pitch);
+    ctx.scale(boat.scale * boat.facing, boat.scale);
+
+    ctx.lineWidth = 1.15 / Math.max(0.12, boat.scale);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = rgba(WATER, 0.5);
+
+    for (var m = 0; m < HULL.length; m++) {
+      var pth = new Path2D(HULL[m]);
+      if (m === 0) { ctx.fillStyle = rgba(G, 0.92); ctx.fill(pth); }
+      ctx.stroke(pth);
+    }
+    ctx.restore();
+    ctx.lineCap = 'butt';
+    ctx.lineJoin = 'miter';
+  }
+
   function resize(force) {
     var nw = canvas.clientWidth, nh = canvas.clientHeight;
 
@@ -418,6 +526,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
       buildTile();
       seedPlume();
       seedPool();
+      seedBoat();
     }
     if (still.matches) frame(0, true);
   }
@@ -540,6 +649,10 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
         }
       }
     }
+
+    var dt = single ? 0 : Math.min(0.05, Math.max(0, t - lastT));
+    lastT = t;
+    drawBoat(t, dt, single);
 
     for (var j = 0; j < plume.length; j++) {
       var p = plume[j];
