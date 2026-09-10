@@ -142,9 +142,15 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
 }
 .done + .note{text-transform:none;letter-spacing:.02em;font-size:10.5px;color:var(--bone-dim);}
 
+/* A privacy notice nobody can read is not a privacy notice: sentence case, in
+   the reading face, at a size that survives a phone. */
+.privacy{
+  font-size:11px;line-height:1.6;color:var(--bone-faint);
+  max-width:31rem;margin:36px 0 0;text-wrap:pretty;
+}
 .foot{
   font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--bone-faint);margin-top:56px;line-height:2;
+  color:var(--bone-faint);margin-top:22px;line-height:2;
 }
 .foot a{color:var(--bone-faint);text-decoration:none;border-bottom:1px solid var(--patina-edge);}
 .foot a:hover{color:var(--bronze-bright);}
@@ -153,7 +159,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
 @media (max-width:520px){
   .row{flex-direction:column;}
   button{width:100%;}
-  .foot{margin-top:40px;}
+  .privacy{margin-top:40px;}
 }
 </style>
 </head>
@@ -178,8 +184,8 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   <div class="rule" role="presentation"></div>
 
   <p class="pitch">
-    A year from now, the world&rsquo;s innovators and scientists will return to Niagara &mdash;
-    <b>137 years after the original challenge that gave us alternating current at scale.</b>
+    <b>137 years after the original competition that gave us alternating current at scale,</b>
+    the world&rsquo;s innovators and scientists return to Niagara.
   </p>
 
   <p class="ask">Are you in?</p>
@@ -199,8 +205,15 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
       <button type="submit" id="go">Count me in</button>
     </div>
 
-    <p class="note" id="note" role="status" aria-live="polite">One email, when the dates are confirmed.</p>
+    <p class="note" id="note" role="status" aria-live="polite">&nbsp;</p>
   </form>
+
+  <p class="privacy">
+    We collect your email address and the interests you tick, and use them only to
+    contact you about Niagara Tech Week. The list is held by Diaphora Labs in Ontario,
+    Canada. We do not sell it, share it, or add you to anything else. Ask us to remove
+    you at any time and we will, without asking why.
+  </p>
 
   <p class="foot">
     Convened by Diaphora Labs &middot; Niagara Falls, Ontario<br>
@@ -251,13 +264,12 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     var controller = new AbortController();
     var timer = setTimeout(function () { controller.abort(); }, TIMEOUT_MS);
 
-    fetch('/api/register', {
+    fetch('/api/niagara-tech-week', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        list: 'niagara-tech-week',
         email: addr,
-        commitments: interests()
+        interests: interests()
       }),
       signal: controller.signal
     })
@@ -272,8 +284,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
       .then(function (r) {
         if (r.res.ok && r.data && r.data.ok) {
           form.innerHTML =
-            '<p class="done">You’re on the list.</p>' +
-            '<p class="note">We’ll write once, when the dates are confirmed.</p>';
+            '<p class="done">You’re on the list.</p>';
           return;
         }
         throw new Error((r.data && r.data.error) || (r.res.status >= 500

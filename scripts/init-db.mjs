@@ -35,3 +35,6 @@ for (const statement of statements) {
 
 const [{ count }] = await sql`select count(*)::int as count from registrations`;
 console.log(`init-db: registrations table ready — ${count} row(s).`);
+
+const [{ ntw }] = await sql`select count(*)::int as ntw from niagara_tech_week_signups`;
+console.log(`init-db: niagara_tech_week_signups table ready — ${ntw} row(s).`);
