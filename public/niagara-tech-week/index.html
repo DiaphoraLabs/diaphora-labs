@@ -490,7 +490,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   var w = 0, h = 0, dpr = 1, raf = null, t0 = 0;
   var tile = null, TILE_H = 620;
   var plume = [], rings = [], chop = [];
-  var boat = null, wake = [], lastT = 0;
+  var boat = null, wake = [], lastT = 0, annie = null;
 
   // The sheet, as one seamless texture rather than a field of separate drops.
   // A waterfall has no gaps: you cannot follow one element down it, only the
@@ -684,6 +684,113 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     ctx.lineJoin = 'miter';
   }
 
+  // Annie Edson Taylor went over the falls in a barrel on her sixty-third
+  // birthday in 1901 and climbed out of it alive. She turns up now and then,
+  // and the Maid picks her up on its way past — which is roughly what happened.
+  var BARREL = [
+    'M -5 -9 C -8 -4 -8 4 -5 9 L 5 9 C 8 4 8 -4 5 -9 Z',
+    'M -6.6 -3.5 L 6.6 -3.5',
+    'M -6.6 3.5 L 6.6 3.5',
+    'M -2 -9 L -2 9',
+    'M 2 -9 L 2 9'
+  ];
+
+  function seedAnnie() {
+    annie = { state: 'idle', wait: 14 + Math.random() * 34, x: 0, y: 0, vy: 0, rot: 0, pop: 0, hold: 0 };
+  }
+
+  function drawAnnie(t, dt, boatX, poolY, single) {
+    // She is a moment, not a fixture: with movement off there is nothing to
+    // show, so she sits the still frame out rather than floating there frozen.
+    if (!annie || single) return;
+
+    var restY = poolY + (h - poolY) * 0.34;
+    var crest = h * 0.15;
+    var sc = boat ? boat.scale : 0.9;
+
+    if (annie.state === 'idle') {
+      annie.wait -= dt;
+      if (annie.wait <= 0) {
+        // Land her away from the boat, so it has to finish its run and come
+        // about before it can reach her.
+        var side = boat && boat.p > 0.5 ? 0.16 : 0.62;
+        annie.x = w * (side + Math.random() * 0.22);
+        annie.y = crest;
+        annie.vy = 0; annie.rot = 0; annie.pop = 0;
+        annie.state = 'falling';
+      }
+    } else if (annie.state === 'falling') {
+      annie.vy += 620 * dt;
+      annie.y += annie.vy * dt;
+      annie.rot += 4.2 * dt;
+      if (annie.y >= restY) {
+        annie.y = restY;
+        annie.state = 'bobbing';
+        annie.hold = 1.6;
+        for (var i = 0; i < 3; i++) {
+          wake.push({ x: annie.x, y: restY, r: 2 + i * 5, maxR: 40 + i * 22, a: 0.22 });
+        }
+      }
+    } else if (annie.state === 'bobbing') {
+      annie.hold -= dt;
+      // Bring the tumble to rest the short way round: after a fall rot can be
+      // several turns, and easing that straight to zero unwinds it backwards.
+      annie.rot = ((annie.rot + Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2) - Math.PI;
+      annie.rot += (0 - annie.rot) * Math.min(1, dt * 3);
+      if (annie.hold <= 0) annie.state = 'popped';
+    } else if (annie.state === 'popped') {
+      annie.pop = Math.min(1, annie.pop + dt * 1.4);
+      if (boat && Math.abs(boatX - annie.x) < 30 * sc + 14) annie.state = 'aboard';
+    } else if (annie.state === 'aboard') {
+      annie.pop -= dt * 2.2;
+      if (annie.pop <= 0) { seedAnnie(); return; }
+    }
+
+    if (annie.state === 'idle') return;
+
+    var bob = annie.state === 'falling' ? 0 : Math.sin(t * 1.9) * 1.2;
+
+    // Half again the boat's scale: at the boat's own scale she is a squiggle,
+    // and a figure nobody can read is not a figure.
+    var bs = sc * 1.5;
+
+    ctx.save();
+    ctx.translate(annie.x, annie.y + bob);
+    ctx.rotate(annie.rot);
+    ctx.scale(bs, bs);
+    ctx.lineWidth = 1.15 / Math.max(0.12, bs);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = rgba(WATER, 0.5);
+
+    // Annie, standing out of the barrel once it has settled.
+    // She rises out of the barrel rather than hovering over it: at pop 0 she
+    // sits inside it, hidden by its own fill, and at pop 1 her feet are on the
+    // rim. Drawn before the barrel so the staves cut her off at the waist on
+    // the way up, which is what makes it read as climbing out.
+    if (annie.pop > 0.02) {
+      ctx.save();
+      ctx.translate(0, -12 * Math.min(1, annie.pop));
+      ctx.beginPath();
+      ctx.arc(0, -6.4, 2.6, 0, Math.PI * 2);
+      ctx.moveTo(0, -3.8); ctx.lineTo(0, 3);
+      ctx.moveTo(0, -2); ctx.lineTo(5.2, -6.4);   // the arm that is waving
+      ctx.moveTo(0, -2); ctx.lineTo(-3.6, 0.4);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    for (var m = 0; m < BARREL.length; m++) {
+      var pth = new Path2D(BARREL[m]);
+      if (m === 0) { ctx.fillStyle = rgba(G, 0.92); ctx.fill(pth); }
+      ctx.stroke(pth);
+    }
+
+    ctx.restore();
+    ctx.lineCap = 'butt';
+    ctx.lineJoin = 'miter';
+  }
+
   function resize(force) {
     var nw = canvas.clientWidth, nh = canvas.clientHeight;
 
@@ -704,6 +811,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
       seedPlume();
       seedPool();
       seedBoat();
+      seedAnnie();
     }
     if (still.matches) frame(0, true);
   }
@@ -830,6 +938,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     var dt = single ? 0 : Math.min(0.05, Math.max(0, t - lastT));
     lastT = t;
     drawBoat(t, dt, single);
+    drawAnnie(t, dt, boat ? (w * 0.12 + boat.p * (w - w * 0.24)) : 0, h * 0.84, single);
 
     for (var j = 0; j < plume.length; j++) {
       var p = plume[j];
