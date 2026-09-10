@@ -89,7 +89,19 @@ h1 .yr{display:block;color:var(--current);}
   letter-spacing:.16em;text-transform:uppercase;font-variant-numeric:tabular-nums;
   color:var(--current-dim);margin:20px 0 0;line-height:1.9;
 }
-.dates .pl{display:block;color:var(--bone-faint);letter-spacing:.12em;}
+/* Two places either side of a true middle, rather than one comma-joined run.
+   Each is its own item so the gap is real space the browser distributes, and
+   the pair wraps to a stack on a narrow screen instead of breaking mid-place. */
+.dates .pl{
+  display:flex;flex-wrap:wrap;
+  align-items:baseline;justify-content:center;
+  gap:0 1.15em;
+  color:var(--bone-faint);letter-spacing:.12em;
+  /* Letter-spacing adds a trailing space after the last character, which pushes
+     centred text off by half a space. Pull it back. */
+  text-indent:.12em;
+}
+.dates .pl .sep{color:var(--current-dim);}
 
 .rule{width:60px;height:1px;background:var(--current-dim);margin:34px 0;flex:none;}
 
@@ -180,6 +192,15 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   .row{flex-direction:column;}
   button{width:100%;}
   .privacy{margin-top:40px;}
+  /* It misses one line by a few pixels at this width. Close the gap rather
+     than let the separator dangle at the end of a wrapped line. */
+  .dates .pl{gap:0 .7em;}
+}
+@media (max-width:370px){
+  /* Past the point where closing the gap can save it, stack the two places
+     and drop the separator — a dot alone on a line is not punctuation. */
+  .dates .pl{flex-direction:column;align-items:center;gap:0;}
+  .dates .pl .sep{display:none;}
 }
 </style>
 </head>
@@ -200,7 +221,11 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
 
   <p class="dates">
     Mon 27 Sep &ndash; Sun 3 Oct 2027
-    <span class="pl">Niagara region, Ontario &middot; Western New York</span>
+    <span class="pl">
+      <span>Niagara region, Ontario</span>
+      <span class="sep" aria-hidden="true">&middot;</span>
+      <span>Western New York</span>
+    </span>
   </p>
 
   <div class="rule" role="presentation"></div>
