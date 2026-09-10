@@ -77,7 +77,9 @@ body{
 h1{
   font-family:var(--display);font-weight:900;font-stretch:125%;
   font-size:clamp(2.35rem,9.2vw,4.35rem);
-  line-height:.9;letter-spacing:-.02em;text-wrap:balance;
+  /* .9 set the descender of the g in Niagara straight onto the W below it.
+     Archivo's descender is deep enough at 900 that the stack needs the room. */
+  line-height:.99;letter-spacing:-.02em;text-wrap:balance;
   margin:0;color:var(--bone);
 }
 h1 .yr{display:block;color:var(--current);}
