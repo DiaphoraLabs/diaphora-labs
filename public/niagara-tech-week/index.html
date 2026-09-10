@@ -264,7 +264,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   var still = window.matchMedia('(prefers-reduced-motion: reduce)');
   var w = 0, h = 0, dpr = 1, raf = null, t0 = 0;
   var tile = null, TILE_H = 620;
-  var plume = [];
+  var plume = [], rings = [], chop = [];
 
   // The sheet, as one seamless texture rather than a field of separate drops.
   // A waterfall has no gaps: you cannot follow one element down it, only the
@@ -316,6 +316,43 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     }
   }
 
+  // The plunge pool. Rings are flattened hard on the vertical because the
+  // surface is being seen almost edge-on: a true circle here would read as a
+  // decal on the page rather than water lying under the fall.
+  function seedPool() {
+    var poolY = h * 0.84;
+    rings = [];
+    for (var i = 0; i < 24; i++) {
+      var maxR = w * (0.045 + Math.random() * 0.13);
+      rings.push({
+        // Born where the sheet lands, so weighted to the middle rather than
+        // spread evenly the way rain would be.
+        x: w * (0.5 + (Math.random() + Math.random() - 1) * 0.34),
+        y: poolY + Math.random() * (h - poolY) * 0.75,
+        r: Math.random() * maxR,
+        maxR: maxR,
+        speed: 0.28 + Math.random() * 0.45,
+        a: 0.09 + Math.random() * 0.12,
+        // Ripples are not closed circles. Each ring is drawn as a pair of arcs
+        // with a gap, so the pool reads as disturbed water rather than as
+        // concentric geometry laid over the page.
+        arc: 0.7 + Math.random() * 1.5,
+        rot: Math.random() * Math.PI * 2
+      });
+    }
+    chop = [];
+    for (var j = 0; j < 7; j++) {
+      chop.push({
+        y: poolY + (h - poolY) * (0.06 + Math.random() * 0.9),
+        amp: 1.2 + Math.random() * 3.4,
+        len: 90 + Math.random() * 260,
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.25 + Math.random() * 0.7,
+        a: 0.06 + Math.random() * 0.07
+      });
+    }
+  }
+
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     w = canvas.clientWidth; h = canvas.clientHeight;
@@ -324,6 +361,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     buildTile();
     seedPlume();
+    seedPool();
     if (still.matches) frame(0, true);
   }
 
@@ -394,6 +432,58 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     ctx.fillStyle = glow;
     ctx.fillRect(0, pool - h * 0.13, w, h * 0.19);
 
+    // The waterline itself: where falling water becomes lying water.
+    ctx.strokeStyle = rgba(WATER, 0.16);
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, pool + 0.5);
+    ctx.lineTo(w, pool + 0.5);
+    ctx.stroke();
+
+    // Chop: the surface is never flat under a fall.
+    for (var k = 0; k < chop.length; k++) {
+      var ch = chop[k];
+      var depth = (ch.y - pool) / Math.max(1, h - pool);
+      ctx.strokeStyle = rgba(WATER, ch.a * (1 - depth * 0.55));
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (var cx = 0; cx <= w; cx += 8) {
+        var cy = ch.y + Math.sin(cx / ch.len + ch.phase) * ch.amp;
+        if (cx === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+      }
+      ctx.stroke();
+      if (!single) ch.phase += ch.speed * 0.01;
+    }
+
+    // Rings, opening out from the impact and flattening with distance.
+    for (var m = 0; m < rings.length; m++) {
+      var ring = rings[m];
+      var life = ring.r / ring.maxR;
+      var fade = Math.sin(Math.PI * Math.min(1, life));
+      var depth2 = (ring.y - pool) / Math.max(1, h - pool);
+      ctx.strokeStyle = rgba(WATER, ring.a * fade * (1 - depth2 * 0.5));
+      ctx.lineWidth = 1 + (1 - depth2) * 0.4;
+      var ry = Math.max(0.6, ring.r * 0.16);
+      ctx.beginPath();
+      ctx.ellipse(ring.x, ring.y, ring.r, ry, 0, ring.rot, ring.rot + ring.arc);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.ellipse(ring.x, ring.y, ring.r, ry, 0, ring.rot + Math.PI, ring.rot + Math.PI + ring.arc * 0.7);
+      ctx.stroke();
+
+      if (!single) {
+        ring.r += ring.speed;
+        if (ring.r > ring.maxR) {
+          ring.r = 0;
+          ring.maxR = w * (0.045 + Math.random() * 0.13);
+          ring.x = w * (0.5 + (Math.random() + Math.random() - 1) * 0.34);
+          ring.y = pool + Math.random() * (h - pool) * 0.75;
+          ring.rot = Math.random() * Math.PI * 2;
+          ring.arc = 0.7 + Math.random() * 1.5;
+        }
+      }
+    }
+
     for (var j = 0; j < plume.length; j++) {
       var p = plume[j];
       var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
@@ -418,7 +508,8 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     veil.addColorStop(0, rgba(G, 0.30));
     veil.addColorStop(0.34, rgba(G, 0.72));
     veil.addColorStop(0.72, rgba(G, 0.66));
-    veil.addColorStop(1, rgba(G, 0.24));
+    veil.addColorStop(0.86, rgba(G, 0.44));
+    veil.addColorStop(1, rgba(G, 0.16));
     ctx.fillStyle = veil;
     ctx.fillRect(0, 0, w, h);
 
