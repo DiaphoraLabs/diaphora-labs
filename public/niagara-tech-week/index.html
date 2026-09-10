@@ -32,6 +32,12 @@
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"Martian Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
   --ease:cubic-bezier(.16,1,.3,1);
+
+  /* One leading for the page, so the gap under the date line can be set from
+     the same number the body paragraph is set on. */
+  --leading:1.9;
+  --size-body:clamp(1.02rem,2.9vw,1.2rem);
+  --size-meta:clamp(9px,2.4vw,11px);
 }
 *{box-sizing:border-box;}
 
@@ -40,8 +46,14 @@
    borrowed thing on the page. Canvas, because a sheet of falling water is a
    particle field, not path data. */
 #falls{
-  position:fixed;inset:0;
-  width:100%;height:100%;
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  height:100vh;
+  /* The largest viewport height, so hiding a phone's URL bar does not change
+     the canvas. With 100vh the sheet was being rebuilt mid-scroll, which is
+     what made the background appear to move with the page. */
+  height:100lvh;
   z-index:0;
   pointer-events:none;
   display:block;
@@ -85,9 +97,9 @@ h1{
 h1 .yr{display:block;color:var(--current);}
 
 .dates{
-  font-family:var(--mono);font-size:clamp(9px,2.4vw,11px);font-weight:500;
+  font-family:var(--mono);font-size:var(--size-meta);font-weight:500;
   letter-spacing:.16em;text-transform:uppercase;font-variant-numeric:tabular-nums;
-  color:var(--current-dim);margin:20px 0 0;line-height:1.9;
+  color:var(--current-dim);margin:20px 0 0;line-height:var(--leading);
 }
 /* Two places either side of a true middle, rather than one comma-joined run.
    Each is its own item so the gap is real space the browser distributes, and
@@ -97,6 +109,10 @@ h1 .yr{display:block;color:var(--current);}
   align-items:baseline;justify-content:center;
   gap:0 1.15em;
   color:var(--bone-faint);letter-spacing:.12em;
+  /* The two meta lines sit closer than the body's lines simply because the
+     type is smaller. Add back the difference so the gap under the date line
+     matches the gap between the paragraph's lines exactly. */
+  margin-top:calc(var(--leading) * (var(--size-body) - var(--size-meta)));
   /* Letter-spacing adds a trailing space after the last character, which pushes
      centred text off by half a space. Pull it back. */
   text-indent:.12em;
@@ -106,7 +122,7 @@ h1 .yr{display:block;color:var(--current);}
 .rule{width:60px;height:1px;background:var(--current-dim);margin:34px 0;flex:none;}
 
 .pitch{
-  font-size:clamp(1.02rem,2.9vw,1.2rem);line-height:1.9;
+  font-size:var(--size-body);line-height:var(--leading);
   color:var(--bone-dim);margin:0;max-width:34rem;text-wrap:pretty;
 }
 .pitch b{color:var(--bone);font-weight:500;}
@@ -382,15 +398,27 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     }
   }
 
-  function resize() {
+  var lastW = 0, lastH = 0;
+  function resize(force) {
+    var nw = canvas.clientWidth, nh = canvas.clientHeight;
+
+    // The backing store always follows the element, so the drawing is never
+    // stretched. Rebuilding the tile and reseeding the water is the expensive,
+    // visible part, and that only happens on a real change of size: even with
+    // lvh some browsers nudge the height during a scroll, and reseeding on
+    // that is what made the background appear to move with the page.
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = canvas.clientWidth; h = canvas.clientHeight;
+    w = nw; h = nh;
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    buildTile();
-    seedPlume();
-    seedPool();
+
+    if (force || nw !== lastW || Math.abs(nh - lastH) > 140) {
+      lastW = nw; lastH = nh;
+      buildTile();
+      seedPlume();
+      seedPool();
+    }
     if (still.matches) frame(0, true);
   }
 
@@ -552,7 +580,8 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   }
   function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', function () { resize(false); });
+  window.addEventListener('orientationchange', function () { resize(true); });
   // A background animation in a tab nobody is looking at is just battery.
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) stop(); else start();
@@ -562,7 +591,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     if (still.matches) frame(0, true); else start();
   });
 
-  resize();
+  resize(true);
   if (still.matches) frame(0, true); else start();
 })();
 
