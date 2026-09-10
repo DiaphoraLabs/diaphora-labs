@@ -12,6 +12,14 @@ const NTW_HOSTS = new Set([
 
 const NTW_PAGE = '/niagara-tech-week/index.html';
 
+// Files that must answer as themselves on this host rather than be rewritten to
+// the page. Without this, /robots.txt served the landing page's HTML, which
+// tells a crawler nothing and reads as a broken site.
+const NTW_FILES = {
+  '/robots.txt': '/niagara-tech-week/robots.txt',
+  '/sitemap.xml': '/niagara-tech-week/sitemap.xml',
+};
+
 export function proxy(request) {
   // The Host header carries the port in local dev; the domain is what matters.
   const host = (request.headers.get('host') || '').toLowerCase().split(':')[0];
@@ -23,6 +31,9 @@ export function proxy(request) {
   // included, so the API must stay reachable on this domain rather than being
   // rewritten to the landing page.
   if (pathname.startsWith('/api/')) return NextResponse.next();
+
+  const file = NTW_FILES[pathname];
+  if (file) return NextResponse.rewrite(new URL(file, request.url));
 
   // The page asks for nothing else, but serving its own asset path directly
   // keeps a hard refresh of the rewritten URL working.
