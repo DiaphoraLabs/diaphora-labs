@@ -19,6 +19,9 @@ const LISTS = new Set([
   // handed over in the browser rather than emailed, because nothing here sends
   // mail and a promised email that never arrives is worse than no gate at all.
   'waterfall-brief',
+  // Niagara Tech Week's coming-soon page, served on its own domain from this
+  // same project. One list; the interests come through as commitments.
+  'niagara-tech-week',
 ]);
 
 export const runtime = 'nodejs';
