@@ -38,3 +38,9 @@ console.log(`init-db: registrations table ready — ${count} row(s).`);
 
 const [{ ntw }] = await sql`select count(*)::int as ntw from niagara_tech_week_signups`;
 console.log(`init-db: niagara_tech_week_signups table ready — ${ntw} row(s).`);
+
+const [{ events }] = await sql`select count(*)::int as events from niagara_tech_week_events`;
+console.log(`init-db: niagara_tech_week_events table ready — ${events} row(s).`);
+
+const [{ venues }] = await sql`select count(*)::int as venues from niagara_tech_week_venues`;
+console.log(`init-db: niagara_tech_week_venues table ready — ${venues} row(s).`);

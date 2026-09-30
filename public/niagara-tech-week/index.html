@@ -211,6 +211,11 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--bone-faint);margin-top:22px;line-height:2;
 }
+/* The way in to the host form: quieter than the sign-up, because most visitors
+   are here to attend, but in the reading face so it reads as an invitation. */
+.host{font-size:.95rem;line-height:1.6;color:var(--bone-dim);margin:18px 0 0;text-wrap:balance;}
+.host a{color:var(--current);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
+.host a:hover{color:var(--bone);}
 .privacy a{color:var(--bone-dim);text-decoration:underline;text-underline-offset:2px;}
 .privacy a:hover{color:var(--current);}
 
@@ -450,6 +455,11 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
 
     <p class="note" id="note" role="status" aria-live="polite">&nbsp;</p>
   </form>
+
+  <p class="host">
+    Have an event in mind? <a href="/host">Propose it</a>.
+    Have a room? <a href="/venues">Offer your venue</a>.
+  </p>
 
   <p class="privacy">
     We collect your email address and the interests you tick, and use them only to

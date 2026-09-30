@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Host at Niagara Tech Week 2027</title>
+<meta name="description" content="Propose an event or offer a venue for Niagara Tech Week, 27 September – 3 October 2027, across the Niagara region of Ontario and Western New York.">
+<meta name="theme-color" content="#0b1815">
+<meta property="og:title" content="Host at Niagara Tech Week 2027">
+<meta property="og:description" content="Propose an event or offer a venue. A one line idea is enough to start.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.niagaratechweek.com/host">
+<meta property="og:site_name" content="Niagara Tech Week">
+<meta property="og:locale" content="en_CA">
+<link rel="canonical" href="https://www.niagaratechweek.com/host">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Martian+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..500;1,8..60,400&display=swap">
+<style>
+/* The same tokens as the landing page (index.html), inlined for the same
+   reason: this page is served standalone on its own domain. */
+:root{
+  --patina-deep:#0b1815;
+  --patina:#123029;
+  --patina-raised:#16382f;
+  --patina-edge:#1e4a3e;
+  --bone:#ece7d9;
+  --bone-dim:#a9b5ac;
+  --bone-faint:#7c9086;
+  --current:#cbf51f;
+  --current-dim:#8fa81b;
+  --alarm:#f0b7a0;
+
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"Martian Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --rule-weight:3px;
+}
+*{box-sizing:border-box;}
+html{scrollbar-color:var(--current-dim) var(--patina-deep);}
+body{
+  margin:0;min-height:100vh;
+  background:var(--patina-deep);
+  /* The pool's light, without the falls: a form needs the attention the
+     animation would take, so the landing page's water is only hinted at. */
+  background-image:radial-gradient(120% 60% at 50% 0%,#12302a 0%,var(--patina-deep) 60%);
+  background-attachment:fixed;
+  color:var(--bone);font-family:var(--body);font-optical-sizing:auto;
+  padding:48px 20px 64px;
+  caret-color:var(--current);-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--current);color:var(--patina-deep);}
+.wrap{width:100%;max-width:40rem;margin:0 auto;}
+
+.lockup{display:inline-flex;align-items:center;gap:9px;margin-bottom:40px;color:var(--bone);text-decoration:none;}
+.lockup svg{display:block;flex:none;}
+.lockup span{font-family:var(--display);font-weight:900;font-stretch:125%;font-size:11px;letter-spacing:.07em;}
+
+h1{
+  font-family:var(--display);font-weight:900;font-stretch:125%;
+  font-size:clamp(2rem,7vw,3.1rem);line-height:.99;letter-spacing:-.02em;
+  margin:0;text-wrap:balance;
+}
+h1 .yr{color:var(--current);}
+.dates{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--current-dim);margin:16px 0 0;
+  display:flex;flex-wrap:wrap;gap:4px 1.2em;
+}
+/* Each place is kept whole: "Western New / York" is not a place. */
+.dates span{white-space:nowrap;}
+.dates span + span{color:var(--bone-faint);}
+.lede{font-size:1.08rem;line-height:1.75;color:var(--bone-dim);margin:22px 0 0;max-width:36rem;text-wrap:pretty;}
+.lede b{color:var(--bone);font-weight:500;}
+
+/* The two forms are one choice, made first. */
+.switch{display:flex;gap:8px;margin:34px 0 8px;flex-wrap:wrap;}
+.switch button{
+  font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bone-faint);background:var(--patina);border:1px solid var(--patina-edge);
+  padding:12px 18px;cursor:pointer;
+  transition:color 200ms var(--ease),border-color 200ms var(--ease),background 200ms var(--ease);
+}
+.switch button[aria-selected=true]{color:var(--patina-deep);background:var(--current);border-color:var(--current);}
+.switch button:hover:not([aria-selected=true]){color:var(--bone-dim);}
+.switch button:focus-visible{outline:2px solid var(--bone);outline-offset:2px;}
+
+form{margin:0;}
+form[hidden]{display:none;}
+section{border-top:1px solid var(--patina-edge);padding:26px 0 4px;margin-top:26px;}
+section:first-of-type{margin-top:18px;}
+h2{
+  font-family:var(--display);font-weight:800;font-stretch:110%;font-size:1.2rem;
+  letter-spacing:-.01em;margin:0 0 4px;color:var(--bone);
+}
+h2 .n{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;color:var(--current-dim);margin-right:10px;vertical-align:2px;}
+.hint{font-size:.95rem;line-height:1.6;color:var(--bone-faint);margin:0 0 14px;text-wrap:pretty;}
+
+.field{margin:16px 0 0;}
+.field > label,.legend{
+  display:block;font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--bone-dim);margin:0 0 8px;
+}
+.req{color:var(--current);margin-left:4px;}
+.opt{color:var(--bone-faint);text-transform:none;letter-spacing:.02em;margin-left:6px;}
+fieldset{border:0;margin:16px 0 0;padding:0;min-width:0;}
+legend{padding:0;}
+
+input[type=text],input[type=email],input[type=url],input[type=number],textarea{
+  width:100%;font-family:var(--mono);font-size:12.5px;line-height:1.5;color:var(--bone);
+  background:var(--patina);border:1px solid var(--patina-edge);padding:12px 13px;
+  border-radius:0;-webkit-appearance:none;appearance:none;
+  transition:border-color 200ms var(--ease);
+}
+textarea{resize:vertical;min-height:84px;font-family:var(--body);font-size:1rem;}
+input::placeholder,textarea::placeholder{color:var(--bone-faint);opacity:1;}
+input:focus,textarea:focus{outline:none;border-color:var(--current-dim);}
+input:focus-visible,textarea:focus-visible{outline:2px solid var(--current);outline-offset:2px;}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.pair .field{margin-top:16px;}
+.count{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--bone-faint);text-align:right;margin-top:6px;}
+
+/* Chips: the landing page's role buttons, for every multiple choice here. */
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{position:relative;}
+.chip input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0;margin:0;cursor:pointer;}
+.chip span{
+  display:block;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;
+  color:var(--bone-faint);border:1px solid var(--patina-edge);background:var(--patina);padding:9px 13px;
+  transition:color 200ms var(--ease),border-color 200ms var(--ease),background 200ms var(--ease);
+}
+.chip input:checked + span{color:var(--current);border-color:var(--current-dim);background:var(--patina-raised);}
+.chip input:focus-visible + span{outline:2px solid var(--current);outline-offset:2px;}
+.chip:hover span{color:var(--bone-dim);}
+
+/* The region's own industries get their own panel, first and lit: they are
+   what the week is for. */
+.regional{border:1px solid var(--current-dim);background:linear-gradient(180deg,rgba(203,245,31,.05),rgba(203,245,31,0));padding:16px;}
+.regional .legend{color:var(--current);}
+.regional p{font-size:.93rem;line-height:1.55;color:var(--bone-dim);margin:0 0 12px;}
+.regional .auto{font-family:var(--mono);font-size:10px;line-height:1.6;letter-spacing:.02em;color:var(--current-dim);margin:12px 0 0;min-height:1.6em;}
+
+.lifestyle{margin-top:14px;padding:14px 16px;border-left:var(--rule-weight) solid var(--current-dim);background:var(--patina);}
+.lifestyle p{font-size:.93rem;line-height:1.55;color:var(--bone-dim);margin:0 0 12px;}
+.lifestyle[hidden]{display:none;}
+
+.check{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:.98rem;line-height:1.5;color:var(--bone-dim);cursor:pointer;}
+.check input{accent-color:var(--current);width:16px;height:16px;margin:3px 0 0;flex:none;}
+
+.err{font-family:var(--mono);font-size:10.5px;line-height:1.5;color:var(--alarm);margin:8px 0 0;}
+.err:empty{display:none;}
+.bad input,.bad textarea{border-color:var(--alarm);}
+
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+.submit{margin-top:34px;border-top:1px solid var(--patina-edge);padding-top:26px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.go{
+  font-family:var(--mono);font-weight:600;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--patina-deep);background:var(--current);border:1px solid var(--current);padding:14px 24px;cursor:pointer;
+  transition:background 200ms var(--ease),border-color 200ms var(--ease);
+}
+.go:hover:not(:disabled){background:var(--bone);border-color:var(--bone);}
+.go:focus-visible{outline:2px solid var(--bone);outline-offset:2px;}
+.go:disabled{background:var(--patina-raised);border-color:var(--patina-edge);color:var(--bone-faint);cursor:default;}
+.quiet{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--bone-faint);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+.quiet:hover{color:var(--alarm);}
+.status{font-family:var(--mono);font-size:10.5px;line-height:1.5;color:var(--bone-dim);margin:14px 0 0;}
+.status.bad{color:var(--alarm);}
+.status a{color:var(--current);}
+
+.done{border:1px solid var(--current-dim);padding:22px;margin-top:26px;}
+/* Focus is moved here so a screen reader announces the result; the ring is for
+   keyboard travel, not for this. */
+.done:focus{outline:none;}
+.done h2{color:var(--current);}
+.done p{font-size:1rem;line-height:1.65;color:var(--bone-dim);margin:10px 0 0;}
+.keep{display:flex;gap:8px;margin-top:14px;}
+.keep input{flex:1;min-width:0;}
+.keep button{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--patina-deep);background:var(--current);border:1px solid var(--current);padding:0 16px;cursor:pointer;}
+
+.privacy{font-size:11.5px;line-height:1.6;color:var(--bone-faint);margin:40px 0 0;text-wrap:pretty;}
+.privacy a{color:var(--bone-dim);text-underline-offset:2px;}
+.privacy a:hover{color:var(--current);}
+
+@media (prefers-reduced-motion:reduce){*{transition-duration:1ms !important;}}
+@media (max-width:520px){
+  body{padding-top:36px;}
+  .pair{grid-template-columns:1fr;gap:0;}
+  .switch button,.go{flex:1 1 auto;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="lockup" href="/" aria-label="Niagara Tech Week home">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 17h9V7h9" fill="none" stroke="#ece7d9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>DIAPHORA LABS</span>
+  </a>
+
+  <h1>Host at Niagara Tech Week <span class="yr">2027</span></h1>
+  <p class="dates"><span>Mon 27 Sep – Sun 3 Oct 2027</span> <span>Niagara Region, Ontario</span> <span>Western New York</span></p>
+  <p class="lede">
+    <b>Anyone can host, and a one line idea is enough to start.</b> Tell us what you
+    have in mind and we will help with the rest: a venue, partners from the region,
+    speakers, promotion. Venues with room to offer can tell us here too, and we will
+    match you with the events that fit.
+  </p>
+
+  <div class="switch" role="tablist" aria-label="What are you offering?">
+    <button type="button" role="tab" id="tab-event" aria-controls="event" aria-selected="true">Host an event</button>
+    <button type="button" role="tab" id="tab-venue" aria-controls="venue" aria-selected="false">Offer a venue</button>
+  </div>
+
+  <!-- ============ EVENT ============ -->
+  <form id="event" role="tabpanel" aria-labelledby="tab-event" novalidate data-api="/api/niagara-tech-week/events">
+    <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <section>
+      <h2><span class="n">01</span>About you</h2>
+      <div class="pair">
+        <div class="field" data-field="host_name"><label for="e-name">Your name<span class="req">*</span></label><input type="text" id="e-name" name="host_name" autocomplete="name" required maxlength="120"><p class="err"></p></div>
+        <div class="field" data-field="email"><label for="e-email">Email<span class="req">*</span></label><input type="email" id="e-email" name="email" autocomplete="email" required placeholder="you@company.com"><p class="err"></p></div>
+      </div>
+      <div class="field" data-field="org"><label for="e-org">Company or organisation<span class="opt">optional</span></label><input type="text" id="e-org" name="org" autocomplete="organization" maxlength="160"><p class="err"></p></div>
+    </section>
+
+    <section>
+      <h2><span class="n">02</span>Your event</h2>
+      <div class="field" data-field="title"><label for="e-title">Working title<span class="req">*</span></label><input type="text" id="e-title" name="title" required maxlength="120" placeholder="Grid-scale storage on the Niagara River"><p class="err"></p></div>
+      <div class="field" data-field="concept"><label for="e-concept">The idea, in a line or two<span class="req">*</span></label><textarea id="e-concept" name="concept" required maxlength="280" placeholder="Who is it for, and what will they get out of it?"></textarea><p class="count" data-count-for="e-concept"></p><p class="err"></p></div>
+
+      <fieldset data-field="kind">
+        <legend class="legend">What kind of event<span class="req">*</span></legend>
+        <div class="chips" data-options="kinds" data-name="kind" data-type="radio"></div>
+        <p class="err"></p>
+      </fieldset>
+      <div class="lifestyle" id="lifestyle" hidden>
+        <p>Not strictly tech? Post it anyway. Car shows, poker nights and long dinners
+        are where half the week's conversations happen. We tag lifestyle events on the
+        calendar so nobody arrives expecting a panel.</p>
+        <fieldset data-field="lifestyle_tag" style="margin-top:0">
+          <legend class="legend">Tag it<span class="req">*</span></legend>
+          <div class="chips" data-options="lifestyleTags" data-name="lifestyle_tag" data-type="radio"></div>
+          <p class="err"></p>
+        </fieldset>
+      </div>
+
+      <fieldset data-field="format">
+        <legend class="legend">Format<span class="req">*</span></legend>
+        <div class="chips" data-options="formats" data-name="format" data-type="radio"></div>
+        <p class="err"></p>
+      </fieldset>
+    </section>
+
+    <section data-field="streams">
+      <h2><span class="n">03</span>Streams</h2>
+      <p class="hint">Which industries is your event for? Pick every one that fits.</p>
+      <fieldset class="regional" style="margin-top:0">
+        <legend class="legend">Niagara's industries</legend>
+        <p>These are the region's own. Events in them get introduced to the companies,
+        growers, utilities and operators here who are looking for exactly this.</p>
+        <div class="chips" data-options="regionalStreams" data-name="streams" data-type="checkbox"></div>
+        <p class="auto" aria-live="polite"></p>
+      </fieldset>
+      <fieldset>
+        <legend class="legend">Other streams</legend>
+        <div class="chips" data-options="streams" data-name="streams" data-type="checkbox"></div>
+      </fieldset>
+      <p class="err"></p>
+    </section>
+
+    <section>
+      <h2><span class="n">04</span>Where and when</h2>
+      <fieldset data-field="side">
+        <legend class="legend">Side of the river<span class="req">*</span></legend>
+        <div class="chips" data-options="sides" data-name="side" data-type="radio"></div>
+        <p class="err"></p>
+      </fieldset>
+      <fieldset data-field="days">
+        <legend class="legend">Days that could work<span class="opt">pick any</span></legend>
+        <div class="chips" data-options="days" data-name="days" data-type="checkbox"></div>
+      </fieldset>
+      <fieldset data-field="size">
+        <legend class="legend">Expected size</legend>
+        <div class="chips" data-options="sizes" data-name="size" data-type="radio" data-default="unsure"></div>
+      </fieldset>
+      <label class="check"><input type="checkbox" name="private"> Invite-only. It will be on the calendar, but not open to sign-ups.</label>
+    </section>
+
+    <section>
+      <h2><span class="n">05</span>What would help</h2>
+      <fieldset data-field="needs" style="margin-top:0">
+        <legend class="legend">We can help with<span class="opt">pick any</span></legend>
+        <div class="chips" data-options="needs" data-name="needs" data-type="checkbox"></div>
+      </fieldset>
+      <div class="field" data-field="audience"><label for="e-aud">Who should be in the room<span class="opt">optional</span></label><input type="text" id="e-aud" name="audience" maxlength="280" placeholder="Utility engineers, founders building for the grid, investors"><p class="err"></p></div>
+      <div class="field" data-field="cohosts"><label for="e-co">Co-hosts or partners so far<span class="opt">optional</span></label><input type="text" id="e-co" name="cohosts" maxlength="280"><p class="err"></p></div>
+    </section>
+
+    <section>
+      <h2><span class="n">06</span>If you already have them</h2>
+      <p class="hint">Leave these blank for now if you like. You can add them later from your edit link.</p>
+      <div class="field" data-field="venue"><label for="e-venue">Venue<span class="opt">optional</span></label><input type="text" id="e-venue" name="venue" maxlength="200"><p class="err"></p></div>
+      <div class="field" data-field="link"><label for="e-link">Registration link<span class="opt">optional</span></label><input type="url" id="e-link" name="link" placeholder="https://lu.ma/…"><p class="count" id="e-link-note"></p><p class="err"></p></div>
+      <div class="field" data-field="notes"><label for="e-notes">Anything else<span class="opt">optional</span></label><textarea id="e-notes" name="notes" maxlength="1000"></textarea><p class="err"></p></div>
+    </section>
+
+    <div class="submit">
+      <button class="go" type="submit">Send proposal</button>
+      <button class="quiet" type="button" data-withdraw hidden>Withdraw this proposal</button>
+    </div>
+    <p class="status" role="status" aria-live="polite"></p>
+  </form>
+
+  <!-- ============ VENUE ============ -->
+  <form id="venue" role="tabpanel" aria-labelledby="tab-venue" novalidate hidden data-api="/api/niagara-tech-week/venues">
+    <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <section>
+      <h2><span class="n">01</span>You</h2>
+      <div class="pair">
+        <div class="field" data-field="contact_name"><label for="v-name">Your name<span class="req">*</span></label><input type="text" id="v-name" name="contact_name" autocomplete="name" required maxlength="120"><p class="err"></p></div>
+        <div class="field" data-field="email"><label for="v-email">Email<span class="req">*</span></label><input type="email" id="v-email" name="email" autocomplete="email" required placeholder="you@venue.com"><p class="err"></p></div>
+      </div>
+      <div class="field" data-field="org"><label for="v-org">Operator or company<span class="opt">optional</span></label><input type="text" id="v-org" name="org" autocomplete="organization" maxlength="160"><p class="err"></p></div>
+    </section>
+
+    <section>
+      <h2><span class="n">02</span>The venue</h2>
+      <div class="field" data-field="venue_name"><label for="v-venue">Venue name<span class="req">*</span></label><input type="text" id="v-venue" name="venue_name" required maxlength="160"><p class="err"></p></div>
+      <div class="pair">
+        <div class="field" data-field="address"><label for="v-addr">Street address<span class="opt">optional</span></label><input type="text" id="v-addr" name="address" autocomplete="street-address" maxlength="240"><p class="err"></p></div>
+        <div class="field" data-field="city"><label for="v-city">Town or city<span class="req">*</span></label><input type="text" id="v-city" name="city" required maxlength="80" placeholder="St. Catharines"><p class="err"></p></div>
+      </div>
+      <fieldset data-field="side">
+        <legend class="legend">Side of the river<span class="req">*</span></legend>
+        <div class="chips" data-options="venueSides" data-name="side" data-type="radio"></div>
+        <p class="err"></p>
+      </fieldset>
+      <div class="field" data-field="link"><label for="v-link">Website<span class="opt">optional</span></label><input type="url" id="v-link" name="link" placeholder="https://"><p class="err"></p></div>
+    </section>
+
+    <section>
+      <h2><span class="n">03</span>Room</h2>
+      <p class="hint">Rough numbers are fine. Give at least one.</p>
+      <div class="pair">
+        <div class="field" data-field="capacity_seated"><label for="v-seat">Seated</label><input type="number" id="v-seat" name="capacity_seated" min="0" inputmode="numeric"><p class="err"></p></div>
+        <div class="field" data-field="capacity_standing"><label for="v-stand">Standing</label><input type="number" id="v-stand" name="capacity_standing" min="0" inputmode="numeric"><p class="err"></p></div>
+      </div>
+      <div class="field" data-field="spaces"><label for="v-spaces">The spaces<span class="opt">optional</span></label><textarea id="v-spaces" name="spaces" maxlength="400" placeholder="Barrel room for 60 seated, terrace for 120 standing, boardroom for 12"></textarea><p class="err"></p></div>
+    </section>
+
+    <section>
+      <h2><span class="n">04</span>Availability and terms</h2>
+      <fieldset data-field="days" style="margin-top:0">
+        <legend class="legend">Days you could host<span class="opt">pick any</span></legend>
+        <div class="chips" data-options="days" data-name="days" data-type="checkbox"></div>
+      </fieldset>
+      <fieldset data-field="offer">
+        <legend class="legend">Terms<span class="req">*</span></legend>
+        <div class="chips" data-options="offers" data-name="offer" data-type="radio"></div>
+        <p class="err"></p>
+      </fieldset>
+      <fieldset data-field="amenities">
+        <legend class="legend">On site<span class="opt">pick any</span></legend>
+        <div class="chips" data-options="amenities" data-name="amenities" data-type="checkbox"></div>
+      </fieldset>
+    </section>
+
+    <section>
+      <h2><span class="n">05</span>Good for</h2>
+      <fieldset data-field="formats" style="margin-top:0">
+        <legend class="legend">Formats<span class="opt">pick any</span></legend>
+        <div class="chips" data-options="formats" data-name="formats" data-type="checkbox"></div>
+      </fieldset>
+      <fieldset class="regional" data-field="streams">
+        <legend class="legend">Niagara's industries you connect to</legend>
+        <p>A winery suits agri-food, a plant floor suits manufacturing. Events in these
+        streams look for rooms that belong to them.</p>
+        <div class="chips" data-options="regionalStreams" data-name="streams" data-type="checkbox"></div>
+        <p class="auto" aria-live="polite"></p>
+      </fieldset>
+      <label class="check"><input type="checkbox" name="lifestyle_ok" checked> Lifestyle events are welcome too: car shows, poker nights, dinners.</label>
+      <div class="field" data-field="notes"><label for="v-notes">Anything else<span class="opt">optional</span></label><textarea id="v-notes" name="notes" maxlength="1000"></textarea><p class="err"></p></div>
+    </section>
+
+    <div class="submit">
+      <button class="go" type="submit">Offer this venue</button>
+      <button class="quiet" type="button" data-withdraw hidden>Withdraw this offer</button>
+    </div>
+    <p class="status" role="status" aria-live="polite"></p>
+  </form>
+
+  <p class="privacy">
+    What you send here goes to the Niagara Tech Week team at Diaphora Labs in Ontario,
+    Canada, and is used only to organise the week. Event details you mark public will
+    appear on the calendar once approved; your email address never will. We do not
+    sell or share it. <a href="mailto:techweek@diaphoralabs.com">Write to us</a> to
+    have anything removed.
+  </p>
+</div>
+
+<script>
+(function () {
+  var TIMEOUT_MS = 15000;
+  var params = new URLSearchParams(location.search);
+  var editToken = params.get('edit');
+  var forms = { event: document.getElementById('event'), venue: document.getElementById('venue') };
+  var tabs = { event: document.getElementById('tab-event'), venue: document.getElementById('tab-venue') };
+
+  function show(which) {
+    Object.keys(forms).forEach(function (k) {
+      forms[k].hidden = k !== which;
+      tabs[k].setAttribute('aria-selected', String(k === which));
+    });
+  }
+  tabs.event.addEventListener('click', function () { show('event'); });
+  tabs.venue.addEventListener('click', function () { show('venue'); });
+  // /venues and #venue both open the venue form, so either can be handed out.
+  var start = (location.pathname.indexOf('venue') !== -1 || location.hash === '#venue' || params.has('venue')) ? 'venue' : 'event';
+  show(start);
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function dayLabel(d) {
+    return new Date(d + 'T12:00:00Z').toLocaleDateString('en-CA', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+  }
+
+  // Every choice is drawn from the API's own lists, so the form cannot offer
+  // something the route would turn away.
+  function render(opts) {
+    document.querySelectorAll('[data-options]').forEach(function (box) {
+      var src = opts[box.dataset.options];
+      var entries = Array.isArray(src) ? src.map(function (d) { return [d, dayLabel(d)]; }) : Object.entries(src);
+      var type = box.dataset.type, name = box.dataset.name, def = box.dataset.default;
+      box.innerHTML = entries.map(function (e) {
+        return '<label class="chip"><input type="' + type + '" name="' + name + '" value="' + esc(e[0]) + '"' +
+          (e[0] === def ? ' checked' : '') + '><span>' + esc(e[1]) + '</span></label>';
+      }).join('');
+    });
+  }
+
+  // ---- Streams: tick the region's industries for them ----
+  // As the host writes, any regional stream their words point at is ticked and
+  // named, with the word that did it. One they untick stays unticked, and one
+  // ticked for them is unticked again if the word goes, unless they touched it.
+  function autoStreams(form, sources, keywords, labels) {
+    var auto = {}, dismissed = {};
+    var note = form.querySelector('.regional .auto');
+    function words() {
+      var t = sources.map(function (n) { var el = form.elements[n]; return el ? el.value : ''; }).join(' ').toLowerCase();
+      var set = {};
+      (t.match(/[a-z0-9]+/g) || []).forEach(function (w) { set[w] = true; });
+      return set;
+    }
+    function run() {
+      var w = words(), said = [];
+      Object.keys(keywords).forEach(function (stream) {
+        var box = form.querySelector('.regional input[value="' + stream + '"]');
+        if (!box) return;
+        var hit = keywords[stream].filter(function (k) { return w[k]; })[0];
+        if (hit && !dismissed[stream]) {
+          if (!box.checked) { box.checked = true; auto[stream] = true; }
+          if (auto[stream]) said.push(labels[stream] + ' (“' + hit + '”)');
+        } else if (!hit && auto[stream]) {
+          box.checked = false; delete auto[stream];
+        }
+      });
+      note.textContent = said.length
+        ? 'We ticked ' + said.join(', ') + ' from what you wrote. Untick anything that does not fit.'
+        : '';
+    }
+    form.querySelectorAll('.regional input').forEach(function (box) {
+      box.addEventListener('change', function () {
+        if (auto[box.value]) { delete auto[box.value]; if (!box.checked) dismissed[box.value] = true; }
+        run();
+      });
+    });
+    var timer;
+    sources.forEach(function (n) {
+      var el = form.elements[n];
+      if (el) el.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(run, 250); });
+    });
+    return run;
+  }
+
+  // ---- Reading and filling a form ----
+  function collect(form) {
+    var out = {};
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (!el.name || el.type === 'submit' || el.type === 'button') return;
+      if (el.type === 'checkbox') {
+        if (el.name === 'private') { out.public = !el.checked; return; }
+        if (el.name === 'lifestyle_ok') { out.lifestyle_ok = el.checked; return; }
+        if (!out[el.name]) out[el.name] = [];
+        if (el.checked) out[el.name].push(el.value);
+      } else if (el.type === 'radio') {
+        if (el.checked) out[el.name] = el.value;
+        else if (!(el.name in out)) out[el.name] = '';
+      } else {
+        out[el.name] = el.value;
+      }
+    });
+    // A tech event carries no lifestyle tag, whatever was clicked on the way.
+    if (out.kind === 'tech') out.lifestyle_tag = '';
+    return out;
+  }
+
+  function fill(form, item) {
+    Object.keys(item).forEach(function (k) {
+      var v = item[k];
+      if (k === 'public') { if (form.elements.private) form.elements.private.checked = !v; return; }
+      var els = form.querySelectorAll('[name="' + k + '"]');
+      els.forEach(function (el) {
+        if (el.type === 'checkbox') el.checked = Array.isArray(v) ? v.indexOf(el.value) !== -1 : !!v;
+        else if (el.type === 'radio') el.checked = el.value === v;
+        else el.value = v == null || v === 0 ? '' : v;
+      });
+    });
+    form.dispatchEvent(new Event('change'));
+  }
+
+  function clearErrors(form) {
+    form.querySelectorAll('[data-field]').forEach(function (f) {
+      f.classList.remove('bad');
+      var e = f.querySelector('.err'); if (e) e.textContent = '';
+    });
+  }
+
+  function showErrors(form, fields) {
+    var first = null;
+    Object.keys(fields || {}).forEach(function (k) {
+      var f = form.querySelector('[data-field="' + k + '"]');
+      if (!f) return;
+      f.classList.add('bad');
+      var e = f.querySelector('.err') || f.parentNode.querySelector('.err');
+      if (e) e.textContent = fields[k];
+      if (!first) first = f;
+    });
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function request(method, url, body) {
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, TIMEOUT_MS);
+    return fetch(url, {
+      method: method,
+      headers: body ? { 'Content-Type': 'application/json' } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
+      signal: controller.signal
+    }).then(function (res) {
+      // A proxy or a crashed route answers with HTML, not JSON.
+      return res.json().then(function (d) { return { res: res, data: d }; }, function () { return { res: res, data: null }; });
+    }).finally(function () { clearTimeout(timer); });
+  }
+
+  function problem(err, r) {
+    if (err && err.name === 'AbortError') return 'That took too long. Try again, or write to us directly.';
+    if (r && r.data && r.data.error) return r.data.error;
+    return r && r.res.status >= 500 ? 'The form is not answering right now. Try again in a moment.' : 'Something went wrong. Try again.';
+  }
+
+  function wire(form, kind) {
+    var status = form.querySelector('.status');
+    var go = form.querySelector('.go');
+    var label = go.textContent;
+    var withdraw = form.querySelector('[data-withdraw]');
+
+    function say(msg, bad) {
+      status.className = 'status' + (bad ? ' bad' : '');
+      status.innerHTML = msg;
+    }
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      clearErrors(form);
+      var body = collect(form);
+      if (editToken) body.token = editToken;
+      go.disabled = true; go.textContent = editToken ? 'Saving…' : 'Sending…';
+      say('');
+      var r;
+      request(editToken ? 'PATCH' : 'POST', form.dataset.api, body)
+        .then(function (res) {
+          r = res;
+          if (r.res.ok && r.data && r.data.ok) {
+            if (editToken) { say('Saved.'); go.disabled = false; go.textContent = label; return; }
+            done(form, kind, r.data.token);
+            return;
+          }
+          showErrors(form, r.data && r.data.fields);
+          throw new Error();
+        })
+        .catch(function (err) {
+          go.disabled = false; go.textContent = label;
+          say(esc(problem(err, r)) + ' <a href="mailto:techweek@diaphoralabs.com">Email us instead.</a>', true);
+        });
+    });
+
+    withdraw.addEventListener('click', function () {
+      if (!editToken) return;
+      withdraw.disabled = true;
+      request('PATCH', form.dataset.api, { token: editToken, withdraw: true }).then(function (r) {
+        if (r.res.ok && r.data && r.data.ok) {
+          form.innerHTML = '<div class="done"><h2>Withdrawn.</h2><p>Thanks for letting us know. If plans change, write to <a href="mailto:techweek@diaphoralabs.com">techweek@diaphoralabs.com</a>.</p></div>';
+        } else {
+          withdraw.disabled = false;
+          say(esc(problem(null, r)), true);
+        }
+      }, function (err) { withdraw.disabled = false; say(esc(problem(err)), true); });
+    });
+  }
+
+  // The edit link is the only way back in, so it is shown once, plainly, with
+  // a button to copy it, and the page says so.
+  function done(form, kind, token) {
+    var link = location.origin + '/host?edit=' + encodeURIComponent(token) + (kind === 'venue' ? '&venue' : '');
+    var what = kind === 'venue' ? 'offer' : 'proposal';
+    form.innerHTML =
+      '<div class="done" tabindex="-1">' +
+      '<h2>' + (kind === 'venue' ? 'Offer received.' : 'Proposal received.') + '</h2>' +
+      '<p>The team reads every one and will be in touch. ' +
+      (kind === 'venue' ? 'We will send you events that fit your space.' : 'If you asked for help, that is where we start.') + '</p>' +
+      '<p><b>Keep this link.</b> It is the only way to change or withdraw your ' + what + ', and we cannot send it again.</p>' +
+      '<div class="keep"><input type="text" readonly value="' + esc(link) + '" aria-label="Your edit link"><button type="button">Copy</button></div>' +
+      '</div>';
+    var box = form.querySelector('.done');
+    var input = box.querySelector('input'), btn = box.querySelector('button');
+    btn.addEventListener('click', function () {
+      input.select();
+      (navigator.clipboard ? navigator.clipboard.writeText(link) : Promise.reject()).then(
+        function () { btn.textContent = 'Copied'; },
+        function () { document.execCommand && document.execCommand('copy'); btn.textContent = 'Copied'; }
+      );
+    });
+    box.focus();
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function setup(opts) {
+    render(opts);
+    var ev = forms.event, ve = forms.venue;
+
+    // Lifestyle events must be tagged, so the tags appear the moment it is picked.
+    var life = document.getElementById('lifestyle');
+    function kindChanged() {
+      var k = ev.querySelector('input[name="kind"]:checked');
+      life.hidden = !(k && k.value === 'lifestyle');
+    }
+    ev.addEventListener('change', kindChanged);
+
+    var runEvent = autoStreams(ev, ['title', 'concept', 'audience'], opts.streamKeywords, opts.regionalStreams);
+    var runVenue = autoStreams(ve, ['venue_name', 'spaces', 'notes'], opts.streamKeywords, opts.regionalStreams);
+
+    // Luma is where the calendar lives for 2027; say so when a host pastes
+    // something else, rather than refusing it.
+    var link = ev.elements.link, linkNote = document.getElementById('e-link-note');
+    link.addEventListener('input', function () {
+      var v = link.value.trim(), host = '';
+      try { host = new URL(v).hostname; } catch (e) {}
+      linkNote.textContent = v && host && !/(^|\.)lu\.ma$|(^|\.)luma\.com$/.test(host)
+        ? 'The calendar runs on Luma. Other links work, but will not appear there automatically.' : '';
+    });
+
+    // Characters left, for the one field with a hard limit people will reach.
+    document.querySelectorAll('[data-count-for]').forEach(function (p) {
+      var ta = document.getElementById(p.dataset.countFor);
+      var upd = function () { p.textContent = (ta.maxLength - ta.value.length) + ' left'; };
+      ta.addEventListener('input', upd); upd();
+    });
+
+    wire(ev, 'event');
+    wire(ve, 'venue');
+
+    if (editToken) {
+      var kind = params.has('venue') ? 'venue' : 'event';
+      var form = forms[kind];
+      show(kind);
+      tabs[kind === 'venue' ? 'event' : 'venue'].hidden = true;
+      form.querySelector('.go').textContent = 'Save changes';
+      form.querySelector('[data-withdraw]').hidden = false;
+      var status = form.querySelector('.status');
+      request('GET', form.dataset.api + '?token=' + encodeURIComponent(editToken)).then(function (r) {
+        if (r.res.ok && r.data && r.data.ok) {
+          fill(form, r.data.item);
+          kindChanged(); runEvent(); runVenue();
+          if (r.data.item.status === 'withdrawn') {
+            form.querySelector('.go').disabled = true;
+            form.querySelector('[data-withdraw]').hidden = true;
+            status.textContent = 'This was withdrawn. Write to us if you want it back.';
+          }
+        } else {
+          status.className = 'status bad';
+          status.textContent = problem(null, r);
+        }
+      }, function (err) { status.className = 'status bad'; status.textContent = problem(err); });
+    }
+  }
+
+  request('GET', '/api/niagara-tech-week/options').then(function (r) {
+    if (r.res.ok && r.data) return setup(r.data);
+    throw new Error();
+  }).catch(function () {
+    document.querySelectorAll('.status').forEach(function (s) {
+      s.className = 'status bad';
+      s.innerHTML = 'The form could not load its choices. Refresh, or <a href="mailto:techweek@diaphoralabs.com">email us your idea</a>.';
+    });
+    document.querySelectorAll('.go').forEach(function (b) { b.disabled = true; });
+  });
+})();
+</script>
+</body>
+</html>

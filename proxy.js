@@ -18,6 +18,10 @@ const NTW_PAGE = '/niagara-tech-week/index.html';
 const NTW_FILES = {
   '/robots.txt': '/niagara-tech-week/robots.txt',
   '/sitemap.xml': '/niagara-tech-week/sitemap.xml',
+  // The host form: one page with two forms. /venues opens it on the venue
+  // form, so each audience can be handed a link that starts in the right place.
+  '/host': '/niagara-tech-week/host.html',
+  '/venues': '/niagara-tech-week/host.html',
 };
 
 // diaphoralabs.com is parked on a coming-soon page while the site is rebuilt.
@@ -56,7 +60,8 @@ export function proxy(request) {
   // Serving the page's own path directly keeps a hard refresh of the rewritten
   // URL working. The only thing it fetches is the hosts' marks for the barrels,
   // which would otherwise come back as the page's HTML and draw nothing.
-  if (pathname === NTW_PAGE || pathname.startsWith('/niagara-tech-week/sponsors/')) {
+  if (pathname === NTW_PAGE || pathname === '/niagara-tech-week/host.html'
+      || pathname.startsWith('/niagara-tech-week/sponsors/')) {
     return NextResponse.next();
   }
 
