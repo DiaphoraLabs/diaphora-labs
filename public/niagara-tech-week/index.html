@@ -148,7 +148,7 @@ h1 .yr{display:block;color:var(--current);}
   text-underline-offset:9px;
 }
 
-form{width:100%;max-width:27rem;margin:16px 0 0;}
+form{width:100%;max-width:27rem;margin:30px 0 0;}
 fieldset{border:0;margin:0;padding:0;}
 legend{
   font-family:var(--mono);font-size:8.5px;font-weight:500;letter-spacing:.2em;
@@ -211,16 +211,38 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
   font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--bone-faint);margin-top:22px;line-height:2;
 }
-/* The way in to the host form: quieter than the sign-up, because most visitors
-   are here to attend, but in the reading face so it reads as an invitation. */
-.host{font-size:.95rem;line-height:1.6;color:var(--bone-dim);margin:18px 0 0;text-wrap:balance;}
-.host a{color:var(--current);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
-.host a:hover{color:var(--bone);}
+/* The three ways to take part are the page's call to action: the week is made
+   of other people's events, so hosts, venues and sponsors come before the
+   mailing list. Hosting leads, lit, because without events there is no week. */
+.paths{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  width:100%;max-width:34rem;margin:22px 0 0;
+}
+.path{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+  padding:18px 12px;text-decoration:none;
+  background:var(--patina);border:1px solid var(--current-dim);color:var(--bone);
+  transition:background 200ms var(--ease),border-color 200ms var(--ease),color 200ms var(--ease);
+}
+.path .t{font-family:var(--display);font-weight:800;font-stretch:110%;font-size:1.02rem;letter-spacing:-.005em;}
+.path .s{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;line-height:1.5;color:var(--bone-faint);}
+.path:hover{border-color:var(--current);background:var(--patina-raised);}
+.path:focus-visible{outline:2px solid var(--current);outline-offset:2px;}
+.path.lead{background:var(--current);border-color:var(--current);color:var(--patina-deep);}
+.path.lead .s{color:var(--patina);}
+.path.lead:hover{background:var(--bone);border-color:var(--bone);}
+
+/* The mailing list, second: for the people coming to attend. */
+.just{font-size:.95rem;line-height:1.6;color:var(--bone-dim);margin:0 0 12px;text-wrap:balance;}
+#go{background:transparent;color:var(--bone);border-color:var(--bone-faint);}
+#go:hover:not(:disabled){background:var(--bone);border-color:var(--bone);color:var(--patina-deep);}
 .privacy a{color:var(--bone-dim);text-decoration:underline;text-underline-offset:2px;}
 .privacy a:hover{color:var(--current);}
 
 @media (prefers-reduced-motion:reduce){*{transition-duration:1ms !important;}}
 @media (max-width:520px){
+  .paths{grid-template-columns:1fr;max-width:22rem;}
+  .path{flex-direction:row;justify-content:space-between;padding:15px 16px;text-align:left;}
   .row{flex-direction:column;}
   button{width:100%;}
   .privacy{margin-top:40px;}
@@ -438,33 +460,34 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
 
   <p class="ask">Are you in?</p>
 
-  <form id="f" novalidate>
-    <fieldset>
-      <legend>I&rsquo;m interested in</legend>
-      <div class="roles">
-        <label class="role"><input type="checkbox" name="role" value="attending" checked><span>Attending</span></label>
-        <label class="role"><input type="checkbox" name="role" value="hosting"><span>Hosting</span></label>
-        <label class="role"><input type="checkbox" name="role" value="sponsoring"><span>Sponsoring</span></label>
-      </div>
-    </fieldset>
+  <nav class="paths" aria-label="Take part">
+    <a class="path lead" href="/host">
+      <span class="t">Host an event</span>
+      <span class="s">A one line idea is enough</span>
+    </a>
+    <a class="path" href="/venues">
+      <span class="t">Offer a venue</span>
+      <span class="s">Matched to events that fit</span>
+    </a>
+    <a class="path" href="/sponsor">
+      <span class="t">Sponsor</span>
+      <span class="s">Back events in your industry</span>
+    </a>
+  </nav>
 
+  <form id="f" novalidate>
+    <p class="just">Coming to attend? Get the calendar when it opens.</p>
     <div class="row">
       <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Email address">
-      <button type="submit" id="go">Count me in</button>
+      <button type="submit" id="go">Keep me posted</button>
     </div>
 
     <p class="note" id="note" role="status" aria-live="polite">&nbsp;</p>
   </form>
 
-  <p class="host">
-    Have an event in mind? <a href="/host">Propose it</a>.
-    Have a room? <a href="/venues">Offer your venue</a>.
-    Want to back it? <a href="/sponsor">Sponsor</a>.
-  </p>
-
   <p class="privacy">
-    We collect your email address and the interests you tick, and use them only to
-    contact you about Niagara Tech Week. The list is held by Diaphora Labs in Ontario,
+    We collect your email address and use it only to contact you about Niagara
+    Tech Week. The list is held by Diaphora Labs in Ontario,
     Canada. We do not sell it, share it, or add you to anything else.
     <a href="mailto:francois@diaphoralabs.com">Ask us to remove you</a> at any time
     and we will, without asking why.
@@ -1260,11 +1283,10 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     note.className = bad ? 'note bad' : 'note';
   }
 
+  // Hosts, venues and sponsors have their own forms now, so everyone on this
+  // list is here to attend.
   function interests() {
-    var picked = Array.prototype.slice
-      .call(form.querySelectorAll('input[name="role"]:checked'))
-      .map(function (i) { return i.value; });
-    return picked.length ? picked : ['attending'];
+    return ['attending'];
   }
 
   form.addEventListener('submit', function (e) {
@@ -1315,7 +1337,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
       })
       .catch(function (err) {
         go.disabled = false;
-        go.textContent = 'Count me in';
+        go.textContent = 'Keep me posted';
         var msg = err && err.name === 'AbortError'
           ? 'That took too long. Try again, or write to us directly.'
           : (err && err.message) || 'Something went wrong. Try again.';
