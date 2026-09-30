@@ -75,7 +75,8 @@ create table if not exists niagara_tech_week_events (
   audience    text        not null default '',
   cohosts     text        not null default '',
   needs       text[]      not null default '{}',
-  public      boolean     not null default true,
+  stream_other text       not null default '',
+  visibility  text        not null default 'public',
   venue       text        not null default '',
   link        text        not null default '',
   notes       text        not null default '',
@@ -95,6 +96,14 @@ create index if not exists ntw_events_email_idx
 
 create unique index if not exists ntw_events_edit_hash_idx
   on niagara_tech_week_events (edit_hash);
+
+-- Brought forward for tables created before these columns existed. Each is a
+-- no-op on a fresh database. `public` was a yes/no; visibility replaced it with
+-- three states, and only withdrawn test rows ever held it, so it is dropped
+-- rather than carried across.
+alter table niagara_tech_week_events add column if not exists stream_other text not null default '';
+alter table niagara_tech_week_events add column if not exists visibility text not null default 'public';
+alter table niagara_tech_week_events drop column if exists public;
 
 -- Venues offering space to hosts. Kept apart from events because a venue is
 -- matched to many events and outlives any one of them, and because the two are
@@ -131,3 +140,30 @@ create index if not exists ntw_venues_status_idx
 
 create unique index if not exists ntw_venues_edit_hash_idx
   on niagara_tech_week_venues (edit_hash);
+
+-- Sponsors. Matched to events by industry: a sponsor names the streams they
+-- want to be seen in, and events that asked for sponsorship in those streams
+-- are put in front of them. Same edit-link scheme as events and venues.
+create table if not exists niagara_tech_week_sponsors (
+  id           bigint generated always as identity primary key,
+  email        text        not null,
+  contact_name text        not null,
+  org          text        not null,
+  site         text        not null default '',
+  support      text[]      not null default '{}',
+  streams      text[]      not null default '{}',
+  stream_other text        not null default '',
+  budget       text        not null default 'unsure',
+  goals        text        not null default '',
+  notes        text        not null default '',
+  status       text        not null default 'proposed',
+  edit_hash    text        not null,
+  created_at   timestamptz not null default now(),
+  updated_at   timestamptz not null default now()
+);
+
+create index if not exists ntw_sponsors_status_idx
+  on niagara_tech_week_sponsors (status, created_at);
+
+create unique index if not exists ntw_sponsors_edit_hash_idx
+  on niagara_tech_week_sponsors (edit_hash);

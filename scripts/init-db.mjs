@@ -44,3 +44,6 @@ console.log(`init-db: niagara_tech_week_events table ready — ${events} row(s).
 
 const [{ venues }] = await sql`select count(*)::int as venues from niagara_tech_week_venues`;
 console.log(`init-db: niagara_tech_week_venues table ready — ${venues} row(s).`);
+
+const [{ backers }] = await sql`select count(*)::int as backers from niagara_tech_week_sponsors`;
+console.log(`init-db: niagara_tech_week_sponsors table ready — ${backers} row(s).`);

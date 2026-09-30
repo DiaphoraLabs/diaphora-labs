@@ -18,10 +18,11 @@ const NTW_PAGE = '/niagara-tech-week/index.html';
 const NTW_FILES = {
   '/robots.txt': '/niagara-tech-week/robots.txt',
   '/sitemap.xml': '/niagara-tech-week/sitemap.xml',
-  // The host form: one page with two forms. /venues opens it on the venue
-  // form, so each audience can be handed a link that starts in the right place.
+  // The host form: one page with three forms. /venues and /sponsor open it on
+  // their own form, so each audience can be handed a link that starts there.
   '/host': '/niagara-tech-week/host.html',
   '/venues': '/niagara-tech-week/host.html',
+  '/sponsor': '/niagara-tech-week/host.html',
 };
 
 // diaphoralabs.com is parked on a coming-soon page while the site is rebuilt.

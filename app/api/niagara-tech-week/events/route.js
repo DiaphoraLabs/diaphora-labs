@@ -1,5 +1,5 @@
-import { validateEvent, bestMatches } from '../../../../lib/ntw-events';
-import { events, venues } from '../../../../lib/ntw-store';
+import { validateEvent, bestMatches, scoreSponsor } from '../../../../lib/ntw-events';
+import { events, venues, sponsors } from '../../../../lib/ntw-store';
 import { submissionHandlers } from '../../../../lib/ntw-routes';
 import { mailEvent } from '../../../../lib/ntw-mail';
 
@@ -14,12 +14,16 @@ export const { POST, GET, PATCH } = submissionHandlers({
   name: 'niagara-tech-week/events',
   store: events,
   validate: validateEvent,
-  // A host who asked for help with a venue gets the likeliest rooms listed in
-  // the team's email, so the introduction can be made from the inbox.
+  // A host who asked for help with a venue or with sponsorship gets the likeliest
+  // rooms and backers listed in the team's email, so the introduction can be
+  // made from the inbox.
   async onCreate(event) {
-    const matches = event.needs.includes('venue')
+    const rooms = event.needs.includes('venue')
       ? bestMatches(event, await venues.open(), (e, v) => [e, v])
       : [];
-    await mailEvent(event, matches);
+    const backers = event.needs.includes('sponsor')
+      ? bestMatches(event, await sponsors.open(), (e, sp) => [e, sp], 5, scoreSponsor)
+      : [];
+    await mailEvent(event, rooms, backers);
   },
 });
