@@ -53,9 +53,12 @@ export function proxy(request) {
   const file = NTW_FILES[pathname];
   if (file) return NextResponse.rewrite(new URL(file, request.url));
 
-  // The page asks for nothing else, but serving its own asset path directly
-  // keeps a hard refresh of the rewritten URL working.
-  if (pathname === NTW_PAGE) return NextResponse.next();
+  // Serving the page's own path directly keeps a hard refresh of the rewritten
+  // URL working. The only thing it fetches is the hosts' marks for the barrels,
+  // which would otherwise come back as the page's HTML and draw nothing.
+  if (pathname === NTW_PAGE || pathname.startsWith('/niagara-tech-week/sponsors/')) {
+    return NextResponse.next();
+  }
 
   // Everything else on this domain is the one page. A visitor who guesses a
   // path from the main site should land here, not on a Diaphora 404 wearing

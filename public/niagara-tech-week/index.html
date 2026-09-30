@@ -616,9 +616,17 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
       facing: 1,        // eases through zero, so the turn is the boat coming about
       scale: Math.min(w * 0.00098, 1.02),
       y: poolY + (h - poolY) * 0.34,
+      dy: 0,            // the return lane sits nearer the viewer; see drawBoat
+      x: 0,
       spawn: 0
     };
+    // Start far enough along that the whole tow is on screen, which matters
+    // most for the still frame, where the tow never gets to catch up.
+    var margin = w * 0.12;
+    var need = STERN * boat.scale + towSpan(boat.scale) + 12;
+    boat.p = Math.min(0.5, Math.max(0.18, (need - margin) / Math.max(1, w - margin * 2)));
     wake = [];
+    seedTow();
   }
 
   function drawBoat(t, dt, single) {
@@ -642,9 +650,16 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
       boat.spawn -= dt;
       if (boat.spawn <= 0) {
         boat.spawn = 0.55;
-        wake.push({ x: x - 26 * boat.facing * boat.scale, y: boat.y, r: 2, maxR: 46 + Math.random() * 34, a: 0.16 });
+        wake.push({ x: x - 26 * boat.facing * boat.scale, y: boat.y + boat.dy, r: 2, maxR: 46 + Math.random() * 34, a: 0.16 });
       }
     }
+
+    // Outbound and return runs use different lanes, the return one nearer the
+    // viewer, and the change happens inside the turn. That makes coming about a
+    // U-turn rather than a pivot on the spot, which is what lets the tow swing
+    // round behind the boat instead of being dragged back through its hull.
+    boat.dy = LANE() * (1 - boat.facing) / 2;
+    boat.x = x;
 
     // Wake first, so the hull sits on top of the water it has disturbed.
     for (var i = wake.length - 1; i >= 0; i--) {
@@ -664,8 +679,9 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     var bob = single ? 0 : Math.sin(t * 1.15) * 1.5;
     var pitch = single ? 0 : Math.sin(t * 0.83) * 0.014;
 
+    boat.bob = bob; boat.pitch = pitch;
     ctx.save();
-    ctx.translate(x, boat.y + bob);
+    ctx.translate(x, boat.y + boat.dy + bob);
     ctx.rotate(pitch);
     ctx.scale(boat.scale * boat.facing, boat.scale);
 
@@ -787,6 +803,221 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     }
 
     ctx.restore();
+    ctx.lineCap = 'butt';
+    ctx.lineJoin = 'miter';
+  }
+
+  // The first hosts, towed behind the Maid on barrels: Brock University and the
+  // Niagara Falls Rankin Innovation Hub. These are the organisations' own
+  // reversed marks, not redrawn in the line style, because a sponsor's mark is
+  // theirs to draw. The barrels float on their sides, as barrels do, which is
+  // also the only way to give a mark enough width to be read at this size.
+  var SPONSORS = [
+    { src: '/niagara-tech-week/sponsors/brock-reversed.svg', img: null },
+    { src: '/niagara-tech-week/sponsors/nfrih.svg', img: null }
+  ];
+  SPONSORS.forEach(function (s) {
+    var im = new Image();
+    im.onload = function () {
+      s.img = im;
+      // The still frame is drawn once; draw it again now the mark is here.
+      if (still.matches && w) frame(0, true);
+    };
+    im.src = s.src;
+  });
+
+  // A barrel lying on its side, 100 long, centred, drawn in hull units like the
+  // boat. The staves bulge top and bottom; the hoops sit in from each chime.
+  var KEG = [
+    'M -46 -15 C -22 -25 22 -25 46 -15 C 50.5 -5 50.5 5 46 15 C 22 25 -22 25 -46 15 C -50.5 5 -50.5 -5 -46 -15 Z',
+    // Hoops in pairs near each chime; a single hoop reads as a seam in a box.
+    'M -40 -18 C -43 -6 -43 6 -40 18', 'M -36 -19.4 C -39 -6 -39 6 -36 19.4',
+    'M 40 -18 C 43 -6 43 6 40 18', 'M 36 -19.4 C 39 -6 39 6 36 19.4',
+    // The chimes: the barrel's ends, seen almost edge-on.
+    'M -46 -15 C -48.5 -5 -48.5 5 -46 15', 'M 46 -15 C 48.5 -5 48.5 5 46 15'
+  ];
+  var STERN = 36;                 // hull units from the boat's origin to its transom
+  var KEG_WL = 8;                 // the waterline, in barrel units below its centre
+  var tow = [], aside = null;
+  // The boat's solid parts, for cutting a barrel that passes behind it: hull,
+  // deck house, wheelhouse. The after deck under the canopy is left open.
+  var SOLID = [HULL[0], 'M -28 -11 L -28 -24 L 26 -24 L 26 -11 Z', 'M -31 -25 L 30 -25 L 30 -23 L -31 -23 Z',
+               'M 8 -24 L 8 -34 L 24 -34 L 24 -24 Z', 'M -29 -34 L 4 -34 L 4 -32 L -29 -32 Z'];
+
+  // Never smaller than this: on a phone the boat shrinks with the screen, but a
+  // mark shrunk with it is a smudge, and the marks are the point of the tow.
+  function kegScale(s) { return Math.max(s * 1.15, 0.62); }
+  function LANE() { return (h - h * 0.84) * 0.2; }
+  // Rope from the transom to the first barrel, then barrel to barrel.
+  function ropeTo(i, s) { return (i === 0 ? 26 * s : 22 * s) + (i === 0 ? 50 : 100) * kegScale(s); }
+  function towSpan(s) { return ropeTo(0, s) + ropeTo(1, s) + 50 * kegScale(s); }
+
+  function seedTow() {
+    tow = [];
+    var s = boat.scale;
+    var x = w * 0.12 + boat.p * (w - w * 0.24) - STERN * s * boat.facing;
+    for (var i = 0; i < SPONSORS.length; i++) {
+      x -= ropeTo(i, s) * boat.facing;
+      tow.push({ x: x, z: 0, px: x, pz: 0, spawn: Math.random() });
+    }
+  }
+
+  function drawTow(t, dt, single) {
+    if (!boat || !tow.length) return;
+    var s = boat.scale, ks = kegScale(s);
+    var ax = boat.x - STERN * s * boat.facing;   // the transom
+    var az = boat.dy;
+
+    if (!single && dt > 0) {
+      // Water drag: velocity bleeds away quickly, so a barrel only moves while
+      // the rope is pulling it and drifts to a stop when the boat turns.
+      var keep = Math.pow(0.12, dt);
+      for (var i = 0; i < tow.length; i++) {
+        var b = tow[i];
+        var vx = (b.x - b.px) * keep, vz = (b.z - b.pz) * keep;
+        b.px = b.x; b.pz = b.z;
+        b.x += vx; b.z += vz;
+
+        // The rope only pulls: a barrel closer than its length is slack.
+        var prevX = i === 0 ? ax : tow[i - 1].x;
+        var prevZ = i === 0 ? az : tow[i - 1].z;
+        var dx = b.x - prevX, dz = (b.z - prevZ) * 3;   // depth is foreshortened
+        var d = Math.sqrt(dx * dx + dz * dz), L = ropeTo(i, s);
+        if (d > L) {
+          b.x = prevX + dx / d * L;
+          b.z = prevZ + dz / d * L / 3;
+        }
+        var zmax = h - 10 - boat.y, zmin = h * 0.84 + 14 - boat.y;
+        b.z = Math.max(zmin, Math.min(zmax, b.z));
+
+        // Barrels are solid: when the rope goes slack in a turn and they drift
+        // together, they bump apart rather than passing through each other.
+        for (var o = 0; o < i; o++) {
+          var ob = tow[o];
+          var sx = b.x - ob.x, sz = (b.z - ob.z) * 3;
+          var sd = Math.sqrt(sx * sx + sz * sz) || 0.01, need = 100 * ks;
+          if (sd < need) {
+            var push = (need - sd) / 2 / sd;
+            b.x += sx * push; ob.x -= sx * push;
+            b.z += sz * push / 3; ob.z -= sz * push / 3;
+          }
+        }
+
+        // A barrel under way leaves rings of its own.
+        b.spawn -= dt;
+        if (b.spawn <= 0) {
+          b.spawn = 0.8;
+          if (Math.abs(vx) / dt > 6) {
+            wake.push({ x: b.x, y: boat.y + b.z + KEG_WL * ks * 0.6, r: 2, maxR: 26 + Math.random() * 18, a: 0.12 });
+          }
+        }
+      }
+    }
+
+    // Anything further off than the boat is drawn aside and has the boat's
+    // solid parts cut out of it, so a barrel swinging round behind the boat
+    // passes behind it and shows through the open after deck. The tow is drawn
+    // over the veil, so without this it would paint straight across the hull.
+    var mask = new DOMMatrix()
+      .translate(boat.x, boat.y + boat.dy + (boat.bob || 0))
+      .rotate((boat.pitch || 0) * 180 / Math.PI)
+      .scale(s * boat.facing, s);
+
+    // Nearest last, so a barrel nearer the viewer covers one further off.
+    var order = tow.map(function (_, n) { return n; })
+      .sort(function (p1, p2) { return tow[p1].z - tow[p2].z; });
+    for (var oi = 0; oi < order.length; oi++) {
+      var j = order[oi], k = tow[j];
+      var bob = single ? 0 : Math.sin(t * 1.7 + j * 1.9) * 1.2 * s;
+      var roll = single ? 0 : Math.sin(t * 1.25 + j * 2.3) * 0.035;
+      var cy = boat.y + k.z + bob;
+      var behind = k.z < boat.dy - 0.5;
+
+      var c = ctx;
+      if (behind) {
+        if (!aside) aside = document.createElement('canvas');
+        if (aside.width !== canvas.width || aside.height !== canvas.height) {
+          aside.width = canvas.width; aside.height = canvas.height;
+        }
+        c = aside.getContext('2d');
+        c.setTransform(1, 0, 0, 1, 0, 0);
+        c.clearRect(0, 0, aside.width, aside.height);
+        c.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      c.save();
+
+      // The rope lies on the water, so it runs along the surface rather than
+      // hanging in a catenary from the transom.
+      var fromX = j === 0 ? ax : tow[j - 1].x + 48 * ks * (tow[j - 1].x < k.x ? 1 : -1);
+      var fromY = j === 0 ? boat.y + boat.dy - 6 * s : boat.y + tow[j - 1].z;
+      var toX = k.x + 48 * ks * (fromX < k.x ? -1 : 1);
+      c.strokeStyle = rgba(WATER, 0.28);
+      c.lineWidth = 1;
+      c.beginPath();
+      c.moveTo(fromX, fromY);
+      c.quadraticCurveTo((fromX + toX) / 2, Math.max(fromY, cy) + 3 * s, toX, cy);
+      c.stroke();
+
+      c.translate(k.x, cy);
+      c.rotate(roll);
+      c.scale(ks, ks);
+
+      // Only what floats is drawn: cut the barrel at its waterline, the way
+      // the hull stops at the waterline, so it sits in the pool.
+      c.save();
+      c.beginPath();
+      c.rect(-60, -40, 120, 40 + KEG_WL);
+      c.clip();
+
+      c.lineWidth = 1.15 / Math.max(0.12, ks);
+      c.lineCap = 'round';
+      c.lineJoin = 'round';
+      var body = new Path2D(KEG[0]);
+      c.fillStyle = rgba(G, 0.94);
+      c.fill(body);
+      // Matched to the boat as it reads through the veil, so the tow is lit
+      // like the boat pulling it rather than standing out in front of it.
+      c.strokeStyle = rgba(WATER, 0.34);
+      c.stroke(body);
+      c.strokeStyle = rgba(WATER, 0.24);
+      for (var q = 1; q < KEG.length; q++) c.stroke(new Path2D(KEG[q]));
+
+      // The mark, between the hoops and above the water, never mirrored:
+      // the barrel is symmetric, the lettering is not.
+      var im = SPONSORS[j].img;
+      if (im && im.naturalWidth) {
+        var bw = 64, bh = 22;
+        var r = Math.min(bw / im.naturalWidth, bh / im.naturalHeight);
+        var iw = im.naturalWidth * r, ih = im.naturalHeight * r;
+        c.globalAlpha = 0.92;
+        c.drawImage(im, -iw / 2, -8 - ih / 2, iw, ih);
+        c.globalAlpha = 1;
+      }
+      c.restore();
+
+      c.strokeStyle = rgba(WATER, 0.3);
+      c.lineWidth = 1 / ks;
+      c.beginPath();
+      c.moveTo(-54, KEG_WL);
+      c.lineTo(54, KEG_WL);
+      c.stroke();
+      c.restore();
+
+      if (behind) {
+        c.globalCompositeOperation = 'destination-out';
+        c.fillStyle = '#000';
+        for (var sp = 0; sp < SOLID.length; sp++) {
+          var cut = new Path2D();
+          cut.addPath(new Path2D(SOLID[sp]), mask);
+          c.fill(cut);
+        }
+        c.globalCompositeOperation = 'source-over';
+        ctx.save();
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.drawImage(aside, 0, 0);
+        ctx.restore();
+      }
+    }
     ctx.lineCap = 'butt';
     ctx.lineJoin = 'miter';
   }
@@ -938,7 +1169,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     var dt = single ? 0 : Math.min(0.05, Math.max(0, t - lastT));
     lastT = t;
     drawBoat(t, dt, single);
-    drawAnnie(t, dt, boat ? (w * 0.12 + boat.p * (w - w * 0.24)) : 0, h * 0.84, single);
+    drawAnnie(t, dt, boat ? boat.x : 0, h * 0.84, single);
 
     for (var j = 0; j < plume.length; j++) {
       var p = plume[j];
@@ -968,6 +1199,10 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     veil.addColorStop(1, rgba(G, 0.16));
     ctx.fillStyle = veil;
     ctx.fillRect(0, 0, w, h);
+
+    // The hosts' marks go over the veil: the veil keeps the water off the type,
+    // and under it their colours turn to mud.
+    drawTow(t, dt, single);
 
     if (!single) raf = requestAnimationFrame(function (ts) { frame(ts, false); });
   }
