@@ -614,7 +614,7 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
       p: 0.18,          // where along the crossing
       dir: 1,           // which way it is headed
       facing: 1,        // eases through zero, so the turn is the boat coming about
-      scale: Math.min(w * 0.00098, 1.02),
+      scale: Math.min(w * 0.00113, 1.17),
       y: poolY + (h - poolY) * 0.34,
       dy: 0,            // the return lane sits nearer the viewer; see drawBoat
       x: 0,
@@ -846,7 +846,9 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
 
   // Never smaller than this: on a phone the boat shrinks with the screen, but a
   // mark shrunk with it is a smudge, and the marks are the point of the tow.
-  function kegScale(s) { return Math.max(s * 1.15, 0.62); }
+  // The barrels were sized against the boat before the boat grew by 15%, so
+  // the factor absorbs that: the boat got bigger, the barrels did not.
+  function kegScale(s) { return Math.max(s, 0.62); }
   function LANE() { return (h - h * 0.84) * 0.2; }
   // Rope from the transom to the first barrel, then barrel to barrel.
   function ropeTo(i, s) { return (i === 0 ? 26 * s : 22 * s) + (i === 0 ? 50 : 100) * kegScale(s); }
@@ -1047,12 +1049,15 @@ button:disabled{background:var(--patina-raised);border-color:var(--patina-edge);
     if (still.matches) frame(0, true);
   }
 
-  // Three passes of the same cloth at different speeds and stretches. The
+  // Four passes of the same cloth at different speeds and stretches. The
   // variation is what churns; the shared texture is what keeps it one mass.
+  // The fastest pass is stretched longest and kept faint: streaks drawn out by
+  // their own speed are what make water read as falling rather than drifting.
   var LAYERS = [
-    { speed:  38, scale: 0.72, alpha: 0.55 },
-    { speed:  74, scale: 1.15, alpha: 0.85 },
-    { speed: 132, scale: 1.85, alpha: 0.55 }
+    { speed:  70, scale: 0.80, alpha: 0.50 },
+    { speed: 140, scale: 1.30, alpha: 0.85 },
+    { speed: 245, scale: 2.10, alpha: 0.55 },
+    { speed: 400, scale: 3.40, alpha: 0.30 }
   ];
 
   function frame(now, single) {
