@@ -98,7 +98,7 @@ create unique index if not exists ntw_events_edit_hash_idx
   on niagara_tech_week_events (edit_hash);
 
 -- Brought forward for tables created before these columns existed. Each is a
--- no-op on a fresh database. `public` was a yes/no; visibility replaced it with
+-- no-op on a fresh database. `public` was a yes/no, and visibility replaced it with
 -- three states, and only withdrawn test rows ever held it, so it is dropped
 -- rather than carried across.
 alter table niagara_tech_week_events add column if not exists stream_other text not null default '';

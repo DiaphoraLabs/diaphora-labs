@@ -22,11 +22,16 @@ const schema = await readFile(new URL('./schema.sql', import.meta.url), 'utf8');
 const sql = neon(url);
 
 // The HTTP driver sends one statement per call, so split on the boundaries
-// rather than shipping the whole file as a single query.
+// rather than shipping the whole file as a single query. Comment lines go
+// first: a semicolon in a comment once split one in two and sent its prose to
+// the database, which failed the migration and with it the whole deploy.
 const statements = schema
+  .split('\n')
+  .filter((line) => !line.trim().startsWith('--'))
+  .join('\n')
   .split(';')
   .map((s) => s.trim())
-  .filter((s) => s && !s.split('\n').every((line) => line.trim().startsWith('--')));
+  .filter(Boolean);
 
 for (const statement of statements) {
   await sql.query(statement);
