@@ -51,6 +51,17 @@ const BIOVELD_ROUTES = {
   '/Bioveld-briefing.pdf': '/bioveld-portal/pdf/full',
 };
 
+// testbed.diaphoralabs.com is a private tourism test bed proposal for Niagara Parks,
+// answered by the password-gated routes in app/parks-portal.
+const PARKS_HOSTS = new Set([
+  'testbed.diaphoralabs.com',
+]);
+
+const PARKS_ROUTES = {
+  '/login': '/parks-portal/login',
+  '/logout': '/parks-portal/logout',
+};
+
 // innovationhub.diaphoralabs.com is a private proposal for the Niagara Falls
 // Rankin Innovation Hub, answered by the password-gated routes in app/hub-portal.
 const HUB_HOSTS = new Set([
@@ -76,6 +87,17 @@ export function proxy(request) {
     // The briefing's proposal form posts to the shared register.
     if (pathname === '/api/register') return NextResponse.next();
     const route = BIOVELD_ROUTES[pathname] || '/bioveld-portal';
+    return NextResponse.rewrite(new URL(route + request.nextUrl.search, request.url));
+  }
+
+  if (PARKS_HOSTS.has(host)) {
+    const { pathname } = request.nextUrl;
+    if (pathname === '/robots.txt') {
+      return new NextResponse('User-agent: *\nDisallow: /\n', {
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+      });
+    }
+    const route = PARKS_ROUTES[pathname] || '/parks-portal';
     return NextResponse.rewrite(new URL(route + request.nextUrl.search, request.url));
   }
 

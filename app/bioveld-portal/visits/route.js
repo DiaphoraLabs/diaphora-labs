@@ -39,7 +39,7 @@ export async function GET(request) {
     days.set(d, e);
   }
   const last = people[0];
-  const SITE = { bioveld: 'Bioveld', hub: 'Innovation Hub' };
+  const SITE = { bioveld: 'Bioveld', hub: 'Innovation Hub', parks: 'Niagara Parks test bed' };
   const bySite = Object.keys(SITE).map((k) => {
     const p = people.filter((r) => (r.site || 'bioveld') === k);
     return [SITE[k], p.filter((r) => r.kind === 'signin').length, p.filter((r) => r.kind === 'view').length, new Set(p.filter((r) => r.visitor).map((r) => r.visitor)).size, p[0] ? when(p[0].at) : '—'];
@@ -62,7 +62,7 @@ th{color:var(--muted);font-weight:500}td.n{font-variant-numeric:tabular-nums}
 .err{color:var(--accent)}
 </style></head><body><main>
 <h1>Who has opened the private pages</h1>
-<p>Bioveld (bioveld.diaphoralabs.com) and the Innovation Hub page (innovationhub.diaphoralabs.com). Times are Toronto time. No names, addresses or IPs are kept: only the event, the kind of device and a random id per browser. Your own browser is now excluded from the counts.</p>
+<p>Bioveld (bioveld.diaphoralabs.com), the Innovation Hub page (innovationhub.diaphoralabs.com) and the Niagara Parks test bed (testbed.diaphoralabs.com). Times are Toronto time. No names, addresses or IPs are kept: only the event, the kind of device and a random id per browser. Your own browser is now excluded from the counts.</p>
 ${error ? `<p class="err">${esc(error)}</p>` : ''}
 <div class="stats">
 <div><b>${count('signin')}</b>sign-ins</div>
