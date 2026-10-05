@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic';
 const TZ = 'America/Toronto';
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const when = (d) => new Date(d).toLocaleString('en-CA', { timeZone: TZ, dateStyle: 'medium', timeStyle: 'short' });
-const LABEL = { signin: 'Signed in', view: 'Opened', failed: 'Wrong password' };
+const LABEL = { signin: 'Signed in', view: 'Opened', failed: 'Wrong password', 'pdf-summary': 'Downloaded summary PDF', 'pdf-full': 'Downloaded full PDF' };
 
 export async function GET(request) {
   if (!isAllowedHost(request) || !statsKeyMatches(request.nextUrl.searchParams.get('key'))) {
@@ -63,6 +63,7 @@ ${error ? `<p class="err">${esc(error)}</p>` : ''}
 <div><b>${count('signin')}</b>sign-ins</div>
 <div><b>${count('view')}</b>times opened</div>
 <div><b>${visitors.size}</b>different browsers</div>
+<div><b>${count('pdf-summary') + count('pdf-full')}</b>PDF downloads</div>
 <div><b>${count('failed')}</b>wrong passwords</div>
 <div><b style="font-size:17px">${last ? esc(when(last.at)) : '—'}</b>most recent</div>
 </div>

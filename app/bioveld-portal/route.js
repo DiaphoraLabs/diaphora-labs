@@ -15,7 +15,12 @@ export async function GET(request) {
 
   if (isSignedIn(request)) {
     logVisit(request, 'view');
-    return new Response(briefing.replace('href="/logout"', `href="${basePath(request)}/logout"`), { headers });
+    // Links and downloads carry the right prefix for whichever host this is.
+    const base = basePath(request);
+    const page = briefing
+      .replace('href="/logout"', `href="${base}/logout"`)
+      .replace('window.BV_LIVE=true;', `window.BV_LIVE=true;window.BV_BASE=${JSON.stringify(base)};`);
+    return new Response(page, { headers });
   }
 
   const error = request.nextUrl.searchParams.get('e') === '1';

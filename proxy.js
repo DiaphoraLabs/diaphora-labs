@@ -47,6 +47,8 @@ const BIOVELD_ROUTES = {
   '/login': '/bioveld-portal/login',
   '/logout': '/bioveld-portal/logout',
   '/visits': '/bioveld-portal/visits',
+  '/Bioveld-summary.pdf': '/bioveld-portal/pdf/summary',
+  '/Bioveld-briefing.pdf': '/bioveld-portal/pdf/full',
 };
 
 export function proxy(request) {
