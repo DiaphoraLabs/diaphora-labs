@@ -59,6 +59,8 @@ export function proxy(request) {
         headers: { 'content-type': 'text/plain; charset=utf-8' },
       });
     }
+    // The briefing's proposal form posts to the shared register.
+    if (pathname === '/api/register') return NextResponse.next();
     const route = BIOVELD_ROUTES[pathname] || '/bioveld-portal';
     return NextResponse.rewrite(new URL(route + request.nextUrl.search, request.url));
   }

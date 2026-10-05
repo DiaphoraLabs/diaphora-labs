@@ -19,6 +19,8 @@ const LISTS = new Set([
   // handed over in the browser rather than emailed, because nothing here sends
   // mail and a promised email that never arrives is worse than no gate at all.
   'waterfall-brief',
+  // Proposal requests from the private Bioveld briefing (bioveld.diaphoralabs.com).
+  'bioveld-proposal',
 ]);
 
 export const runtime = 'nodejs';
