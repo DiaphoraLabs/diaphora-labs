@@ -1,5 +1,6 @@
 import briefing from '../../lib/bioveld/briefing-html.js';
 import { loginPage } from '../../lib/bioveld/login-page.js';
+import { logVisit } from '../../lib/bioveld/visits.js';
 import { PRIVATE_HEADERS, basePath, isAllowedHost, isSignedIn } from '../../lib/bioveld/auth.js';
 
 // The Bioveld briefing lives here rather than in public/, so the only way to
@@ -13,6 +14,7 @@ export async function GET(request) {
   const headers = { 'content-type': 'text/html; charset=utf-8', ...PRIVATE_HEADERS };
 
   if (isSignedIn(request)) {
+    logVisit(request, 'view');
     return new Response(briefing.replace('href="/logout"', `href="${basePath(request)}/logout"`), { headers });
   }
 

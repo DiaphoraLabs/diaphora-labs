@@ -46,6 +46,7 @@ const BIOVELD_HOSTS = new Set([
 const BIOVELD_ROUTES = {
   '/login': '/bioveld-portal/login',
   '/logout': '/bioveld-portal/logout',
+  '/visits': '/bioveld-portal/visits',
 };
 
 export function proxy(request) {

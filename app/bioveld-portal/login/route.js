@@ -1,4 +1,5 @@
 import { publicUrl, COOKIE, MAX_AGE, basePath, isAllowedHost, isSecure, passwordMatches, sessionValue, PRIVATE_HEADERS } from '../../../lib/bioveld/auth.js';
+import { logVisit, newVisitorId, VISITOR } from '../../../lib/bioveld/visits.js';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,6 +22,20 @@ export async function POST(request) {
       'SameSite=Lax',
       ...(isSecure(request) ? ['Secure'] : []),
     ].join('; '));
+    // A random id per browser, so returning visits and second devices can be
+    // told apart without knowing who anyone is. Kept if one already exists.
+    const visitor = request.cookies.get(VISITOR)?.value || newVisitorId();
+    headers.append('set-cookie', [
+      `${VISITOR}=${visitor}`,
+      'Path=/',
+      'Max-Age=31536000',
+      'HttpOnly',
+      'SameSite=Lax',
+      ...(isSecure(request) ? ['Secure'] : []),
+    ].join('; '));
+    logVisit(request, 'signin', visitor);
+  } else {
+    logVisit(request, 'failed');
   }
   return new Response(null, { status: 303, headers });
 }

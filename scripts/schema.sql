@@ -167,3 +167,19 @@ create index if not exists ntw_sponsors_status_idx
 
 create unique index if not exists ntw_sponsors_edit_hash_idx
   on niagara_tech_week_sponsors (edit_hash);
+
+-- Visits to the private Bioveld briefing (bioveld.diaphoralabs.com). It answers
+-- one question for the author: has BMI opened it, and did they come back. So
+-- it records when, what kind of event and the kind of device, and nothing that
+-- identifies a person: no IP, no user agent, no email. `visitor` is a random
+-- id set at sign-in, so two devices read as two rows rather than one.
+create table if not exists bioveld_visits (
+  id       bigint generated always as identity primary key,
+  kind     text        not null,
+  device   text        not null default 'other',
+  visitor  text        not null default '',
+  at       timestamptz not null default now()
+);
+
+create index if not exists bioveld_visits_at_idx
+  on bioveld_visits (at desc);
