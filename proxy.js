@@ -36,9 +36,32 @@ const DIAPHORA_HOSTS = new Set([
 
 const DIAPHORA_PAGE = '/diaphora/index.html';
 
+// bioveld.diaphoralabs.com is a private briefing for BMI Group. Everything on
+// that host is answered by the password-gated routes in app/bioveld-portal, so
+// no page of the main site, and no file in public/, is reachable from it.
+const BIOVELD_HOSTS = new Set([
+  'bioveld.diaphoralabs.com',
+]);
+
+const BIOVELD_ROUTES = {
+  '/login': '/bioveld-portal/login',
+  '/logout': '/bioveld-portal/logout',
+};
+
 export function proxy(request) {
   // The Host header carries the port in local dev; the domain is what matters.
   const host = (request.headers.get('host') || '').toLowerCase().split(':')[0];
+
+  if (BIOVELD_HOSTS.has(host)) {
+    const { pathname } = request.nextUrl;
+    if (pathname === '/robots.txt') {
+      return new NextResponse('User-agent: *\nDisallow: /\n', {
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+      });
+    }
+    const route = BIOVELD_ROUTES[pathname] || '/bioveld-portal';
+    return NextResponse.rewrite(new URL(route + request.nextUrl.search, request.url));
+  }
 
   if (DIAPHORA_HOSTS.has(host)) {
     return request.nextUrl.pathname === '/'
