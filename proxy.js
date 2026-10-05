@@ -51,6 +51,17 @@ const BIOVELD_ROUTES = {
   '/Bioveld-briefing.pdf': '/bioveld-portal/pdf/full',
 };
 
+// innovationhub.diaphoralabs.com is a private proposal for the Niagara Falls
+// Rankin Innovation Hub, answered by the password-gated routes in app/hub-portal.
+const HUB_HOSTS = new Set([
+  'innovationhub.diaphoralabs.com',
+]);
+
+const HUB_ROUTES = {
+  '/login': '/hub-portal/login',
+  '/logout': '/hub-portal/logout',
+};
+
 export function proxy(request) {
   // The Host header carries the port in local dev; the domain is what matters.
   const host = (request.headers.get('host') || '').toLowerCase().split(':')[0];
@@ -65,6 +76,17 @@ export function proxy(request) {
     // The briefing's proposal form posts to the shared register.
     if (pathname === '/api/register') return NextResponse.next();
     const route = BIOVELD_ROUTES[pathname] || '/bioveld-portal';
+    return NextResponse.rewrite(new URL(route + request.nextUrl.search, request.url));
+  }
+
+  if (HUB_HOSTS.has(host)) {
+    const { pathname } = request.nextUrl;
+    if (pathname === '/robots.txt') {
+      return new NextResponse('User-agent: *\nDisallow: /\n', {
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+      });
+    }
+    const route = HUB_ROUTES[pathname] || '/hub-portal';
     return NextResponse.rewrite(new URL(route + request.nextUrl.search, request.url));
   }
 

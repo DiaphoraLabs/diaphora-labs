@@ -183,3 +183,6 @@ create table if not exists bioveld_visits (
 
 create index if not exists bioveld_visits_at_idx
   on bioveld_visits (at desc);
+
+-- Which private page a visit was to: 'bioveld' or 'hub' (innovationhub.diaphoralabs.com).
+alter table bioveld_visits add column if not exists site text not null default 'bioveld';
