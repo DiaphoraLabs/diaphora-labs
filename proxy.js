@@ -23,6 +23,8 @@ const NTW_FILES = {
   '/host': '/niagara-tech-week/host.html',
   '/venues': '/niagara-tech-week/host.html',
   '/sponsor': '/niagara-tech-week/host.html',
+  // The event map: every approved event on one map of the region, day by day.
+  '/map': '/niagara-tech-week/map.html',
 };
 
 // diaphoralabs.com is parked on a coming-soon page while the site is rebuilt.
